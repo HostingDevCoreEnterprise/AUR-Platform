@@ -1,0 +1,121 @@
+<%- include('partials/header') %>
+
+<div class="auth-split-container">
+    <div class="auth-split-image" style="background-image: url('/imagini/sistem-informatic.jpg');">
+        <div class="auth-split-image-overlay">
+            <h2 class="auth-split-image-text">Viitorul Tău Începe Aici</h2>
+            <p style="color: rgba(255,255,255,0.8); font-size: 18px; text-align: center; max-width: 400px;">
+                Alătură-te celei mai mari comunități academice din România și preia controlul asupra traseului tău educațional.
+            </p>
+        </div>
+    </div>
+    <div class="auth-split-form-wrapper">
+        <div class="auth-split-form" style="max-width: 600px;">
+            <h2 style="font-size: 32px; font-weight: 800; color: var(--text-main); margin-bottom: 8px;">Creare Cont</h2>
+            <p style="color: var(--text-mut); margin-bottom: 32px;">Completează datele pentru a avea acces complet la ecosistem.</p>
+            
+            <% if (locals.error) { %>
+                <div class="alert-error">
+                    <%= error %>
+                </div>
+            <% } %>
+
+            <form action="/register" method="POST">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                    <div>
+                        <label for="first_name">Nume (Prenume)</label>
+                        <input type="text" id="first_name" name="first_name" class="form-control" required placeholder="Ex: Andrei">
+                    </div>
+                    <div>
+                        <label for="last_name">Nume de Familie</label>
+                        <input type="text" id="last_name" name="last_name" class="form-control" required placeholder="Ex: Popescu">
+                    </div>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                    <div>
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" name="email" class="form-control" required placeholder="nume@exemplu.ro">
+                    </div>
+                    <div>
+                        <label for="password">Parolă</label>
+                        <input type="password" id="password" name="password" class="form-control" required placeholder="••••••••">
+                    </div>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                    <div>
+                        <label for="county">Județ (Obligatoriu)</label>
+                        <select id="county" name="county" class="form-control" required>
+                            <option value="">Selectează județul...</option>
+                            <option value="Alba">Alba</option>
+                            <option value="Arad">Arad</option>
+                            <option value="Argeș">Argeș</option>
+                            <option value="Bacău">Bacău</option>
+                            <option value="Bihor">Bihor</option>
+                            <option value="Bistrița-Năsăud">Bistrița-Năsăud</option>
+                            <option value="Botoșani">Botoșani</option>
+                            <option value="Brașov">Brașov</option>
+                            <option value="Brăila">Brăila</option>
+                            <option value="București">București</option>
+                            <option value="Buzău">Buzău</option>
+                            <option value="Caraș-Severin">Caraș-Severin</option>
+                            <option value="Călărași">Călărași</option>
+                            <option value="Cluj">Cluj</option>
+                            <option value="Constanța">Constanța</option>
+                            <option value="Covasna">Covasna</option>
+                            <option value="Dâmbovița">Dâmbovița</option>
+                            <option value="Dolj">Dolj</option>
+                            <option value="Galați">Galați</option>
+                            <option value="Giurgiu">Giurgiu</option>
+                            <option value="Gorj">Gorj</option>
+                            <option value="Harghita">Harghita</option>
+                            <option value="Hunedoara">Hunedoara</option>
+                            <option value="Ialomița">Ialomița</option>
+                            <option value="Iași">Iași</option>
+                            <option value="Ilfov">Ilfov</option>
+                            <option value="Maramureș">Maramureș</option>
+                            <option value="Mehedinți">Mehedinți</option>
+                            <option value="Mureș">Mureș</option>
+                            <option value="Neamț">Neamț</option>
+                            <option value="Olt">Olt</option>
+                            <option value="Prahova">Prahova</option>
+                            <option value="Satu Mare">Satu Mare</option>
+                            <option value="Sălaj">Sălaj</option>
+                            <option value="Sibiu">Sibiu</option>
+                            <option value="Suceava">Suceava</option>
+                            <option value="Teleorman">Teleorman</option>
+                            <option value="Timiș">Timiș</option>
+                            <option value="Tulcea">Tulcea</option>
+                            <option value="Vaslui">Vaslui</option>
+                            <option value="Vâlcea">Vâlcea</option>
+                            <option value="Vrancea">Vrancea</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="birth_date">Data Nașterii (Opțional)</label>
+                        <input type="date" id="birth_date" name="birth_date" class="form-control">
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                    <div>
+                        <label for="phone_number">Telefon (Opțional)</label>
+                        <input type="tel" id="phone_number" name="phone_number" class="form-control" placeholder="07xx xxx xxx">
+                    </div>
+                    <div>
+                        <label for="high_school">Liceu (Opțional)</label>
+                        <input type="text" id="high_school" name="high_school" class="form-control" placeholder="Colegiul Național...">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-primary" style="width: 100%; padding: 14px; font-size: 16px; margin-top: 16px; justify-content: center;">Finalizare Înregistrare</button>
+            </form>
+            <p style="text-align: center; margin-top: 32px; color: var(--text-mut);">
+                Ai deja un cont? <a href="/login" style="color: var(--unilink-orange); font-weight: 600; text-decoration: none;">Autentifică-te</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer') %>

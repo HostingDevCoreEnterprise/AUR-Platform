@@ -1,0 +1,329 @@
+<%- include('partials/header') %>
+
+<style>
+/* Hero Section */
+.hero-banner {
+    position: relative;
+    width: 100%;
+    height: 450px;
+    border-bottom: 1px solid var(--line-d);
+    overflow: hidden;
+}
+.hero-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.4) grayscale(0.2);
+    transition: filter 0.3s;
+}
+.hero-banner img:hover {
+    filter: brightness(0.6) grayscale(0);
+}
+.hero-text-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 100%;
+    max-width: 1000px;
+    padding: 0 20px;
+    z-index: 10;
+    pointer-events: none;
+}
+.hero-text-overlay h1 {
+    font-size: clamp(36px, 5vw, 54px);
+    color: var(--tx-light);
+    margin-bottom: 16px;
+    text-shadow: 0 4px 10px rgba(0,0,0,0.8);
+}
+.hero-text-overlay p {
+    font-size: clamp(18px, 2vw, 24px);
+    color: var(--tx-light-mut);
+    text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+}
+
+/* Sections */
+.category-title {
+    font-size: 28px;
+    color: var(--tx-light);
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--oxblood-l);
+    display: inline-block;
+}
+.category-desc {
+    font-size: 16px;
+    color: var(--tx-light-mut);
+    margin-bottom: 40px;
+    line-height: 1.6;
+}
+
+/* Project Cards Grid */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    margin-bottom: 80px;
+}
+.project-card {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid var(--line-d);
+    border-radius: 12px;
+    padding: 24px;
+    transition: transform 0.3s, border-color 0.3s, background 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+.project-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--oxblood-l);
+    background: rgba(255,255,255,0.04);
+}
+.project-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+.project-header h4 {
+    margin: 0;
+    font-size: 20px;
+    color: var(--tx-light);
+}
+.org-logo {
+    height: 40px;
+    object-fit: contain;
+    background: rgba(255,255,255,0.9);
+    padding: 4px;
+    border-radius: 4px;
+}
+.project-card p {
+    color: var(--tx-light-mut);
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+.project-card ul {
+    margin-top: 16px;
+    padding-left: 20px;
+    color: var(--tx-light-mut);
+    font-size: 14px;
+}
+.project-card ul li {
+    margin-bottom: 8px;
+}
+
+@media (max-width: 768px) {
+    .project-header { flex-direction: column; align-items: flex-start; gap: 12px; }
+}
+</style>
+
+<div class="fade-in-up">
+    <!-- Hero / Banner -->
+    <div class="hero-banner">
+        <img src="/imagini/studenti/evenimente.jpg" alt="Voluntariat si Evenimente Studențești">
+        <div class="hero-text-overlay">
+            <h1>Dincolo de Amfiteatru: Fii Liderul Generației Tale</h1>
+            <p>Descoperă ecosistemul național de proiecte, festivaluri de zeci de mii de participanți și traininguri de top. Implică-te, dezvoltă-te și dă startul schimbării în societate!</p>
+        </div>
+    </div>
+
+    <main class="content-area" style="max-width: 1100px; margin: 0 auto; padding-top: 80px; padding-bottom: 60px;">
+
+        <!-- 1. Formare, Leadership -->
+        <h2 class="category-title">1. Formare, Leadership și Dezvoltare Personală</h2>
+        <p class="category-desc">Educația non-formală este cheia succesului tău. Organizațiile studențești investesc masiv în dezvoltarea abilităților pe care nu le înveți la cursuri (soft skills), creând viitorii lideri ai societății.</p>
+
+        <div class="project-grid">
+            <div class="project-card" style="grid-column: 1 / -1;">
+                <div class="project-header">
+                    <h4>Programul „We are Next”</h4>
+                    <img src="/imagini/logo/anosr.png" alt="ANOSR Logo" class="org-logo">
+                </div>
+                <p>Cu o istorie de 14 ediții, programul reunește anual aproximativ 600 de participanți (130 per sesiune, totalizând peste 650 de tineri formați periodic). Este format dintr-o serie de opt sesiuni de formare în arii profesionale diverse, dedicate exclusiv membrilor din organizațiile studențești:</p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; margin-top: 16px;">
+                    <div><strong style="color:var(--tx-light);">NEXT HR:</strong> Focus pe lucrul în echipă, gestionarea eficientă a voluntarilor, procesul de recrutare și transmiterea culturii organizaționale.</div>
+                    <div><strong style="color:var(--tx-light);">NEXT FR:</strong> (Fundraising) Formează abilități vitale de negociere și strângere de fonduri, colaborând direct cu mediul privat.</div>
+                    <div><strong style="color:var(--tx-light);">NEXT PR & Design:</strong> Redactarea materialelor de relații publice, promovarea online/offline, principii de grafică și web design.</div>
+                    <div><strong style="color:var(--tx-light);">NEXT EDU:</strong> Dedicat studenților reprezentanți. Dezvoltă tehnici de advocacy, negociere, și cunoașterea mecanismelor de finanțare.</div>
+                    <div><strong style="color:var(--tx-light);">NEXT JR:</strong> Dedicat voluntarilor care vizează o funcție de conducere (management organizațional eficient).</div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h4>Training New Trainers (TNT)</h4>
+                    <img src="/imagini/logo/unsr.png" alt="UNSR Logo" class="org-logo">
+                </div>
+                <p>„Intri voluntar, ieși trainer.” Acest proiect are un scop clar: capacitatea de a preda și de a construi o mentalitate de la zero. Prin metode non-formale și diversificate, studenții sunt formați pentru a deveni traineri certificați. TNT este dedicat dezvoltării abilității de a vorbi în public (public speaking), organizării riguroase a timpului și capacității de a transmite informații într-o manieră plăcută și eficientă.</p>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h4>Academia de Training</h4>
+                    <img src="/imagini/logo/usr.png" alt="USR Logo" class="org-logo">
+                </div>
+                <p>Implementată în absolut toate centrele universitare din România, Academia facilitează accesul studenților la o gamă largă de cursuri și workshop-uri de dezvoltare personală. Se livrează module practice de: comunicare, public speaking, gestionarea timpului, gestionarea echipelor, NLP (limbaj neuro-lingvistic), management și scriere de proiecte.</p>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h4>InTRAIN</h4>
+                    <img src="/imagini/logo/usr.png" alt="USR Logo" class="org-logo">
+                </div>
+                <p>Proiectul care reunește studenții traineri din toate colțurile țării. Pe lângă schimbul de bune practici și crearea unor legături solide între formatori, InTRAIN a pus bazele „Ghidului Trainerului USRist” – un manual esențial ce cuprinde toate aspectele pe care trebuie să le aplice un trainer profesionist.</p>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h4>Școala de Leadership</h4>
+                    <img src="/imagini/logo/usr.png" alt="USR Logo" class="org-logo">
+                </div>
+                <p>Dezvoltă abilitățile și spiritul de inițiativă pentru o grupă selectă de 60 de studenți. Alături de traineri profesioniști, aceștia dobândesc instrumentele necesare pentru a coordona alți studenți, pentru a se implica în proiecte locale și pentru a asigura o reprezentare de elită în raport cu universitatea și instituțiile publice.</p>
+            </div>
+        </div>
+
+        <!-- 2. Reprezentare Studențească -->
+        <h2 class="category-title">2. Reprezentare Studențească și Dezbateri Academice</h2>
+        <p class="category-desc">Vocea studenților dictează viitorul educației. Aici se formează reprezentanții care stau la masa negocierilor alături de miniștri, rectori și decani.</p>
+
+        <div class="project-grid">
+            <div class="project-card">
+                <div class="project-header">
+                    <h4>Student Dojo</h4>
+                    <img src="/imagini/logo/anosr.png" alt="ANOSR Logo" class="org-logo">
+                </div>
+                <p>Formează "luptătorii" reprezentării studențești. Învățând studenții mecanismele sistemului de învățământ, negocierea și medierea conflictelor. Se desfășoară în 5 sesiuni regionale și o sesiune națională la București, alături de decidenți majori (Ministerul Educației, Parlament, CNR, ARACIS).</p>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h4>Formare Studenți Evaluatori ARACIS</h4>
+                    <img src="/imagini/logo/unsr.png" alt="UNSR Logo" class="org-logo">
+                </div>
+                <p>Calitatea învățământului este verificată direct de studenți! UNSR susține acest proces organizând o săptămână intensivă de traininguri pe parcursul verii. Astfel se formează evaluatorii studenți care merg oficial în vizite de audit la absolut toate facultățile și centrele universitare din România.</p>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h4>Forumul Organizațiilor Studențești (FOSR)</h4>
+                    <img src="/imagini/logo/anosr.png" alt="ANOSR Logo" class="org-logo">
+                </div>
+                <p>Eveniment istoric (din 2006) ce reunește anual liderii studenților. Se desfășoară prin rotație în diferite centre universitare. Liderii participă la ateliere și dezbateri complexe, consolidând relațiile organizaționale și stabilind prioritățile mișcării studențești pentru anul universitar următor.</p>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h4>Congresul Studenților din România</h4>
+                    <img src="/imagini/logo/unsr.png" alt="UNSR Logo" class="org-logo">
+                </div>
+                <p>Un proiect care reunește studenți din întreaga țară pentru un exercițiu de imaginație și analiză. Scopul este crearea unei punți de comunicare cu reprezentanții instituționali, culegerea revendicărilor studențești și găsirea de soluții reale pentru sistemul educațional și angajabilitate.</p>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h4>Vision Camp AG și IDeA</h4>
+                    <img src="/imagini/logo/anosr.png" alt="ANOSR Logo" class="org-logo">
+                </div>
+                <p><strong>Vision Camp AG:</strong> Dedicat membrilor din structurile de conducere. Este locul unde se dezbate viziunea pe termen lung a federației și viitoarele campanii de amploare.<br><br><strong>IDeA (Internal Debate ANOSR):</strong> Concurs inovativ de dezbateri în echipe formate aleatoriu, dezvoltând argumentația și coeziunea federației.</p>
+            </div>
+        </div>
+
+        <!-- 3. Festivaluri -->
+        <h2 class="category-title">3. Cele Mai Mari Festivaluri, Tabere și Sport</h2>
+        <p class="category-desc">Viața de student înseamnă și relaxare, cultură, sport și unitate în diversitate. Mișcarea studențească organizează anual unele dintre cele mai premiate evenimente de tineret din țară.</p>
+
+        <div class="project-grid">
+            <div class="project-card" style="grid-column: 1 / -1;">
+                <div class="project-header">
+                    <h4>Festivalul uniFEST</h4>
+                    <div style="display: flex; gap: 8px;">
+                        <img src="/imagini/logo/usr.png" alt="USR Logo" class="org-logo">
+                    </div>
+                </div>
+                <p>Cel mai mare festival studențesc, cu o tradiție de peste 20 de ani (încă din 2001). Sub motto-ul “Distracție gratis, nu degeaba!”, festivalul durează 11 zile și asigură acces gratuit (în baza carnetului de student) la teatru, film, operă, muzee, traininguri și competiții sportive.</p>
+                <p style="margin-top: 12px;">Finalul reunește peste 8.000 de studenți într-un MegaConcert istoric, pe a cărui scenă au urcat trupe de legendă (Vunk, Voltaj, Direcția 5, Smiley, Carla’s Dreams). Proiectul a câștigat Premiul I pentru cel mai bun proiect studențesc din România (Gala Tineretului, 2018, MTS).</p>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h4>Summer Camp by USR</h4>
+                    <img src="/imagini/logo/usr.png" alt="USR Logo" class="org-logo">
+                </div>
+                <p>Un maraton estival ce activează de 14 ediții consecutive. Timp de 50 de zile, reunește anual mii de studenți la Costinești. Oferă o alternativă sănătoasă de petrecere a timpului liber: campionate sportive, seri tematice, acțiuni de ecologizare și educație non-formală. A câștigat Premiul I la secțiunea sport (Gala Tineretului, 2019, MTS).</p>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h4>SummerFEST & Campionatul Național de Fotbal Studențesc</h4>
+                    <img src="/imagini/logo/unsr.png" alt="UNSR Logo" class="org-logo">
+                </div>
+                <p>Beneficiind de taberele studențești la mare, SummerFEST devine cel mai mare festival studențesc pe plajă. Săptămâni întregi, mii de tineri iau parte la party-uri, activități pe nisip și meciuri tensionate din Campionatul Național de Fotbal. Fiecare centru universitar își organizează o săptămână cu temă proprie, sub deviza unității în diversitate.</p>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h4>Summer Camp ANOSR</h4>
+                    <img src="/imagini/logo/anosr.png" alt="ANOSR Logo" class="org-logo">
+                </div>
+                <p>Inițiativă de tradiție unde cei mai activi membri se reunesc vara. Pe lângă ateliere și dezbateri despre starea educației, aici se consolidează parteneriatele strategice prin întâlniri directe cu reprezentanții elevilor, unind astfel mișcarea liceală cu cea universitară.</p>
+            </div>
+        </div>
+
+        <!-- 4. Galele de Excelenta -->
+        <h2 class="category-title">4. Galele de Excelență și Recunoaștere</h2>
+        <p class="category-desc">Organizațiile studențești știu să premieze adevăratele valori ale societății: studenții vizionari și profesorii cu adevărat dedicați.</p>
+        
+        <div class="project-grid">
+            <div class="project-card">
+                <div class="project-header">
+                    <h4>Gala Profesorului Bologna (GPB)</h4>
+                    <img src="/imagini/logo/anosr.png" alt="ANOSR Logo" class="org-logo">
+                </div>
+                <p>Aflat la a XIII-a ediție, este singurul proiect național în care exclusiv studenții premiază performanța didactică. Cine este Profesorul Bologna? Este "Proful Tare". Un dascăl care depășește granițele disciplinei, atrăgând prin creativitate și răbdare. Dincolo de cercetare, GPB recompensează parteneriatul cu studentul (peste 1070 de profesori formați în această elită).</p>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h4>Gala (Gala Valorilor)</h4>
+                    <img src="/imagini/logo/unsr.png" alt="UNSR Logo" class="org-logo">
+                </div>
+                <p>Tinerii dau startul schimbării. Această gală scoate în față adevăratele modele care au contribuit la viitorul țării. Sunt premiați anual, într-un cadru festiv: 10 studenți români, 10 studenți basarabeni, 10 elevi cu merite excepționale, 10 voluntari dedicați, precum și cele mai active și de impact organizații studențești.</p>
+            </div>
+        </div>
+
+        <!-- 5. Inițiative pentru Elevi și Ecologie -->
+        <h2 class="category-title">5. Inițiative pentru Elevi și Responsabilitate Ecologică</h2>
+        <p class="category-desc">Studenții nu uită de unde au plecat. Prevenirea abandonului școlar și lupta pentru un mediu curat sunt priorități absolute.</p>
+        
+        <div class="project-grid">
+            <div class="project-card">
+                <div class="project-header">
+                    <h4>Universități de Vară pentru Elevi (UVE)</h4>
+                    <img src="/imagini/logo/anosr.png" alt="ANOSR Logo" class="org-logo">
+                </div>
+                <p>Dezvoltat alături de Consiliul Național al Elevilor (CNE), UVE este cel mai amplu program național de orientare în carieră. Timp de până la 15 zile, elevii trăiesc exact viața de student: cursuri introductive, simulări de examene și cazare în campus, pentru a face o alegere informată și a reduce abandonul universitar.</p>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h4>Academia de Training pentru Elevi (ATE)</h4>
+                    <img src="/imagini/logo/usr.png" alt="USR Logo" class="org-logo">
+                </div>
+                <p>Program ce asigură dezvoltarea personală a liceenilor din mediul urban și rural. Prin sesiuni de formare livrate de traineri studenți, elevilor li se oferă suportul vital pentru orientarea în carieră și alegerea corectă a viitorului parcurs profesional.</p>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h4>Studenții Plantează</h4>
+                    <img src="/imagini/logo/usr.png" alt="USR Logo" class="org-logo">
+                </div>
+                <p>Născută în Societatea Studenților Voluntari, mișcarea reunește zeci de asociații studențești, fiind vocea tinerilor care luptă activ împotriva schimbărilor climatice. Obiectivul proiectului este ca, la nivel național, în fiecare sezon de plantări, studenții să iasă din orașe și să participe la evenimente masive de împădurire.</p>
+            </div>
+        </div>
+
+    </main>
+</div>
+
+<%- include('partials/footer') %>

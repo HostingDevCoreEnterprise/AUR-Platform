@@ -1,0 +1,88 @@
+<%- include('partials/header') %>
+<style>
+.hero-banner { position: relative; width: 100%; height: 450px; border-bottom: 1px solid var(--line-d); overflow: hidden; background: #000; }
+.hero-banner img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.4); transition: filter 0.3s; }
+.hero-banner img:hover { filter: brightness(0.6); }
+.hero-text-overlay { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; width: 100%; max-width: 1000px; padding: 0 20px; z-index: 10; pointer-events: none; }
+.hero-text-overlay h1 { font-size: clamp(36px, 5vw, 54px); color: var(--tx-light); margin-bottom: 16px; text-shadow: 0 4px 10px rgba(0,0,0,0.8); }
+.hero-text-overlay p { font-size: clamp(18px, 2vw, 24px); color: var(--tx-light-mut); text-shadow: 0 2px 8px rgba(0,0,0,0.8); }
+.content-area { max-width: 1000px; margin: 0 auto; padding: 80px 20px 60px 20px; }
+.section-title { font-size: 28px; color: var(--tx-light); margin-bottom: 24px; padding-bottom: 12px; border-bottom: 2px solid var(--oxblood-l); display: inline-block; }
+.card-box { background: rgba(255,255,255,0.02); border: 1px solid var(--line-d); border-radius: 12px; padding: 24px; margin-bottom: 24px; border-left: 4px solid var(--oxblood-l); }
+.card-box h4 { color: var(--tx-light); margin-top: 0; margin-bottom: 12px; font-size: 20px; }
+.card-box p { color: var(--tx-light-mut); margin: 0; line-height: 1.6; }
+.tech-list { list-style: none; padding: 0; margin: 0; }
+.tech-list li { position: relative; padding-left: 24px; margin-bottom: 16px; color: var(--tx-light-mut); line-height: 1.6; }
+.tech-list li::before { content: "▹"; position: absolute; left: 0; color: var(--oxblood-l); }
+</style>
+<div class="fade-in-up">
+    <div class="hero-banner">
+        <img src="/imagini/studenti/doctorat.jpg" alt="Doctorat" style="object-position: center 30%;">
+        <div class="hero-text-overlay">
+            <h1>Ciclul III de Studii: Arhitectura Carierei de Cercetător și Elita Academică</h1>
+            <p>Trecerea de la acumularea de cunoștințe la producția de cunoaștere originală. Ghidul exhaustiv al Școlilor Doctorale, doctoratelor internaționale cu dublă coordonare, finanțărilor PNRR și rigorilor anti-plagiat CNATDCU.</p>
+        </div>
+    </div>
+    <main class="content-area">
+        <h2 class="section-title">1. Organizarea Școlilor Doctorale (IOSUD) și Tipurile de Doctorat</h2>
+        <p style="color: var(--tx-light-mut); font-size: 16px; margin-bottom: 32px; line-height: 1.6;">Studiile universitare de doctorat reprezintă cel mai înalt nivel de calificare academică. Ele sunt coordonate de Instituțiile Organizatoare de Studii Universitare de Doctorat (IOSUD).</p>
+        <img src="/imagini/doctorand 1.jpeg" alt="Doctorand" style="width: 100%; height: 400px; object-fit: cover; border-radius: 12px; margin-bottom: 40px; border: 1px solid var(--line-d);">
+        
+        <div class="card-box" style="border-left: none; border-top: 4px solid var(--oxblood-l);">
+            <h4>Durata studiilor</h4>
+            <p>De regulă, durata ciclului de doctorat este de 3 ani, însă în domenii care necesită experimente de lungă durată, culturi de celule sau cercetare industrială complexă (precum Medicină, Inginerie sau Științe Exacte), perioada poate fi prelungită la 4 ani.</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-bottom: 60px;">
+            <div class="card-box">
+                <h4>Doctoratul Științific (Academic)</h4>
+                <p>Axat pe generarea de descoperiri originale în domenii fundamentale sau aplicative. Presupune muncă intensă de laborator, simulări numerice, validare statistică și publicarea rezultatelor în reviste de specialitate recunoscute internațional.</p>
+            </div>
+            <div class="card-box">
+                <h4>Doctoratul Profesional (Vocational)</h4>
+                <p>Dedicat domeniilor creative și performative (Arte Plastice, Cinematografie, Teatru, Muzică). La instituții de elită (UNATC/UNARTE), teza scrisă este inseparabilă de produsul artistic practic (regizarea unui lungmetraj, organizarea unei expoziții de artă).</p>
+            </div>
+        </div>
+
+        <h2 class="section-title">2. Mecanismul de Admitere și Dubla Coordonare Internațională</h2>
+        <p style="color: var(--tx-light-mut); font-size: 16px; margin-bottom: 32px; line-height: 1.6;">Admiterea la doctorat nu seamănă deloc cu examenele grilă de la licență sau master; este un proces de selecție profund personalizat.</p>
+        
+        <div class="card-box">
+            <h4>Găsirea Îndrumătorului (Conducătorul de Doctorat)</h4>
+            <p>Nu poți aplica "în orb". Cu luni înainte de examenul oficial, trebuie să contactezi un profesor universitar (cu abilitare) și să îi prezinți un Proiect de Cercetare preliminar (o schiță de 3-5 pagini care definește o problemă nerezolvată). Dacă acceptă, devine mentorul tău și semnează acordul de coordonare.</p>
+        </div>
+        <div class="card-box" style="margin-bottom: 60px;">
+            <h4>Doctoratul cu Dublă Coordonare Internațională (Joint / Double Degree)</h4>
+            <p>Printr-un acord bilateral între universitatea ta din România și o universitate de prestigiu din străinătate, devii doctorand în ambele instituții simultan. Vei avea doi îndrumători, îți vei împărți perioada de cercetare și vei primi o diplomă dublă, deschizând ușile mediului academic global.</p>
+        </div>
+
+        <h2 class="section-title">3. Finanțarea Doctorandului: Bursa de Stat, PNRR și Doctoratul Industrial</h2>
+        <p style="color: var(--tx-light-mut); font-size: 16px; margin-bottom: 32px; line-height: 1.6;">S-a dus vremea în care doctorandul trebuia să supraviețuiască cu resurse minime. Astăzi, statutul este regândit pentru a asigura independența financiară a cercetătorului.</p>
+        <img src="/imagini/doctorand 2.jpg" alt="Doctorand și Cercetare" style="width: 100%; height: 400px; object-fit: cover; border-radius: 12px; margin-bottom: 40px; border: 1px solid var(--line-d);">
+
+        <ul class="tech-list" style="margin-bottom: 60px;">
+            <li><strong>Bursa Doctorală de la Buget:</strong> Dacă obții un loc finanțat, primești o bursă lunară substanțială concepută pentru a-ți asigura costurile de trai, astfel încât să te poți dedica 100% cercetării.</li>
+            <li><strong>Granturile PNRR și Proiectele Europene:</strong> Doctoranzii pot aplica la competiții interne de granturi pentru a obține fonduri suplimentare nerambursabile destinate mobilităților de cercetare (stagii de 3-6 luni în străinătate) sau echipamentelor IT și materialelor de laborator.</li>
+            <li><strong>Doctoratul Industrial (R&D Partnerships):</strong> Marile companii private finanțează integral bursa ta de doctorat și îți pun la dispoziție infrastructura lor. În schimb, tema ta este direct conectată la o problemă tehnologică reală pe care compania dorește să o rezolve.</li>
+        </ul>
+
+        <h2 class="section-title">4. Rigoarea Academică: Norma Didactică, Publicarea și CNATDCU</h2>
+        <p style="color: var(--tx-light-mut); font-size: 16px; margin-bottom: 32px; line-height: 1.6;">Drumul până la obținerea titlului de Doctor (Ph.D.) este pavat cu standarde etice și academice extrem de riguroase.</p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
+            <div class="card-box" style="border-left: none; border-top: 4px solid var(--oxblood-l);">
+                <h4>Norma Didactică (Asistența Universitară)</h4>
+                <p>Ca doctorand la buget, face parte din fișa postului tău să sprijini departamentul susținând ore de seminar sau laboratoare practice cu studenții de la licență, dezvoltându-ți abilitățile pedagogice.</p>
+            </div>
+            <div class="card-box" style="border-left: none; border-top: 4px solid var(--oxblood-l);">
+                <h4>Publicarea Obligatorie în Reviste</h4>
+                <p>Legea și regulamentele îți impun să publici un număr minim de articole științifice ca autor principal în reviste indexate ISI / Web of Science înainte de susținerea tezei.</p>
+            </div>
+            <div class="card-box" style="border-left: none; border-top: 4px solid var(--oxblood-l);">
+                <h4>Toleranță Zero și Validarea CNATDCU</h4>
+                <p>Orice teză este analizată anti-plagiat și publicată transparent. După susținerea universitară, dosarul este trimis către CNATDCU, forul suprem care validează acordarea oficială a titlului de Doctor în știință.</p>
+            </div>
+        </div>
+    </main>
+</div>
+<%- include('partials/footer') %>

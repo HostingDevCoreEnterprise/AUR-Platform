@@ -1,0 +1,67 @@
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-col" style="max-width:320px;">
+        <h4 style="color: var(--tx-light); font-size: 16px; margin-bottom: 8px;">Alianța Universitară Română</h4>
+        <p style="font-size:14px;color:var(--tx-light-mut); line-height: 1.6;">Cea mai mare inițiativă academică din România, adresată celor 91 de universități de stat și private. Un cadru comun pentru educație de top.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Oportunități</h4>
+        <a href="/burse">Burse și Finanțări</a>
+        <a href="/mobilitate">Mobilitate și Schimburi</a>
+        <a href="/practica">Stagii și practică</a>
+      </div>
+      <div class="footer-col">
+        <h4>Viață Studențească</h4>
+        <a href="/cazare">Cazare și cămine</a>
+        <a href="/organizatii">Organizații studențești</a>
+        <a href="/legislatie">Drepturi și Legislație</a>
+      </div>
+      <div class="footer-col">
+        <h4>Alianță</h4>
+        <a href="/universitati">Rețeaua Universităților</a>
+
+        <a href="/despre">Carta Fondatoare</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div style="display: flex; flex-direction: column; gap: 6px;">
+        <span>© 2026 Alianța Universitară Română</span>
+        <span style="font-size: 13px; color: var(--tx-light-mut);">Platforma a fost dezvoltată de <a href="https://www.devcore-enterprise.site" target="_blank" style="color: var(--oxblood-l); text-decoration: none; font-weight: bold;">DevCore Enterprise</a></span>
+      </div>
+      <span style="align-self: flex-end;">91 de universități, o singură voce</span>
+    </div>
+  </div>
+
+  <script>
+    // Universal Modal Logic for Universities Page
+    document.addEventListener('DOMContentLoaded', () => {
+        const cards = document.querySelectorAll('.uni-card');
+        const modal = document.getElementById('uniModal');
+        if(cards.length > 0 && modal) {
+            const overlay = document.querySelector('.modal-overlay');
+            const closeBtn = document.querySelector('.modal-close');
+            
+            cards.forEach(card => {
+                card.addEventListener('click', () => {
+                    document.getElementById('modalLogo').src = card.dataset.logo;
+                    document.getElementById('modalTitle').textContent = card.dataset.name;
+                    document.getElementById('modalAbbr').textContent = card.dataset.abbr;
+                    document.getElementById('modalLoc').textContent = card.dataset.loc;
+                    document.getElementById('modalStuds').textContent = card.dataset.studs;
+                    document.getElementById('modalWeb').textContent = card.dataset.web;
+                    document.getElementById('modalWeb').href = 'https://' + card.dataset.web;
+                    overlay.classList.add('active');
+                });
+            });
+
+            closeBtn.addEventListener('click', () => overlay.classList.remove('active'));
+            overlay.addEventListener('click', (e) => {
+                if(e.target === overlay) overlay.classList.remove('active');
+            });
+        }
+    });
+  </script>
+</footer>
+</body>
+</html>

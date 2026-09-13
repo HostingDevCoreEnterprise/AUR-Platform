@@ -1,0 +1,1727 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Lista birourilor Erasmus+ de la universitățile din România. Selectează facultatea ta și accesează direct platforma oficială de mobilitate.">
+  <meta name="keywords" content="birouri Erasmus, universități România, aplică Erasmus, mobilitate internațională, AUR">
+  <meta name="robots" content="index, follow">
+  <title>Aplică · Erasmus+ · Alianța Universitară Română</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --black: #121110;
+      --black-2: #1a1917;
+      --white: #F7F4EE;
+      --white-dim: #B9B5AC;
+      --orange: #F2A230;
+      --orange-2: #F7C065;
+      --blue: #3D5AFE;
+      --blue-dim: #8C9CFF;
+      --line: rgba(247, 244, 238, 0.12);
+      --line-strong: rgba(247, 244, 238, 0.22);
+      --radius: 2px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    ::selection {
+      background: var(--orange);
+      color: var(--black);
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    h1,
+    h2,
+    h3,
+    .display {
+      font-family: 'Big Shoulders Display', sans-serif;
+      text-transform: uppercase;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+      line-height: 0.92;
+    }
+
+    .mono {
+      font-family: 'IBM Plex Mono', monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--orange);
+      margin-bottom: 18px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 22px;
+      height: 2px;
+      background: var(--orange);
+      display: inline-block;
+    }
+
+    /* ---------- NAV ---------- */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(18, 17, 16, 0.82);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 32px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand img {
+      height: 34px;
+      width: auto;
+      display: block;
+    }
+
+    .brand-text {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10.5px;
+      letter-spacing: 0.1em;
+      color: var(--white-dim);
+      line-height: 1.35;
+      text-transform: uppercase;
+    }
+
+    .brand-text b {
+      color: var(--white);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 34px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      text-decoration: none;
+      color: var(--white-dim);
+      position: relative;
+      padding-bottom: 4px;
+      transition: color .2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--white);
+    }
+
+    .nav-cta {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11.5px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: var(--orange);
+      color: var(--black);
+      padding: 10px 18px;
+      text-decoration: none;
+      font-weight: 600;
+      white-space: nowrap;
+      transition: background .2s ease;
+    }
+
+    .nav-cta:hover {
+      background: var(--orange-2);
+    }
+
+    .nav-toggle {
+      display: none;
+    }
+
+    /* ---------- HERO ---------- */
+    .hero {
+      position: relative;
+      padding: 172px 0 90px;
+      overflow: hidden;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 40px;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero h1 {
+      font-size: clamp(52px, 7vw, 96px);
+      color: var(--white);
+    }
+
+    .hero h1 .cut {
+      position: relative;
+      display: inline-block;
+      color: var(--orange);
+    }
+
+    .hero p.lead {
+      margin-top: 26px;
+      max-width: 520px;
+      font-size: 17px;
+      color: var(--white-dim);
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 14px;
+      margin-top: 38px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 15px 26px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+      border: 1px solid var(--line-strong);
+      transition: all .2s ease;
+    }
+
+    .btn-solid {
+      background: var(--orange);
+      color: var(--black);
+      border-color: var(--orange);
+    }
+
+    .btn-solid:hover {
+      background: var(--orange-2);
+      border-color: var(--orange-2);
+    }
+
+    .btn-ghost {
+      color: var(--white);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--white);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 34px;
+      margin-top: 56px;
+      flex-wrap: wrap;
+    }
+
+    .stat b {
+      display: block;
+      font-family: 'Big Shoulders Display', sans-serif;
+      font-size: 34px;
+      font-weight: 800;
+      color: var(--white);
+    }
+
+    .stat span {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10.5px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--white-dim);
+    }
+
+    /* network diagram */
+    .network {
+      position: relative;
+      height: 420px;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(var(--black-2), var(--black-2));
+    }
+
+    .network svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .network-caption {
+      position: absolute;
+      bottom: 14px;
+      left: 16px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--white-dim);
+    }
+
+    .node-dot {
+      fill: var(--orange);
+    }
+
+    .node-dot.blue {
+      fill: var(--blue);
+    }
+
+    .node-line {
+      stroke: var(--line-strong);
+      stroke-width: 1;
+    }
+
+    .node-line.pulse {
+      stroke: var(--orange);
+      stroke-dasharray: 4 5;
+      animation: dash 26s linear infinite;
+    }
+
+    @keyframes dash {
+      to {
+        stroke-dashoffset: -400;
+      }
+    }
+
+    /* marquee */
+    .marquee-band {
+      border-bottom: 1px solid var(--line);
+      background: var(--black-2);
+      overflow: hidden;
+      padding: 16px 0;
+    }
+
+    .marquee-track {
+      display: flex;
+      gap: 48px;
+      width: max-content;
+      animation: scroll 34s linear infinite;
+    }
+
+    .marquee-track span {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12.5px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--white-dim);
+      white-space: nowrap;
+    }
+
+    .marquee-track span b {
+      color: var(--white);
+    }
+
+    @keyframes scroll {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    /* ---------- SECTION GENERIC ---------- */
+    section {
+      padding: 110px 0;
+      border-bottom: 1px solid var(--line);
+      position: relative;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 64px;
+      align-items: end;
+    }
+
+    .section-head h2 {
+      font-size: clamp(32px, 4.2vw, 52px);
+      color: var(--white);
+    }
+
+    .section-head p {
+      color: var(--white-dim);
+      font-size: 15.5px;
+      max-width: 440px;
+    }
+
+    /* what-is grid */
+    .whatis-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+
+    .whatis-card {
+      background: var(--black);
+      padding: 34px 30px;
+    }
+
+    .whatis-card .num {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      color: var(--orange);
+      letter-spacing: 0.1em;
+    }
+
+    .whatis-card h3 {
+      font-size: 24px;
+      margin: 14px 0 12px;
+      color: var(--white);
+      text-transform: none;
+      font-weight: 700;
+    }
+
+    .whatis-card p {
+      color: var(--white-dim);
+      font-size: 14.5px;
+    }
+
+    /* mobility types */
+    .types-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .type-card {
+      border: 1px solid var(--line);
+      padding: 32px 28px;
+      transition: border-color .25s ease, transform .25s ease;
+      position: relative;
+    }
+
+    .type-card:hover {
+      border-color: var(--orange);
+      transform: translateY(-4px);
+    }
+
+    .type-tag {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10.5px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--black);
+      background: var(--orange);
+      padding: 4px 9px;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+
+    .type-card h3 {
+      font-size: 26px;
+      color: var(--white);
+      margin-bottom: 12px;
+      text-transform: none;
+      font-weight: 700;
+    }
+
+    .type-card p {
+      color: var(--white-dim);
+      font-size: 14.5px;
+      margin-bottom: 18px;
+    }
+
+    .type-card ul {
+      list-style: none;
+    }
+
+    .type-card li {
+      font-size: 13.5px;
+      color: var(--white-dim);
+      padding: 7px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .type-card li:first-child {
+      border-top: none;
+    }
+
+    .type-card li b {
+      color: var(--white);
+      font-weight: 600;
+    }
+
+    /* eligibility */
+    .eligibility {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .elig-list {
+      list-style: none;
+    }
+
+    .elig-list li {
+      display: flex;
+      gap: 16px;
+      padding: 20px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .elig-list li:first-child {
+      border-top: none;
+    }
+
+    .elig-check {
+      flex: 0 0 auto;
+      width: 24px;
+      height: 24px;
+      border: 1px solid var(--orange);
+      color: var(--orange);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      margin-top: 2px;
+    }
+
+    .elig-list h4 {
+      font-size: 16px;
+      color: var(--white);
+      margin-bottom: 5px;
+      font-weight: 700;
+    }
+
+    .elig-list p {
+      color: var(--white-dim);
+      font-size: 14px;
+    }
+
+    .note-box {
+      border: 1px solid var(--blue);
+      padding: 26px;
+      background: rgba(61, 90, 254, 0.06);
+    }
+
+    .note-box .mono {
+      color: var(--blue-dim);
+    }
+
+    .note-box p {
+      margin-top: 12px;
+      color: var(--white-dim);
+      font-size: 14.5px;
+    }
+
+    .note-box p+p {
+      margin-top: 10px;
+    }
+
+    /* funding table */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .fund-table th,
+    .fund-table td {
+      text-align: left;
+      padding: 16px 14px;
+      border-bottom: 1px solid var(--line);
+      font-size: 14px;
+    }
+
+    .fund-table thead th {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--white-dim);
+      font-weight: 600;
+    }
+
+    .fund-table td b {
+      color: var(--white);
+    }
+
+    .fund-table td.amount {
+      font-family: 'IBM Plex Mono', monospace;
+      color: var(--orange);
+      font-weight: 600;
+    }
+
+    .fund-note {
+      margin-top: 22px;
+      font-size: 13.5px;
+      color: var(--white-dim);
+    }
+
+    /* steps timeline */
+    .steps {
+      position: relative;
+    }
+
+    .steps::before {
+      content: "";
+      position: absolute;
+      left: 29px;
+      top: 10px;
+      bottom: 10px;
+      width: 1px;
+      background: var(--line-strong);
+    }
+
+    .step {
+      position: relative;
+      padding: 0 0 52px 76px;
+    }
+
+    .step:last-child {
+      padding-bottom: 0;
+    }
+
+    .step-num {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 60px;
+      height: 60px;
+      border: 1px solid var(--orange);
+      color: var(--orange);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Big Shoulders Display', sans-serif;
+      font-size: 24px;
+      font-weight: 800;
+      background: var(--black);
+    }
+
+    .step h4 {
+      font-size: 20px;
+      color: var(--white);
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    .step p {
+      color: var(--white-dim);
+      font-size: 14.5px;
+      max-width: 640px;
+    }
+
+    /* calendar timeline */
+    .cal-scroll {
+      overflow-x: auto;
+      padding-bottom: 12px;
+    }
+
+    .cal-track {
+      display: flex;
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      min-width: 900px;
+    }
+
+    .cal-cell {
+      flex: 1;
+      background: var(--black);
+      padding: 24px 20px;
+      min-width: 150px;
+    }
+
+    .cal-cell .mono {
+      color: var(--orange);
+    }
+
+    .cal-cell h4 {
+      font-size: 18px;
+      margin: 10px 0 8px;
+      color: var(--white);
+      font-weight: 700;
+      text-transform: none;
+    }
+
+    .cal-cell p {
+      font-size: 13px;
+      color: var(--white-dim);
+    }
+
+    /* faq */
+    .faq-item {
+      border-top: 1px solid var(--line);
+    }
+
+    .faq-item:last-child {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .faq-q {
+      width: 100%;
+      text-align: left;
+      background: none;
+      border: none;
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 17px;
+      font-weight: 600;
+      padding: 24px 0;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .faq-q .plus {
+      font-family: 'IBM Plex Mono', monospace;
+      color: var(--orange);
+      font-size: 20px;
+      transition: transform .25s ease;
+      flex: 0 0 auto;
+    }
+
+    .faq-item.open .plus {
+      transform: rotate(45deg);
+    }
+
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .3s ease;
+    }
+
+    .faq-a p {
+      color: var(--white-dim);
+      font-size: 14.5px;
+      padding-bottom: 24px;
+      max-width: 720px;
+    }
+
+    /* footer CTA */
+    .cta-final {
+      text-align: center;
+      padding: 130px 0;
+    }
+
+    .cta-final h2 {
+      font-size: clamp(38px, 6vw, 72px);
+      color: var(--white);
+      max-width: 800px;
+      margin: 0 auto 22px;
+    }
+
+    .cta-final .cut {
+      color: var(--orange);
+    }
+
+    .cta-final p {
+      color: var(--white-dim);
+      max-width: 520px;
+      margin: 0 auto 40px;
+    }
+
+    footer {
+      padding: 50px 0;
+    }
+
+    .footer-grid {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .footer-grid .brand-text {
+      font-size: 11px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-links a {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--white-dim);
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      color: var(--white);
+    }
+
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+
+    [data-reveal].in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 920px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .network {
+        height: 280px;
+        order: -1;
+      }
+
+      .section-head {
+        grid-template-columns: 1fr;
+      }
+
+      .whatis-grid,
+      .types-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .eligibility {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+  <link rel="icon" type="image/png" href="resurse/photo/aur.png">
+</head>
+
+<body>
+
+  <header>
+    <nav>
+      <a href="https://aliantauniversitararomana.ro" class="brand" style="text-decoration:none; color:inherit;">
+        <img
+          src="resurse/photo/aur.png"
+          alt="AUR">
+        <div class="brand-text">ALIANȚA UNIVERSITARĂ<br><b>ROMÂNĂ</b></div>
+      </a>
+      <div class="nav-links">
+        <a href="index.html#ce-este">Program</a>
+        <a href="index.html#eligibilitate">Eligibilitate</a>
+        <a href="index.html#finantare">Finanțare</a>
+        <a href="index.html#pasi">Cum aplici</a>
+        <a href="index.html#faq">Întrebări</a>
+      </div>
+    </nav>
+  </header>
+  <section class="hero" style="padding: 120px 0 60px;">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <h1 class="display" style="margin-bottom: 0;">Birouri Erasmus+<br>în <span class="cut">România</span></h1>
+        </div>
+        <div>
+          <div style="margin-bottom: 24px;">
+            <img src="resurse/photo/erasmus.png" alt="Erasmus Logo" style="height: 80px; width: auto;">
+          </div>
+          <div class="eyebrow mono" style="margin-bottom: 24px;">Universități Partenere</div>
+          <p class="lead" style="margin-bottom: 0;">Alege universitatea ta din lista de mai jos pentru a accesa direct
+            platforma biroului Erasmus+.</p>
+        </div>
+      </div>
+
+      <div style="margin-top: 60px; margin-bottom: 30px;">
+        <h2
+          style="color: var(--orange); font-size: 2rem; border-bottom: 1px solid var(--line-strong); padding-bottom: 10px;">
+          Universități de stat</h2>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
+
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <div style="height: 60px; display: flex; align-items: center; margin-bottom: 16px;">
+            <img src="resurse/photo/logos/upb.png" alt="UPB Logo"
+              style="max-height: 100%; max-width: 100%; width: auto; object-fit: contain;">
+          </div>
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Universitatea
+            Politehnica din București</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: UPB</p>
+          <a href="https://upb.ro/" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <div style="height: 60px; display: flex; align-items: center; margin-bottom: 16px;">
+            <img src="resurse/photo/logos/utcb.png" alt="UTCB Logo"
+              style="max-height: 100%; max-width: 100%; width: auto; object-fit: contain;">
+          </div>
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Universitatea Tehnică de
+            Construcții din București</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: UTCB</p>
+          <a href="https://utcb.ro/" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <div style="height: 60px; display: flex; align-items: center; margin-bottom: 16px;">
+            <img src="resurse/photo/logos/uauim.png" alt="UAUIM Logo"
+              style="max-height: 100%; max-width: 100%; width: auto; object-fit: contain;">
+          </div>
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Universitatea de
+            Arhitectură și Urbanism „Ion Mincu” din București</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: UAUIM</p>
+          <a href="https://www.uauim.ro/" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <div style="height: 60px; display: flex; align-items: center; margin-bottom: 16px;">
+            <img src="resurse/photo/logos/usamvb.png" alt="USAMVB Logo"
+              style="max-height: 100%; max-width: 100%; width: auto; object-fit: contain;">
+          </div>
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Universitatea de Ştiințe
+            Agronomice și Medicină Veterinară din București</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: USAMVB</p>
+          <a href="http://www.usamv.ro/index.php/ro/" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <div style="height: 60px; display: flex; align-items: center; margin-bottom: 16px;">
+            <img src="resurse/photo/logos/ub.png" alt="UB Logo"
+              style="max-height: 100%; max-width: 100%; width: auto; object-fit: contain;">
+          </div>
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Universitatea din
+            București</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: UB</p>
+          <a href="https://unibuc.ro/" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <div style="height: 60px; display: flex; align-items: center; margin-bottom: 16px;">
+            <img src="resurse/photo/logos/umfcd.png" alt="UMFCD Logo"
+              style="max-height: 100%; max-width: 100%; width: auto; object-fit: contain;">
+          </div>
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Universitatea de
+            Medicină și Farmacie „Carol Davila” din București</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: UMFCD</p>
+          <a href="https://umfcd.ro/" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <div style="height: 60px; display: flex; align-items: center; margin-bottom: 16px;">
+            <img src="resurse/photo/logos/ase.png" alt="ASE Logo"
+              style="max-height: 100%; max-width: 100%; width: auto; object-fit: contain;">
+          </div>
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Academia de Studii
+            Economice din București</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: ASE</p>
+          <a href="https://www.ase.ro/" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <div style="height: 60px; display: flex; align-items: center; margin-bottom: 16px;">
+            <img src="resurse/photo/logos/unmb.png" alt="UNMB Logo"
+              style="max-height: 100%; max-width: 100%; width: auto; object-fit: contain;">
+          </div>
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Universitatea Națională
+            de Muzică din București</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: UNMB</p>
+          <a href="https://www.unmb.ro/" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <div style="height: 60px; display: flex; align-items: center; margin-bottom: 16px;">
+            <img src="resurse/photo/logos/unarte.png" alt="UNARTE Logo"
+              style="max-height: 100%; max-width: 100%; width: auto; object-fit: contain;">
+          </div>
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Universitatea Națională
+            de Arte din București</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: UNARTE</p>
+          <a href="https://unarte.org/" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <div style="height: 60px; display: flex; align-items: center; margin-bottom: 16px;">
+            <img src="resurse/photo/logos/unatc.png" alt="UNATC Logo"
+              style="max-height: 100%; max-width: 100%; width: auto; object-fit: contain;">
+          </div>
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Universitatea Națională
+            de Artă Teatrală și Cinematografică „I.L.Caragiale” din București</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: UNATC</p>
+          <a href="http://unatc.ro" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <div style="height: 60px; display: flex; align-items: center; margin-bottom: 16px;">
+            <img src="resurse/photo/logos/unefsb.png" alt="UNEFSB Logo"
+              style="max-height: 100%; max-width: 100%; width: auto; object-fit: contain;">
+          </div>
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Universitatea Națională
+            de Educație Fizică și Sport din București</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: UNEFSB</p>
+          <a href="https://unefsb.ro/" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <div style="height: 60px; display: flex; align-items: center; margin-bottom: 16px;">
+            <img src="resurse/photo/logos/snspa.png" alt="SNSPA Logo"
+              style="max-height: 100%; max-width: 100%; width: auto; object-fit: contain;">
+          </div>
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Şcoala Națională de
+            Studii Politice și Administrative din București</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: SNSPA</p>
+          <a href="http://snspa.ro/" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <div style="height: 60px; display: flex; align-items: center; margin-bottom: 16px;">
+            <img src="resurse/photo/logos/uab.png" alt="UAB Logo"
+              style="max-height: 100%; max-width: 100%; width: auto; object-fit: contain;">
+          </div>
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Universitatea „1
+            Decembrie 1918” din Alba Iulia</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: UAB</p>
+          <a href="http://www.uab.ro/" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <div style="height: 60px; display: flex; align-items: center; margin-bottom: 16px;">
+            <img src="resurse/photo/logos/uav.png" alt="UAV Logo"
+              style="max-height: 100%; max-width: 100%; width: auto; object-fit: contain;">
+          </div>
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Universitatea „Aurel
+            Vlaicu” din Arad</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: UAV</p>
+          <a href="https://www.uav.ro/" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <div style="height: 60px; display: flex; align-items: center; margin-bottom: 16px;">
+            <img src="resurse/photo/logos/uva.png" alt="UVA Logo"
+              style="max-height: 100%; max-width: 100%; width: auto; object-fit: contain;">
+          </div>
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Universitatea „Vasile
+            Alecsandri” din Bacău</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: UVA</p>
+          <a href="http://www.ub.ro/" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <div style="height: 60px; display: flex; align-items: center; margin-bottom: 16px;">
+            <img src="resurse/photo/logos/utbv.png" alt="UTBv Logo"
+              style="max-height: 100%; max-width: 100%; width: auto; object-fit: contain;">
+          </div>
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Universitatea
+            Transilvania din Brașov</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: UTBv</p>
+          <a href="https://www.unitbv.ro/" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <div style="height: 60px; display: flex; align-items: center; margin-bottom: 16px;">
+            <img src="resurse/photo/logos/utcn.png" alt="UTCN Logo"
+              style="max-height: 100%; max-width: 100%; width: auto; object-fit: contain;">
+          </div>
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Universitatea Tehnică
+            din Cluj-Napoca</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: UTCN</p>
+          <a href="https://www.utcluj.ro/" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <div style="height: 60px; display: flex; align-items: center; margin-bottom: 16px;">
+            <img src="resurse/photo/logos/usamv cluj.png" alt="USAMV Cluj Logo"
+              style="max-height: 100%; max-width: 100%; width: auto; object-fit: contain;">
+          </div>
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Universitatea de Ştiințe
+            Agricole și Medicină Veterinară din Cluj-Napoca</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: USAMV Cluj</p>
+          <a href="http://www.usamvcluj.ro/" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <div style="height: 60px; display: flex; align-items: center; margin-bottom: 16px;">
+            <img src="resurse/photo/logos/ubb.png" alt="UBB Logo"
+              style="max-height: 100%; max-width: 100%; width: auto; object-fit: contain;">
+          </div>
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Universitatea
+            „Babeș-Bolyai” din Cluj-Napoca</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: UBB</p>
+          <a href="https://www.ubbcluj.ro/ro/" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <div style="height: 60px; display: flex; align-items: center; margin-bottom: 16px;">
+            <img src="resurse/photo/logos/umf cluj.png" alt="UMF Cluj Logo"
+              style="max-height: 100%; max-width: 100%; width: auto; object-fit: contain;">
+          </div>
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Universitatea de
+            Medicină și Farmacie „Iuliu Hațieganu” din Cluj-Napoca</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: UMF Cluj</p>
+          <a href="http://www.umfcluj.ro/" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <div style="height: 60px; display: flex; align-items: center; margin-bottom: 16px;">
+            <img src="resurse/photo/logos/amgd.png" alt="AMGD Logo"
+              style="max-height: 100%; max-width: 100%; width: auto; object-fit: contain;">
+          </div>
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Academia Națională de
+            Muzică „Gheorghe Dima” din Cluj-Napoca</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: AMGD</p>
+          <a href="http://www.amgd.ro/" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <div style="height: 60px; display: flex; align-items: center; margin-bottom: 16px;">
+            <img src="resurse/photo/logos/uad.png" alt="UAD Logo"
+              style="max-height: 100%; max-width: 100%; width: auto; object-fit: contain;">
+          </div>
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Universitatea de Artă și
+            Design din Cluj-Napoca</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: UAD</p>
+          <a href="http://www.uad.ro/" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <div style="height: 60px; display: flex; align-items: center; margin-bottom: 16px;">
+            <img src="resurse/photo/logos/uoc.png" alt="UOC Logo"
+              style="max-height: 100%; max-width: 100%; width: auto; object-fit: contain;">
+          </div>
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Universitatea „Ovidius”
+            din Constanța</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: UOC</p>
+          <a href="https://www.univ-ovidius.ro/" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <div style="height: 60px; display: flex; align-items: center; margin-bottom: 16px;">
+            <img src="resurse/photo/logos/umc.png" alt="UMC Logo"
+              style="max-height: 100%; max-width: 100%; width: auto; object-fit: contain;">
+          </div>
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Universitatea Maritimă
+            din Constanța</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: UMC</p>
+          <a href="https://cmu-edu.eu/" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <div style="height: 60px; display: flex; align-items: center; margin-bottom: 16px;">
+            <img src="resurse/photo/logos/ucv.png" alt="UCv Logo"
+              style="max-height: 100%; max-width: 100%; width: auto; object-fit: contain;">
+          </div>
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Universitatea din
+            Craiova</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: UCv</p>
+          <a href="https://www.ucv.ro/" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <div style="height: 60px; display: flex; align-items: center; margin-bottom: 16px;">
+            <img src="resurse/photo/logos/umfcv.png" alt="UMFCV Logo"
+              style="max-height: 100%; max-width: 100%; width: auto; object-fit: contain;">
+          </div>
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Universitatea de
+            Medicină și Farmacie din Craiova</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: UMFCV</p>
+          <a href="http://www.umfcv.ro/" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <div style="height: 60px; display: flex; align-items: center; margin-bottom: 16px;">
+            <img src="resurse/photo/logos/udjg.png" alt="UDJG Logo"
+              style="max-height: 100%; max-width: 100%; width: auto; object-fit: contain;">
+          </div>
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Universitatea „Dunărea
+            de Jos” din Galați</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: UDJG</p>
+          <a href="http://ugal.ro/" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <div style="height: 60px; display: flex; align-items: center; margin-bottom: 16px;">
+            <img src="resurse/photo/logos/ut iasi.png" alt="UT Iași Logo"
+              style="max-height: 100%; max-width: 100%; width: auto; object-fit: contain;">
+          </div>
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Universitatea Tehnică
+            „Gheorghe Asachi” din Iași</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: UT Iași</p>
+          <a href="https://www.tuiasi.ro/" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <div style="height: 60px; display: flex; align-items: center; margin-bottom: 16px;">
+            <img src="resurse/photo/logos/usamv iasi.png" alt="USAMV Iași Logo"
+              style="max-height: 100%; max-width: 100%; width: auto; object-fit: contain;">
+          </div>
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Universitatea de Ştiințe
+            Agricole și Medicină Veterinară „Ion Ionescu de la Brad” din Iași</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: USAMV Iași</p>
+          <a href="http://www.uaiasi.ro/" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <div style="height: 60px; display: flex; align-items: center; margin-bottom: 16px;">
+            <img src="resurse/photo/logos/uaic.png" alt="UAIC Logo"
+              style="max-height: 100%; max-width: 100%; width: auto; object-fit: contain;">
+          </div>
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Universitatea „Alexandru
+            Ioan Cuza” din Iași</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: UAIC</p>
+          <a href="http://www.uaic.ro/" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <div style="height: 60px; display: flex; align-items: center; margin-bottom: 16px;">
+            <img src="resurse/photo/logos/umf iasi.png" alt="UMF Iași Logo"
+              style="max-height: 100%; max-width: 100%; width: auto; object-fit: contain;">
+          </div>
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Universitatea de
+            Medicină și Farmacie „Grigore T. Popa” din Iași</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: UMF Iași</p>
+          <a href="http://www.umfiasi.ro/ro" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <div style="height: 60px; display: flex; align-items: center; margin-bottom: 16px;">
+            <img src="resurse/photo/logos/unage.png" alt="UNAGE Logo"
+              style="max-height: 100%; max-width: 100%; width: auto; object-fit: contain;">
+          </div>
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Universitatea Națională
+            de Arte „George Enescu” din Iași</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: UNAGE</p>
+          <a href="https://www.arteiasi.ro/" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <div style="height: 60px; display: flex; align-items: center; margin-bottom: 16px;">
+            <img src="resurse/photo/logos/uo.png" alt="UO Logo"
+              style="max-height: 100%; max-width: 100%; width: auto; object-fit: contain;">
+          </div>
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Universitatea din Oradea
+          </h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: UO</p>
+          <a href="https://www.uoradea.ro/" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <div style="height: 60px; display: flex; align-items: center; margin-bottom: 16px;">
+            <img src="resurse/photo/logos/upet.png" alt="UPet Logo"
+              style="max-height: 100%; max-width: 100%; width: auto; object-fit: contain;">
+          </div>
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Universitatea din
+            Petroșani</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: UPet</p>
+          <a href="https://www.upet.ro/" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <div style="height: 60px; display: flex; align-items: center; margin-bottom: 16px;">
+            <img src="resurse/photo/logos/upit.png" alt="UPit Logo"
+              style="max-height: 100%; max-width: 100%; width: auto; object-fit: contain;">
+          </div>
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Universitatea din
+            Pitești</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: UPit</p>
+          <a href="https://www.upit.ro/ro/" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <div style="height: 60px; display: flex; align-items: center; margin-bottom: 16px;">
+            <img src="resurse/photo/logos/upg.png" alt="UPG Logo"
+              style="max-height: 100%; max-width: 100%; width: auto; object-fit: contain;">
+          </div>
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Universitatea
+            „Petrol-Gaze” din Ploiești</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: UPG</p>
+          <a href="https://www.upg-ploiesti.ro/" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <div style="height: 60px; display: flex; align-items: center; margin-bottom: 16px;">
+            <img src="resurse/photo/logos/uem.png" alt="UEM Logo"
+              style="max-height: 100%; max-width: 100%; width: auto; object-fit: contain;">
+          </div>
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Universitatea „Eftimie
+            Murgu” din Reșița</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: UEM</p>
+          <a href="https://uem.ro/" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <div style="height: 60px; display: flex; align-items: center; margin-bottom: 16px;">
+            <img src="resurse/photo/logos/ulb sibiu.png" alt="ULB Sibiu Logo"
+              style="max-height: 100%; max-width: 100%; width: auto; object-fit: contain;">
+          </div>
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Universitatea „Lucian
+            Blaga” din Sibiu</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: ULB Sibiu</p>
+          <a href="https://www.ulbsibiu.ro/ro/" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <div style="height: 60px; display: flex; align-items: center; margin-bottom: 16px;">
+            <img src="resurse/photo/logos/usv.png" alt="USV Logo"
+              style="max-height: 100%; max-width: 100%; width: auto; object-fit: contain;">
+          </div>
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Universitatea „Ştefan
+            cel Mare” din Suceava</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: USV</p>
+          <a href="http://www.usv.ro/index.php" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <div style="height: 60px; display: flex; align-items: center; margin-bottom: 16px;">
+            <img src="resurse/photo/logos/uv targoviste.png" alt="UV Târgoviște Logo"
+              style="max-height: 100%; max-width: 100%; width: auto; object-fit: contain;">
+          </div>
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Universitatea „Valahia”
+            din Târgoviște</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: UV Târgoviște</p>
+          <a href="https://www.valahia.ro/ro/" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <div style="height: 60px; display: flex; align-items: center; margin-bottom: 16px;">
+            <img src="resurse/photo/logos/utgjiu.png" alt="UTgJiu Logo"
+              style="max-height: 100%; max-width: 100%; width: auto; object-fit: contain;">
+          </div>
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Universitatea
+            „Constantin Brâncuși” din Târgu Jiu</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: UTgJiu</p>
+          <a href="http://www.utgjiu.ro/" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <div style="height: 60px; display: flex; align-items: center; margin-bottom: 16px;">
+            <img src="resurse/photo/logos/umfst tgm.png" alt="UMFST TgM Logo"
+              style="max-height: 100%; max-width: 100%; width: auto; object-fit: contain;">
+          </div>
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Universitatea de
+            Medicină, Farmacie, Științe și Tehnologie „Emil Palade” din Târgu Mureș</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: UMFST TgM</p>
+          <a href="https://www.umfst.ro/home.html" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <div style="height: 60px; display: flex; align-items: center; margin-bottom: 16px;">
+            <img src="resurse/photo/logos/uat.png" alt="UAT Logo"
+              style="max-height: 100%; max-width: 100%; width: auto; object-fit: contain;">
+          </div>
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Universitatea de Arte
+            din Târgu Mureș</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: UAT</p>
+          <a href="http://www.uat.ro" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <div style="height: 60px; display: flex; align-items: center; margin-bottom: 16px;">
+            <img src="resurse/photo/logos/upt.png" alt="UPT Logo"
+              style="max-height: 100%; max-width: 100%; width: auto; object-fit: contain;">
+          </div>
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Universitatea
+            Politehnica Timișoara</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: UPT</p>
+          <a href="http://www.upt.ro/" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <div style="height: 60px; display: flex; align-items: center; margin-bottom: 16px;">
+            <img src="resurse/photo/logos/usamvbt.png" alt="USAMVBT Logo"
+              style="max-height: 100%; max-width: 100%; width: auto; object-fit: contain;">
+          </div>
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Universitatea de Ştiințe
+            Agricole și Medicină Veterinară a Banatului „Regele Mihai I al României” din Timișoara</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: USAMVBT</p>
+          <a href="https://www.usab-tm.ro/" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <div style="height: 60px; display: flex; align-items: center; margin-bottom: 16px;">
+            <img src="resurse/photo/logos/uvt.png" alt="UVT Logo"
+              style="max-height: 100%; max-width: 100%; width: auto; object-fit: contain;">
+          </div>
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Universitatea de Vest
+            din Timișoara</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: UVT</p>
+          <a href="https://www.uvt.ro/ro/" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <div style="height: 60px; display: flex; align-items: center; margin-bottom: 16px;">
+            <img src="resurse/photo/logos/umft.png" alt="UMFT Logo"
+              style="max-height: 100%; max-width: 100%; width: auto; object-fit: contain;">
+          </div>
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Universitatea de
+            Medicină și Farmacie „Victor Babeș” din Timișoara</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: UMFT</p>
+          <a href="http://www.umft.ro/" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <div style="height: 60px; display: flex; align-items: center; margin-bottom: 16px;">
+            <img src="resurse/photo/logos/atmb.png" alt="ATMB Logo"
+              style="max-height: 100%; max-width: 100%; width: auto; object-fit: contain;">
+          </div>
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Academia Tehnică
+            Militară din București</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: ATMB</p>
+          <a href="http://www.mta.ro/" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <div style="height: 60px; display: flex; align-items: center; margin-bottom: 16px;">
+            <img src="resurse/photo/logos/unap.png" alt="UNAP Logo"
+              style="max-height: 100%; max-width: 100%; width: auto; object-fit: contain;">
+          </div>
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Universitatea Națională
+            de Apărare „Carol I” din București</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: UNAP</p>
+          <a href="https://www.unap.ro/index.php/ro/" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <div style="height: 60px; display: flex; align-items: center; margin-bottom: 16px;">
+            <img src="resurse/photo/logos/animvb.png" alt="ANIMVB Logo"
+              style="max-height: 100%; max-width: 100%; width: auto; object-fit: contain;">
+          </div>
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Academia Națională de
+            Informații „Mihai Viteazul” din București</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: ANIMVB</p>
+          <a href="https://animv.ro/" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <div style="height: 60px; display: flex; align-items: center; margin-bottom: 16px;">
+            <img src="resurse/photo/logos/apb.png" alt="APB Logo"
+              style="max-height: 100%; max-width: 100%; width: auto; object-fit: contain;">
+          </div>
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Academia de Poliție
+            „Alexandru Ioan Cuza” din București</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: APB</p>
+          <a href="http://www.academiadepolitie.ro/" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <div style="height: 60px; display: flex; align-items: center; margin-bottom: 16px;">
+            <img src="resurse/photo/logos/afahc bv.png" alt="AFAHC Bv Logo"
+              style="max-height: 100%; max-width: 100%; width: auto; object-fit: contain;">
+          </div>
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Academia Forțelor
+            Aeriene „Henri Coandă” din Brașov</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: AFAHC Bv</p>
+          <a href="http://www.afahc.ro/" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <div style="height: 60px; display: flex; align-items: center; margin-bottom: 16px;">
+            <img src="resurse/photo/logos/anmb.png" alt="ANMB Logo"
+              style="max-height: 100%; max-width: 100%; width: auto; object-fit: contain;">
+          </div>
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Academia Navală „Mircea
+            cel Bătrân” din Constanța</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: ANMB</p>
+          <a href="https://www.anmb.ro/" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <div style="height: 60px; display: flex; align-items: center; margin-bottom: 16px;">
+            <img src="resurse/photo/logos/afts.png" alt="AFTS Logo"
+              style="max-height: 100%; max-width: 100%; width: auto; object-fit: contain;">
+          </div>
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Academia Forțelor
+            Terestre „Nicolae Bălcescu” din Sibiu</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: AFTS</p>
+          <a href="http://www.actrus.ro/" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+      </div>
+
+      <div style="margin-top: 80px; margin-bottom: 30px;">
+        <h2
+          style="color: var(--orange); font-size: 2rem; border-bottom: 1px solid var(--line-strong); padding-bottom: 10px;">
+          Universități private</h2>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
+
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Universitatea Creştină
+            „Dimitrie Cantemir” din Bucureşti</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: N/A</p>
+          <a href="https://www.ucdc.ro/" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Universitatea „Titu
+            Maiorescu” din Bucureşti</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: N/A</p>
+          <a href="https://www.utm.ro/" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Universitatea „Nicolae
+            Titulescu” din Bucureşti</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: N/A</p>
+          <a href="https://www.univnt.ro/" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Universitatea
+            Româno-Americană din Bucureşti</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: N/A</p>
+          <a href="https://www.rau.ro" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Universitatea „Hyperion”
+            din Bucureşti</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: N/A</p>
+          <a href="https://www.hyperion.ro" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Universitatea „Spiru
+            Haret” din Bucureşti</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: N/A</p>
+          <a href="https://www.spiruharet.ro" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Universitatea Bioterra
+            din Bucureşti</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: N/A</p>
+          <a href="https://bioterra.ro" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Universitatea Ecologică
+            din Bucureşti</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: UEB</p>
+          <a href="https://www.ueb.ro" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Universitatea Athenaeum
+            din Bucureşti</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: UnivATH</p>
+          <a href="http://nou.univath.ro" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Universitatea Artifex
+            din Bucureşti</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: N/A</p>
+          <a href="https://www.artifex.org.ro/" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Institutul Teologic
+            Baptist din Bucureşti</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: ITBB</p>
+          <a href="https://itb.ro/" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Institutul Teologic
+            Penticostal din Bucureşti</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: ITPB</p>
+          <a href="https://www.itpbucuresti.ro/" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Institutul de
+            Administrare a Afacerilor din Bucureşti</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: IAAB</p>
+          <div style="display: flex; align-items: center;">
+            <a href="#" class="btn btn-ghost" style="opacity: 0.5; pointer-events: none;">Accesează platforma</a>
+            <span class="info-dot" title="Platforma web nu este momentan disponibilă"
+              style="display:inline-block; width:20px; height:20px; background:var(--line-strong); color:var(--white); border-radius:50%; text-align:center; line-height:20px; font-size:12px; margin-left:8px; cursor:help;">?</span>
+          </div>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Universitatea de Vest
+            „Vasile Goldiş” din Arad</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: UVVG</p>
+          <a href="https://www.uvvg.ro/site/" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Universitatea „George
+            Bacovia” din Bacău</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: UGB</p>
+          <a href="https://www.ugb.ro/" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Universitatea „Bogdan
+            Vodă” din Cluj-Napoca</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: N/A</p>
+          <a href="http://www.ubv.ro/" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Institutul Teologic
+            Protestant din Cluj-Napoca</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: N/A</p>
+          <a href="https://proteo.cj.edu.ro/ro" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Universitatea Sapientia
+            din Cluj-Napoca</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: N/A</p>
+          <a href="http://www.sapientia.ro/ro" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Universitatea „Andrei
+            Şaguna” din Constanţa</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: N/A</p>
+          <a href="https://andreisaguna.ro/" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Universitatea Danubius
+            din Galaţi</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: N/A</p>
+          <a href="https://www.univ-danubius.ro/" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Universitatea „Petre
+            Andrei” din Iaşi</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: UPA</p>
+          <a href="http://www.upa.ro/" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Universitatea Apollonia
+            din Iaşi</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: ASA</p>
+          <a href="https://www.univapollonia.ro/" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Universitatea Europeană
+            „Drăgan” din Lugoj</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: N/A</p>
+          <a href="http://www.universitateaeuropeanadragan.ro/" class="btn btn-ghost" target="_blank">Accesează
+            platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Universitatea Agora din
+            Oradea</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: UAO</p>
+          <a href="http://univagora.ro/ro/" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Universitatea „Emanuel”
+            din Oradea</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: UEO</p>
+          <a href="https://www.emanuel.ro/" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Universitatea Creştină
+            „Partium” din Oradea</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: N/A</p>
+          <a href="https://www.partium.ro/ro" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Universitatea
+            „Constantin Brâncoveanu” din Piteşti</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: N/A</p>
+          <a href="http://www.univcb.ro/" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Universitatea
+            „Româno-Germană” din Sibiu</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: N/A</p>
+          <a href="http://www.roger-univ.ro/index.html" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Universitatea „Dimitrie
+            Cantemir” din Târgu Mureş</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: N/A</p>
+          <a href="https://cantemir.ro/" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Universitatea „Adventus”
+            din Cernica</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: N/A</p>
+          <a href="https://uadventus.ro/" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Fundaţia „Ştefan
+            Lupaşcu” – Institutul de Studii Europene din Iaşi</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: N/A</p>
+          <div style="display: flex; align-items: center;">
+            <a href="#" class="btn btn-ghost" style="opacity: 0.5; pointer-events: none;">Accesează platforma</a>
+            <span class="info-dot" title="Platforma web nu este momentan disponibilă"
+              style="display:inline-block; width:20px; height:20px; background:var(--line-strong); color:var(--white); border-radius:50%; text-align:center; line-height:20px; font-size:12px; margin-left:8px; cursor:help;">?</span>
+          </div>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Institutul Teologic
+            Romano-Catolic Franciscan din Roman</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: N/A</p>
+          <a href="https://itrcf.ofmconv.ro/" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Fundaţia pentru Cultură
+            și Învăţământ „Ioan Slavici” – Universitatea „Ioan Slavici” din Timişoara</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: UIS TM</p>
+          <a href="http://ns2.islavici.ro/" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Fundaţia Gaudeamus –
+            Universitatea Tomis din Constanţa</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: N/A</p>
+          <a href="https://www.univ-tomis.ro/" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Institutul Teologic
+            Creştin după Evanghelie „Timotheus” din Bucureşti</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: N/A</p>
+          <a href="http://timotheus.ro/" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Fundaţia Lumina –
+            Instituţii de Învăţământ – Universitatea Europei de Sud-Est – Lumina</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: N/A</p>
+          <div style="display: flex; align-items: center;">
+            <a href="#" class="btn btn-ghost" style="opacity: 0.5; pointer-events: none;">Accesează platforma</a>
+            <span class="info-dot" title="Platforma web nu este momentan disponibilă"
+              style="display:inline-block; width:20px; height:20px; background:var(--line-strong); color:var(--white); border-radius:50%; text-align:center; line-height:20px; font-size:12px; margin-left:8px; cursor:help;">?</span>
+          </div>
+        </div>
+        <div style="background: var(--black-2); border: 1px solid var(--line); border-radius: 8px; padding: 24px;">
+          <h3 style="font-family: 'Inter', sans-serif; font-size: 1.25rem; margin-bottom: 8px;">Școala Normală
+            Superioară București</h3>
+          <p style="color: var(--white-dim); font-size: 0.9rem; margin-bottom: 16px;">Abreviere: N/A</p>
+          <a href="http://www.imar.ro/~snsb/" class="btn btn-ghost" target="_blank">Accesează platforma</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <footer>
+    <div class="wrap footer-grid">
+      <a href="https://erasmus.aliantauniversitararomana.ro" class="brand" style="text-decoration:none; color:inherit;">
+        <img
+          src="resurse/photo/aur.png"
+          alt="AUR" style="height:26px;">
+        <div class="brand-text">ALIANȚA UNIVERSITARĂ ROMÂNĂ<br><b>Program Erasmus+</b></div>
+      </a>
+      <div class="footer-links">
+        <a href="https://workandtravel.aliantauniversitararomana.ro">Work and Travel →</a>
+        <a href="index.html#ce-este">Program</a>
+        <a href="index.html#faq">Întrebări</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // FAQ accordion
+    document.querySelectorAll('.faq-item').forEach(item => {
+      const q = item.querySelector('.faq-q');
+      const a = item.querySelector('.faq-a');
+      q.addEventListener('click', () => {
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(o => {
+          o.classList.remove('open');
+          o.querySelector('.faq-a').style.maxHeight = null;
+        });
+        if (!isOpen) {
+          item.classList.add('open');
+          a.style.maxHeight = a.scrollHeight + 'px';
+        }
+      });
+    });
+
+    // reveal on scroll
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
+  </script>
+
+</body>
+
+</html>

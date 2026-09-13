@@ -1,0 +1,161 @@
+<%- include('partials/header') %>
+
+<style>
+/* Hero Section */
+.hero-banner {
+    position: relative;
+    width: 100%;
+    height: 450px;
+    border-bottom: 1px solid var(--line-d);
+    overflow: hidden;
+}
+.hero-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.5);
+    transition: filter 0.3s;
+}
+.hero-banner img:hover {
+    filter: brightness(0.7);
+}
+.hero-text-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 100%;
+    max-width: 1000px;
+    padding: 0 20px;
+    z-index: 10;
+    pointer-events: none;
+}
+.hero-text-overlay h1 {
+    font-size: clamp(36px, 5vw, 54px);
+    color: var(--tx-light);
+    margin-bottom: 16px;
+    text-shadow: 0 4px 10px rgba(0,0,0,0.8);
+}
+.hero-text-overlay p {
+    font-size: clamp(18px, 2vw, 24px);
+    color: var(--tx-light-mut);
+    text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+}
+
+/* Flex Sections */
+.section-flex {
+    display: flex;
+    gap: 48px;
+    align-items: center;
+    margin-bottom: 80px;
+}
+.section-flex.reverse {
+    flex-direction: row-reverse;
+}
+.section-flex-text { flex: 1; }
+.section-flex-img { flex: 1; }
+.section-flex-img img {
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid var(--line-d);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    object-fit: cover;
+}
+
+/* Highlight boxes & lists */
+.highlight-box {
+    background: rgba(243,146,0,0.1);
+    border-left: 4px solid var(--oxblood-l);
+    padding: 20px;
+    border-radius: 4px;
+    margin: 24px 0;
+}
+.tech-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.tech-list li {
+    position: relative;
+    padding-left: 24px;
+    margin-bottom: 16px;
+    color: var(--tx-light-mut);
+    line-height: 1.6;
+}
+.tech-list li::before {
+    content: "▹";
+    position: absolute;
+    left: 0;
+    color: var(--oxblood-l);
+}
+
+@media (max-width: 768px) {
+    .section-flex, .section-flex.reverse { flex-direction: column; }
+}
+</style>
+
+<div class="fade-in-up">
+    <!-- Hero / Banner -->
+    <div class="hero-banner">
+        <img src="/imagini/studenti/servicii.jpeg" alt="Servicii Consiliere si Sanatate">
+        <div class="hero-text-overlay">
+            <h1>Bunăstare Mentală și Sănătate în Campus</h1>
+            <p>Facultatea poate fi copleșitoare, dar nu ești singur. Acces la servicii psihologice și medicale 100% gratuite.</p>
+        </div>
+    </div>
+
+    <main class="content-area" style="max-width: 1000px; margin: 0 auto; padding-top: 80px; padding-bottom: 60px;">
+
+        <!-- 1. CCOC -->
+        <div style="display: flex; align-items: center; gap: 24px; margin-bottom: 24px;">
+            <img src="/imagini/logo/ccoc.png" alt="CCOC Logo" style="height: 80px; object-fit: contain;">
+            <h3 class="section-title" style="margin: 0;">1. Centrul de Consiliere și Orientare în Carieră (CCOC)</h3>
+        </div>
+        
+        <img src="/imagini/studenti/ccoc.jpg" alt="Consiliere Psihologica CCOC" style="width: 100%; height: 350px; object-fit: cover; border-radius: 16px; margin-bottom: 32px; border: 1px solid var(--line-d); box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+
+        <p style="font-size: 16px; color: var(--tx-light-mut); margin-bottom: 24px; line-height: 1.6;">Conform reglementărilor naționale, fiecare universitate este obligată să opereze un CCOC. Nu este doar un loc unde îți faci CV-ul; este principalul tău punct de sprijin emoțional. Serviciile sunt oferite de psihologi atestați și sunt complet gratuite și strict confidențiale.</p>
+        
+        <ul class="tech-list">
+            <li><strong style="color: var(--tx-light);">Consilierea Psihologică (Terapia):</strong> Tranziția spre facultate, mutarea de acasă și presiunea examenelor generează frecvent anxietate. Aici poți programa ședințe individuale pentru a discuta despre stresul de sesiune, atacuri de panică, episoade depresive sau pur și simplu dificultăți de adaptare la o nouă comunitate.</li>
+            <li><strong style="color: var(--tx-light);">Consilierea Educațională:</strong> Volumul de informație de la facultate nu se compară cu liceul. Dacă simți că nu faci față, consilierii te învață tehnici de învățare eficientă, cum să structurezi materia, cum să combați procrastinarea cronică și cum să aplici un management riguros al timpului.</li>
+            <li><strong style="color: var(--tx-light);">Orientarea Vocațională (Ce fac dacă am greșit facultatea?):</strong> Este absolut normal să realizezi în anul I că profilul ales nu ți se potrivește. Înainte de a lua decizia de a renunța, psihologii CCOC aplică teste psihometrice standardizate la nivel internațional. Acestea îți vor mapa clar aptitudinile reale, ajutându-te să te reorientezi către facultatea corectă fără a mai pierde timp.</li>
+        </ul>
+
+
+        <!-- 2. CNAS & Medical -->
+        <div style="display: flex; align-items: center; gap: 24px; margin-top: 80px; margin-bottom: 24px;">
+            <img src="/imagini/logo/cnas.png" alt="CNAS Logo" style="height: 80px; object-fit: contain;">
+            <h3 class="section-title" style="margin: 0;">2. Asigurarea de Sănătate și Drepturile Medicale</h3>
+        </div>
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 32px;">
+            <img src="/imagini/studenti/cnas 1.jpg" alt="Asigurari Medicale 1" style="width: 100%; height: 350px; object-fit: cover; border-radius: 16px; border: 1px solid var(--line-d); box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+            <img src="/imagini/studenti/cnas 2.jpg" alt="Asigurari Medicale 2" style="width: 100%; height: 350px; object-fit: cover; border-radius: 16px; border: 1px solid var(--line-d); box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+        </div>
+
+        <p style="font-size: 16px; color: var(--tx-light-mut); margin-bottom: 24px; line-height: 1.6;">Statul român oferă protecție medicală extinsă tinerilor care sunt înmatriculați în sistemul de învățământ superior.</p>
+        
+        <h5 style="color: var(--tx-light); margin: 24px 0 12px 0;">Gratuitate la CNAS:</h5>
+        <p style="color: var(--tx-light-mut); margin-bottom: 12px;">Calitatea de student la zi îți garantează automat calitatea de asigurat în sistemul public de sănătate (Casa Națională de Asigurări de Sănătate).</p>
+        <div class="highlight-box">
+            Beneficiezi de această gratuitate, fără a plăti contribuția lunară (CASS), până la împlinirea vârstei de 26 de ani (cu condiția să nu fii angajat pe carte de muncă concomitent).
+        </div>
+
+        <h5 style="color: var(--tx-light); margin: 32px 0 12px 0;">Dispensarele și Policlinicile Studențești din Campusuri:</h5>
+        <p style="color: var(--tx-light-mut); margin-bottom: 12px;">Marile centre universitare nu te trimit la spitale de stat aglomerate pentru probleme uzuale. Ele dispun de rețele de policlinici plasate strategic chiar în inima campusurilor (ex. Complexul Regie, Hașdeu, Tudor Vladimirescu).</p>
+        <ul class="tech-list" style="margin-bottom: 24px;">
+            <li><strong style="color: var(--tx-light);">Servicii oferite:</strong> Consultații de medicină generală, rețete compensate, prim-ajutor și, extrem de important, cabinete de stomatologie studențească gratuită.</li>
+        </ul>
+
+        <h5 style="color: var(--tx-light); margin: 32px 0 12px 0;">Adeverințe și Sistemul de "Scutiri Medicale":</h5>
+        <ul class="tech-list">
+            <li>Medicii din campus sunt cei care emit anual adeverințele medicale necesare dosarului de cazare în cămin.</li>
+            <li><strong style="color: var(--tx-light);">Birocrația absențelor:</strong> Dacă o răceală severă te împiedică să ajungi la un laborator obligatoriu, medicul de la policlinica studențească îți va elibera o Scutire Medicală. Aceasta trebuie vizată prompt la secretariatul facultății tale pentru ca absența să fie motivată oficial, evitând astfel plata taxelor de refacere a laboratoarelor.</li>
+        </ul>
+
+    </main>
+</div>
+
+<%- include('partials/footer') %>

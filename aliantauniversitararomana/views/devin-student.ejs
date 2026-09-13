@@ -1,0 +1,268 @@
+<%- include('partials/header') %>
+
+<style>
+.hero-banner {
+    position: relative;
+    width: 100%;
+    height: 450px;
+    border-bottom: 1px solid var(--line-d);
+    overflow: hidden;
+    background: #000;
+}
+.hero-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.4) grayscale(0.2);
+    transition: filter 0.3s;
+}
+.hero-banner img:hover {
+    filter: brightness(0.6) grayscale(0);
+}
+
+.hero-text-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 100%;
+    max-width: 1000px;
+    padding: 0 20px;
+    z-index: 10;
+    pointer-events: none;
+}
+.hero-text-overlay h1 {
+    font-size: clamp(36px, 5vw, 54px);
+    color: var(--tx-light);
+    margin-bottom: 16px;
+    text-shadow: 0 4px 10px rgba(0,0,0,0.8);
+}
+.hero-text-overlay p {
+    font-size: clamp(18px, 2vw, 24px);
+    color: var(--tx-light-mut);
+    text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+}
+
+.section-title {
+    font-size: 28px;
+    color: var(--tx-light);
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--oxblood-l);
+    display: inline-block;
+}
+
+.admitere-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    margin-bottom: 60px;
+}
+.admitere-card {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid var(--line-d);
+    border-radius: 12px;
+    padding: 32px;
+    transition: transform 0.3s, border-color 0.3s;
+}
+.admitere-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--oxblood-l);
+}
+.admitere-card h4 {
+    color: var(--tx-light);
+    font-size: 22px;
+    margin-top: 0;
+    margin-bottom: 16px;
+}
+.admitere-card p {
+    color: var(--tx-light-mut);
+    line-height: 1.6;
+    margin-bottom: 16px;
+}
+
+.timeline-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 60px 0;
+    position: relative;
+}
+.timeline-list::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 20px;
+    width: 2px;
+    background: var(--line-d);
+}
+.timeline-item {
+    position: relative;
+    padding-left: 60px;
+    margin-bottom: 32px;
+}
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: 14px;
+    top: 6px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--oxblood-l);
+    box-shadow: 0 0 0 4px #111;
+}
+.timeline-title {
+    font-size: 20px;
+    color: var(--tx-light);
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+.timeline-text {
+    color: var(--tx-light-mut);
+    line-height: 1.6;
+}
+
+.tech-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.tech-list li {
+    position: relative;
+    padding-left: 24px;
+    margin-bottom: 16px;
+    color: var(--tx-light-mut);
+    line-height: 1.6;
+}
+.tech-list li::before {
+    content: "▹";
+    position: absolute;
+    left: 0;
+    color: var(--oxblood-l);
+}
+</style>
+
+<div class="fade-in-up">
+    <!-- Hero / Banner -->
+    <div class="hero-banner">
+        <img src="/imagini/studenti/studenti.jpg" alt="Devenire Student">
+        <div class="hero-text-overlay">
+            <h1>De la Liceu la Universitate: Primul Tău Pas în Lumea Adulților</h1>
+            <p>Tot ce trebuie să știi despre examenul de admitere, alegerea facultății potrivite, dosarul de înscriere și supraviețuirea în primul an.</p>
+        </div>
+    </div>
+
+    <main class="content-area" style="max-width: 1000px; margin: 0 auto; padding-top: 80px; padding-bottom: 60px;">
+
+        <!-- 1. Autocunoastere -->
+        <h2 class="section-title">1. Autocunoaștere și Alegerea Căii: Ce Vrei să Faci în Viață?</h2>
+        <p style="color: var(--tx-light-mut); font-size: 16px; margin-bottom: 32px; line-height: 1.6;">Alegerea facultății este prima decizie majoră pe care o iei singur. Nu lăsa presiunea părinților sau "gura lumii" să îți dicteze viitorul.</p>
+
+        <div style="background: rgba(255,255,255,0.02); border-left: 4px solid var(--oxblood-l); padding: 24px; margin-bottom: 24px;">
+            <strong style="color: var(--tx-light); font-size: 18px; display: block; margin-bottom: 8px;">Capcanele de evitat</strong>
+            <p style="color: var(--tx-light-mut); margin: 0;">Nu alege o facultate doar "pentru că se caută" sau "pentru că se câștigă bine" dacă domeniul respectiv te plictisește sau îți provoacă anxietate. Vei petrece 3-5 ani studiindu-l și zeci de ani lucrând în el.</p>
+        </div>
+
+        <div style="background: rgba(255,255,255,0.02); border-left: 4px solid var(--oxblood-l); padding: 24px; margin-bottom: 60px;">
+            <strong style="color: var(--tx-light); font-size: 18px; display: block; margin-bottom: 8px;">Folosește resursele de orientare</strong>
+            <p style="color: var(--tx-light-mut); margin: 0;">Participă la Universitățile de Vară pentru Elevi (UVE), mergi la Târgurile Educaționale și vorbește cu studenți mai mari prin intermediul ligilor locale sau al platformei noastre. Încearcă să înțelegi ce presupune munca de zi cu zi dintr-un birou de arhitectură, dintr-un spital sau dintr-un laborator de IT, nu doar titlul de pe diplomă.</p>
+        </div>
+
+        <!-- 2. Anatomia Admiterii -->
+        <h2 class="section-title">2. Anatomia Admiterii în România: Cum se Intră la Facultate?</h2>
+        <p style="color: var(--tx-light-mut); font-size: 16px; margin-bottom: 32px; line-height: 1.6;">Sistemul de admitere din România nu mai este uniform; fiecare universitate (și uneori fiecare facultate din aceeași universitate) are propriul regulament. Iată cele 3 mari tipuri de admiteri:</p>
+
+        <div class="admitere-grid">
+            <div class="admitere-card" style="border-top: 4px solid var(--oxblood-l);">
+                <h4>Admiterea pe bază de dosar</h4>
+                <p><strong>Cum funcționează:</strong> Nu dai niciun examen scris. Se ia în calcul media de la Bacalaureat (adesea ponderată cu notele din liceu la anumite materii relevante pentru profil).</p>
+                <p style="margin-bottom: 0;"><strong>Unde se folosește:</strong> Foarte des întâlnită la facultățile socio-umane, litere, unele facultăți economice sau administrative.</p>
+            </div>
+
+            <div class="admitere-card" style="border-top: 4px solid var(--oxblood-l);">
+                <h4>Admiterea pe bază de Examen Scris</h4>
+                <p><strong>Cum funcționează:</strong> Susții un examen grilă (matematică, fizică, biologie, chimie, gramatică) sau o probă scrisă specifică. Nota la acest examen are o pondere masivă (între 70% și 100%) în media finală de admitere.</p>
+                <p style="margin-bottom: 0;"><strong>Unde se folosește:</strong> Obligatorie la Medicină (UMF), la Politehnică (la unele facultăți), la Drept sau la Academiile Militare/Poliție. Pregătirea pentru aceste examene începe de regulă încă din clasa a XI-a.</p>
+            </div>
+
+            <div class="admitere-card" style="border-top: 4px solid var(--oxblood-l);">
+                <h4>Admiterea Mixtă (Portofoliu + Interviu)</h4>
+                <p><strong>Cum funcționează:</strong> Specifică domeniilor vocaționale, artistice sau arhitectură. Pe lângă probele practice (desen, audiție, probă sportivă), se evaluează un portofoliu de lucrări sau se susține un interviu motivațional.</p>
+            </div>
+        </div>
+
+        <!-- 3. Calendarul Anului de Licean -->
+        <h2 class="section-title">3. Calendarul Anului de Licean: Când se Fac Pașii?</h2>
+        <p style="color: var(--tx-light-mut); font-size: 16px; margin-bottom: 32px; line-height: 1.6;">Dacă ești în clasa a XII-a, iată cronologia pe care trebuie să o respecți pentru a nu rata admiterea:</p>
+
+        <ul class="timeline-list">
+            <li class="timeline-item">
+                <div class="timeline-title">Octombrie – Ianuarie (Documentare și Pregătire)</div>
+                <div class="timeline-text">Te informezi asupra facultăților, consulți site-urile universităților pentru a vedea "Metodologia de Admitere" (care se actualizează anual) și începi pregătirea suplimentară dacă optezi pentru un examen greu.</div>
+            </li>
+            <li class="timeline-item">
+                <div class="timeline-title">Februarie – Aprilie (Simulările)</div>
+                <div class="timeline-text">Participă la toate Simulările Naționale și la simulările organizate fizic de universități. Te vor ajuta să scapi de panica examenului real și îți vor arăta capitolele la care mai ai lacune.</div>
+            </li>
+            <li class="timeline-item">
+                <div class="timeline-title">Mai – Iunie (Bacalaureatul)</div>
+                <div class="timeline-text">Focus total pe obținerea unei medii cât mai mari la BAC. O medie mare la Bacalaureat îți poate asigura intrarea la buget sau poate fi un colac de salvare dacă admiterea se bazează pe dosar.</div>
+            </li>
+            <li class="timeline-item">
+                <div class="timeline-title">Iulie (Sesiunea de Vară a Admiterilor)</div>
+                <div class="timeline-text">Perioada de foc. Depunerea dosarelor, susținerea examenelor scrise și afișarea primelor rezultate. Atenție: Poți aplica la mai multe facultăți în paralel, dar va trebui să confirmi locul la una singură!</div>
+            </li>
+            <li class="timeline-item">
+                <div class="timeline-title">Septembrie (Sesiunea de Toamnă)</div>
+                <div class="timeline-text">O a doua șansă (de regulă pentru locurile cu taxă rămase neocupate sau la universitățile care organizează o a doua sesiune de admitere).</div>
+            </li>
+        </ul>
+
+        <!-- 4. Dosarul de Inscriere -->
+        <h2 class="section-title">4. Dosarul de Înscriere: Ce Trebuie să Pregătești din Timp?</h2>
+        <p style="color: var(--tx-light-mut); font-size: 16px; margin-bottom: 24px; line-height: 1.6;">Birocrația poate fi copleșitoare dacă lași totul pe ultima zi din iulie. Asigură-te că ai pregătite următoarele documente (în copie și original pentru legalizare):</p>
+
+        <ul class="tech-list" style="margin-bottom: 60px;">
+            <li>Diploma de Bacalaureat (sau Adeverința de Bacalaureat, dacă diploma nu s-a eliberat încă de liceu).</li>
+            <li>Foaia matricolă din liceu.</li>
+            <li>Certificatul de naștere și Cartea de identitate (buletinul).</li>
+            <li>Adeverință medicală eliberată de medicul de familie (care menționează că ești apt pentru facultate).</li>
+            <li>Fotografii tip buletin.</li>
+            <li><strong>Taxa de înscriere:</strong> Fiecare universitate percepe o taxă de procesare a dosarului (de la 100 la 300 de lei), plătibilă online sau la secretariat.</li>
+        </ul>
+
+        <!-- 5. Prima Zi de Facultate -->
+        <h2 class="section-title">5. Prima Zi de Facultate: Ghidul "Bobocului"</h2>
+        <p style="color: var(--tx-light-mut); font-size: 16px; margin-bottom: 32px; line-height: 1.6;">Ai intrat! Ai trecut de emoții, ai semnat contractul de studii și acum te afli în amfiteatru. Iată ce trebuie să știi pentru un start lin:</p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-bottom: 60px;">
+            <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--line-d); border-radius: 12px; padding: 24px;">
+                <h4 style="color: var(--tx-light); margin-top: 0; margin-bottom: 12px;">Nu intra în panică la primul curs</h4>
+                <p style="color: var(--tx-light-mut); margin: 0; line-height: 1.6;">Volumul de informație pare uriaș, iar profesorii nu îți mai controlează prezența cu catalogul cum o făceau în liceu. Vei descoperi că libertatea vine la pachet cu responsabilitatea.</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--line-d); border-radius: 12px; padding: 24px;">
+                <h4 style="color: var(--tx-light); margin-top: 0; margin-bottom: 12px;">Cursul Festiv și Deschiderea Anului</h4>
+                <p style="color: var(--tx-light-mut); margin: 0; line-height: 1.6;">Acolo îți vei cunoaște colegii de serie, profesorii tutori și reprezentanții ligii studențești. Este evenimentul la care nu vrei să lipsești.</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--line-d); border-radius: 12px; padding: 24px;">
+                <h4 style="color: var(--tx-light); margin-top: 0; margin-bottom: 12px;">Ia-ți "Pachetul de Boboc" de la Ligă</h4>
+                <p style="color: var(--tx-light-mut); margin: 0; line-height: 1.6;">În primele zile, asociațiile studențești organizează tururi ale campusului, te ajută să îți iei cardul de cămin, îți explică platforma online și organizează petrecerile de bun venit.</p>
+            </div>
+            <div style="background: rgba(255,255,255,0.02); border: 1px solid var(--line-d); border-radius: 12px; padding: 24px;">
+                <h4 style="color: var(--tx-light); margin-top: 0; margin-bottom: 12px;">Fii deschis și curios</h4>
+                <p style="color: var(--tx-light-mut); margin: 0; line-height: 1.6;">Nu sta izolat în bancă. Colegii tăi de acum vor fi viitorii tăi parteneri de proiecte, martori la sesiune și prieteni pentru toată viața.</p>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 80px; padding: 60px; background: rgba(243,146,0,0.05); border: 1px solid var(--oxblood-l); border-radius: 12px;">
+            <h2 style="color: var(--tx-light); margin-top: 0; margin-bottom: 16px;">Ești pregătit să îți depui dosarul?</h2>
+            <p style="color: var(--tx-light-mut); font-size: 18px; margin-bottom: 32px; max-width: 600px; margin-left: auto; margin-right: auto;">Folosește portalul centralizat Unilink pentru a te înscrie rapid la orice universitate din România, printr-un singur cont.</p>
+            <a href="http://unilink.aliantauniversitararomana.ro" target="_blank" style="display: inline-block; background: var(--oxblood-l); color: var(--tx-light); padding: 18px 40px; border-radius: 8px; font-weight: 600; text-decoration: none; transition: filter 0.3s, transform 0.3s; font-size: 18px;">Aplică acum prin Unilink &rarr;</a>
+        </div>
+
+    </main>
+</div>
+
+<%- include('partials/footer') %>

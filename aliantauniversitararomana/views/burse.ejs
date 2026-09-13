@@ -1,0 +1,265 @@
+<%- include('partials/header') %>
+
+<style>
+/* Tooltip styles */
+.tooltip-trigger {
+    border-bottom: 1px dashed var(--oxblood-l);
+    cursor: help;
+    position: relative;
+    color: var(--oxblood-l);
+    font-weight: 600;
+}
+.tooltip-trigger:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--ink-2);
+    border: 1px solid var(--line-d);
+    color: var(--tx-light);
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    white-space: nowrap;
+    z-index: 10;
+    margin-bottom: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    font-weight: normal;
+}
+/* Accordion styles */
+.accordion {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid var(--line-d);
+    border-radius: 12px;
+    margin-bottom: 16px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+.accordion-header {
+    padding: 24px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    font-size: 18px;
+    color: var(--tx-light);
+    background: transparent;
+    transition: background 0.3s, color 0.3s;
+}
+.accordion-header:hover {
+    background: rgba(255,255,255,0.04);
+}
+.accordion-content {
+    padding: 0 24px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out, padding 0.4s ease;
+    color: var(--tx-light-mut);
+    line-height: 1.6;
+}
+.accordion.active {
+    border-color: var(--oxblood-l);
+    background: rgba(255,255,255,0.04);
+}
+.accordion.active .accordion-header {
+    color: var(--oxblood-l);
+}
+.accordion.active .accordion-content {
+    padding: 0 24px 24px 24px;
+    max-height: 3000px;
+}
+.accordion-header::after {
+    content: '+';
+    font-size: 28px;
+    font-weight: 300;
+    transition: transform 0.3s;
+}
+.accordion.active .accordion-header::after {
+    transform: rotate(45deg);
+}
+.section-intro-flex {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    margin-bottom: 40px;
+}
+.section-intro-text {
+    flex: 3;
+    font-size: 18px;
+    color: var(--tx-light-mut);
+    line-height: 1.6;
+}
+.section-intro-img {
+    flex: 2;
+}
+.section-intro-img img {
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid var(--line-d);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    object-fit: cover;
+}
+@media (max-width: 768px) {
+    .section-intro-flex { flex-direction: column; }
+}
+</style>
+
+<div class="fade-in-up">
+    <!-- Hero / Banner -->
+    <div style="position: relative; width: 100%; height: 400px; overflow: hidden; background: var(--ink-2); display: flex; align-items: center; justify-content: center; border-bottom: 1px solid var(--line-d);">
+        <img src="/imagini/studenti/burse 1.jpg" alt="Burse si Finantari" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.35) grayscale(0.2);">
+        <div style="position: relative; text-align: center; width: 100%; max-width: 900px; padding: 0 20px;">
+            <h1 style="font-size: clamp(36px, 5vw, 56px); color: var(--tx-light); margin-bottom: 16px;">Ghidul Centralizat al Burselor și Finanțărilor</h1>
+            <p style="font-size: clamp(18px, 2vw, 24px); color: var(--tx-light-mut);">Sistemul național de burse, fonduri guvernamentale și ecosistemul bancar dedicat independenței tale financiare.</p>
+        </div>
+    </div>
+
+    <main class="content-area" style="max-width: 1000px; margin: 0 auto; padding-top: 80px;">
+
+        <!-- 1. Sistemul de Burse Universitare -->
+        <h3 class="section-title">1. Sistemul de Burse Universitare (Bugetul de Stat și Extrabugetar)</h3>
+        
+        <div class="section-intro-flex">
+            <div class="section-intro-text">
+                <p>Sistemul de burse din România este reglementat de Ministerul Educației, garantând un fond minim obligatoriu pentru fiecare universitate. Cu toate acestea, autonomia universitară permite celor 91 de instituții să suplimenteze aceste fonduri și să creeze regulamente proprii. Platforma noastră te ajută să navighezi prin toate aceste oportunități.</p>
+            </div>
+            <div class="section-intro-img">
+                <img src="/imagini/studenti/burse 2.jpg" alt="Studenți">
+            </div>
+        </div>
+
+        <div style="margin-bottom: 80px;">
+            <div class="accordion">
+                <div class="accordion-header">Burse de Excelență Olimpică și de Performanță (Gradul I și II)</div>
+                <div class="accordion-content">
+                    <p><strong>Cui se adresează:</strong> Studenților care au obținut premii la olimpiade internaționale sau naționale (recunoscute de minister) în timpul liceului, sau studenților integraliști care obțin media 10 curat pe parcursul anilor de facultate.</p>
+                    <p style="margin-top: 12px;"><strong>Avantaj financiar:</strong> Valoarea acestora este adesea dublă sau chiar triplă față de o bursă standard (poate depăși 1.500 - 2.000 RON/lună), fiind un stimulent major pentru elita academică.</p>
+                </div>
+            </div>
+
+            <div class="accordion">
+                <div class="accordion-header">Burse de Merit</div>
+                <div class="accordion-content">
+                    <p><strong>Mecanismul de acordare:</strong> Se acordă studenților de pe locurile finanțate de stat (la buget) cu rezultate academice deosebite. De regulă, acoperă primii 15% - 30% dintre studenții unui program de studii.</p>
+                    <p style="margin-top: 12px;"><strong>Cum se calculează:</strong> Clasamentul nu se face doar pe baza mediei aritmetice, ci pe baza punctajului de credite (<span class="tooltip-trigger" data-tooltip="European Credit Transfer and Accumulation System - sistemul european de credite">ECTS</span>). Fiecare notă obținută la examen se înmulțește cu numărul de credite al materiei respective. Astfel, un 10 la o materie de 6 credite valorează mult mai mult decât un 10 la o materie de 2 credite.</p>
+                    <p style="margin-top: 12px;"><strong>Dinamica:</strong> Listele se refac la finalul fiecărui semestru sau an universitar. Dacă îți crești notele, poți obține bursa pe parcursul anului.</p>
+                </div>
+            </div>
+
+            <div class="accordion">
+                <div class="accordion-header">Burse Sociale</div>
+                <div class="accordion-content">
+                    <p><strong>Cui se adresează:</strong> Studenților din medii socio-economice vulnerabile (venitul net lunar pe membru de familie este sub salariul minim net pe economie), studenților orfani de unul sau ambii părinți, tinerilor proveniți din centre de plasament și studenților cu boli cronice grave (cazuri medicale).</p>
+                    <p style="margin-top: 12px;"><strong>Facilități extra:</strong> Pe lângă suma de bani lunară, studenții cu burse sociale beneficiază adesea de cazare gratuită sau puternic subvenționată în cămine, precum și de tichete de masă pentru cantinele studențești.</p>
+                    <div style="margin-top: 16px; padding: 16px; background: rgba(243,146,0,0.1); border-left: 4px solid var(--oxblood-l); border-radius: 4px;">
+                        <strong style="color: var(--oxblood-l);">Regula de Aur:</strong> Bursa socială se poate cumula cu bursa de merit sau cu bursa de performanță!
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion">
+                <div class="accordion-header">Burse Speciale și Instituționale (Private)</div>
+                <div class="accordion-content">
+                    <p><strong>Domeniul Tehnic (UPB, UTCN, UPT):</strong> Burse speciale oferite direct de companii din industrie (ex. Continental, Bosch, Renault, Dacia) pentru studenții de la inginerie care își realizează licența pe teme propuse de companie.</p>
+                    <p style="margin-top: 12px;"><strong>Cercetare Științifică (UB, UBB, UAIC):</strong> Burse acordate ca premiu financiar (one-time payment sau lunar) pentru studenții care publică articole ca prim-autor în reviste internaționale cotate ISI / Web of Science.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="premium-card" style="padding: 24px; border-radius: 12px; margin-bottom: 80px; border-left: 4px solid var(--oxblood-l);">
+            <h4 style="font-size: 20px; color: var(--tx-light); margin-bottom: 12px;">Procedura de Aplicare</h4>
+            <p style="color: var(--tx-light-mut); line-height: 1.6;">În prezent, depunerea dosarelor este digitalizată (prin platforme tip StudentWeb, AcademicInfo). Pentru bursele sociale, documentele justificative (adeverințe ANAF, certificate medicale) se depun la comisiile de burse ale facultăților la începutul fiecărui semestru.</p>
+        </div>
+
+        <!-- 2. Programe Guvernamentale -->
+        <h3 class="section-title">2. Programe Financiare Guvernamentale și Europene</h3>
+        <p style="font-size: 18px; color: var(--tx-light-mut); margin-bottom: 32px; line-height: 1.6;">Nu ești limitat la bugetul facultății. Dacă ai o idee, o nevoie medicală sau vrei să îți iei un laptop performant, statul român și Uniunea Europeană rulează linii de finanțare dedicate tinerilor.</p>
+
+        <div style="display: grid; grid-template-columns: 1fr; gap: 24px; margin-bottom: 80px;">
+            <div class="premium-card" style="padding: 32px; border-radius: 12px;">
+                <h4 style="font-size: 22px; color: var(--oxblood-l); margin-bottom: 16px;">Creditul Garantat de Stat „StudentInvest”</h4>
+                <p style="color: var(--tx-light-mut); margin-bottom: 12px;"><strong>Ce este:</strong> Un program guvernamental prin care poți accesa un credit bancar de până la 75.000 de lei.</p>
+                <p style="color: var(--tx-light-mut); margin-bottom: 12px;"><strong>Avantajul absolut:</strong> Statul plătește integral dobânda și comisioanele de administrare pe toată durata studiilor și o perioadă de grație. Tu rambursezi (în până la 10 ani) doar suma pe care ai împrumutat-o.</p>
+                <p style="color: var(--tx-light-mut);"><strong>Pentru ce poți folosi banii:</strong> Banii nu vin cash, ci se folosesc cu factură/justificare pentru: plata taxelor de școlarizare, plata chiriei, achiziția de laptopuri/echipamente IT, cheltuieli medicale, acoperirea costurilor de mobilitate Erasmus, sau chiar ca avans pentru achiziția unei locuințe.</p>
+            </div>
+
+            <div class="premium-card" style="padding: 32px; border-radius: 12px;">
+                <h4 style="font-size: 22px; color: var(--tx-light); margin-bottom: 16px;">Programul „Primul student din familie”</h4>
+                <p style="color: var(--tx-light-mut); margin-bottom: 12px;">Finanțat din fonduri europene (peste 104 milioane euro), programul se adresează tinerilor din medii vulnerabile (mediul rural, familii monoparentale) care sunt primii din familia lor ce accesează învățământul superior.</p>
+                <p style="color: var(--tx-light-mut);">Oferă subvenții lunare (care se adaugă la bursele facultății), vouchere pentru rechizite și mentorat gratuit pentru a preveni abandonul universitar în anul I.</p>
+            </div>
+
+            <div class="premium-card" style="padding: 32px; border-radius: 12px;">
+                <h4 style="font-size: 22px; color: var(--tx-light); margin-bottom: 16px;">Programul EURO 200</h4>
+                <p style="color: var(--tx-light-mut);">Un program național stabil, destinat studenților din medii defavorizate. Statul oferă un tichet valoric de 200 de euro destinat exclusiv achiziționării unui calculator tip desktop sau a unui laptop, facilitând incluziunea digitală.</p>
+            </div>
+        </div>
+
+
+        <!-- 3. Ecosistemul Bancar -->
+        <h3 class="section-title">3. Ecosistemul Bancar: Ofertele Băncilor pentru Studenți</h3>
+        
+        <div class="section-intro-flex">
+            <div class="section-intro-img">
+                <img src="/imagini/studenti/banci.jpg" alt="Student banking" style="max-height: 350px;">
+            </div>
+            <div class="section-intro-text">
+                <p>Sectorul bancar din România este unul dintre cele mai digitalizate din Europa, iar băncile se întrec în a atrage tinerii. Ca student (până la vârsta de 24-26 de ani), ai acces la pachete financiare premium, complet gratuite, pe care adulții le plătesc scump.</p>
+            </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-bottom: 80px;">
+            <div class="premium-card" style="padding: 24px;">
+                <h4 style="font-size: 20px; color: var(--tx-light); margin-bottom: 16px;">Conturi Curente ZERO Comisioane</h4>
+                <p style="font-size: 14px; color: var(--tx-light-mut); margin-bottom: 12px;">Principalele bănci din România (ex. BCR prin aplicația George, Banca Transilvania prin BT Pay, ING Bank, BRD, Raiffeisen) au pachete dedicate "Youth" sau "Student".</p>
+                <p style="font-size: 14px; color: var(--tx-light-mut);"><strong>Beneficii:</strong> Zero taxe de administrare a contului, Zero comisioane de retragere numerar la bancomat (chiar și la bancomatele altor bănci, la nivel național și european) și Zero comisioane pentru transferuri interbancare efectuate din aplicația mobilă.</p>
+            </div>
+
+            <div class="premium-card" style="padding: 24px;">
+                <h4 style="font-size: 20px; color: var(--tx-light); margin-bottom: 16px;">Carduri Bancare Co-branded</h4>
+                <p style="font-size: 14px; color: var(--tx-light-mut); margin-bottom: 12px;">Multe universități colaborează cu băncile pentru a emite carduri hibride integrate cu sisteme de legitimație (ex. <span class="tooltip-trigger" data-tooltip="International Student Identity Card">ISIC</span>, StudCard sau Omnipass).</p>
+                <p style="font-size: 14px; color: var(--tx-light-mut);">Aceste carduri deblochează un univers de reduceri: discount-uri la bilete de tren, transport public, festivaluri majore (UNTOLD, Electric Castle), muzee, săli de fitness și sute de restaurante partenere.</p>
+            </div>
+
+            <div class="premium-card" style="padding: 24px;">
+                <h4 style="font-size: 20px; color: var(--tx-light); margin-bottom: 16px;">Sisteme de Cashback (Moneyback)</h4>
+                <p style="font-size: 14px; color: var(--tx-light-mut);">Aplicațiile bancare moderne oferă sisteme de recompensă. De fiecare dată când plătești cu cardul la comercianții parteneri (hipermarketuri, farmacii, branduri de haine, librării online), primești un procent din bani înapoi direct în contul tău de student.</p>
+            </div>
+
+            <div class="premium-card" style="padding: 24px;">
+                <h4 style="font-size: 20px; color: var(--tx-light); margin-bottom: 16px;">Burse Private Bancare și Mentorat</h4>
+                <p style="font-size: 14px; color: var(--tx-light-mut);">Băncile nu sunt doar furnizori de servicii. Instituții precum BNR sau băncile comerciale oferă propriile burse private (ex. Bursele de excelență). Acestea vizează și studenții de la drept, IT sau inginerie, incluzând adesea oferte ferme de internship.</p>
+            </div>
+
+            <div class="premium-card" style="padding: 24px; grid-column: 1 / -1;">
+                <h4 style="font-size: 20px; color: var(--tx-light); margin-bottom: 16px;">Descoperire de Cont și Micro-credite</h4>
+                <p style="font-size: 15px; color: var(--tx-light-mut);">Pentru lunile cu cheltuieli neprevăzute, unele bănci permit studenților să activeze o linie de credit rapidă pe card (<span class="tooltip-trigger" data-tooltip="Suma maximă pe care o poți împrumuta direct de pe card, pentru nevoi urgente">Overdraft</span>). Aceasta este o sumă tampon, extrem de utilă pentru a plăti garanția unei chirii sau pentru a supraviețui financiar până la intrarea banilor de acasă, cu condiții de dobândă mult mai prietenoase decât creditele clasice.</p>
+            </div>
+        </div>
+
+    </main>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // Accordion Logic
+    const accordions = document.querySelectorAll('.accordion');
+    accordions.forEach(acc => {
+        const header = acc.querySelector('.accordion-header');
+        header.addEventListener('click', () => {
+            // Close other open accordions
+            accordions.forEach(other => {
+                if(other !== acc && other.classList.contains('active')) {
+                    other.classList.remove('active');
+                }
+            });
+            // Toggle current
+            acc.classList.toggle('active');
+        });
+    });
+});
+</script>
+
+<%- include('partials/footer') %>

@@ -1,0 +1,112 @@
+<%- include('partials/header') %>
+
+<div class="dashboard-hero" style="background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/imagini/sistem-informatic-banner.jpeg'); background-size: cover; background-position: center;">
+    <div style="max-width: 800px; margin: 0 auto;">
+        <span style="display: inline-block; background: rgba(255,255,255,0.1); color: var(--unilink-orange); padding: 6px 16px; border-radius: 20px; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 24px; border: 1px solid rgba(255,140,0,0.3);">Portal Academic</span>
+        <h1 style="font-size: 48px; font-weight: 800; margin: 0 0 16px 0; letter-spacing: -1px;">Bine ai venit, <%= user.first_name %>!</h1>
+        <p style="color: rgba(255,255,255,0.7); font-size: 20px; margin: 0;">Gestionează-ți traseul educațional și descoperă oportunități locale.</p>
+    </div>
+</div>
+
+<main class="dashboard-grid">
+    <!-- Left Column: Resources and Tools -->
+    <div class="dashboard-resources">
+        <h2 style="font-size: 24px; color: var(--text-main); margin-top: 0; margin-bottom: 24px; padding-bottom: 12px; border-bottom: 2px solid var(--border-color);">
+            Aplicații Native & Hub
+        </h2>
+        
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px;">
+            <!-- Calculator -->
+            <div style="background: white; border-radius: 12px; padding: 24px; border: 1px solid var(--border-color); display: flex; flex-direction: column; align-items: flex-start; box-shadow: 0 4px 20px rgba(0,0,0,0.03);">
+                <div style="background: rgba(230, 115, 0, 0.1); color: var(--unilink-orange); padding: 12px; border-radius: 8px; margin-bottom: 16px;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect><line x1="8" y1="6" x2="16" y2="6"></line><line x1="16" y1="14" x2="16" y2="14"></line><line x1="12" y1="14" x2="12" y2="14"></line><line x1="8" y1="14" x2="8" y2="14"></line><line x1="16" y1="18" x2="16" y2="18"></line><line x1="12" y1="18" x2="12" y2="18"></line><line x1="8" y1="18" x2="8" y2="18"></line></svg>
+                </div>
+                <h3 style="margin: 0 0 8px 0; font-size: 18px;">Super-Calculator</h3>
+                <p style="color: var(--text-mut); margin: 0 0 20px 0; font-size: 14px; flex-grow: 1;">Calculează-ți exact media finală de admitere pe baza formulelor universităților și salvează simulările.</p>
+                <a href="/calculator" class="btn-primary" style="width: 100%; text-align: center; padding: 8px 16px;">Calculează</a>
+            </div>
+
+            <!-- Buget -->
+            <div style="background: white; border-radius: 12px; padding: 24px; border: 1px solid var(--border-color); display: flex; flex-direction: column; align-items: flex-start; box-shadow: 0 4px 20px rgba(0,0,0,0.03);">
+                <div style="background: rgba(16, 185, 129, 0.1); color: #10b981; padding: 12px; border-radius: 8px; margin-bottom: 16px;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                </div>
+                <h3 style="margin: 0 0 8px 0; font-size: 18px;">Simulator Buget</h3>
+                <p style="color: var(--text-mut); margin: 0 0 20px 0; font-size: 14px; flex-grow: 1;">Află costul real al supraviețuirii în orașul universitar ales (chirie vs cămin, mâncare).</p>
+                <a href="/buget" class="btn-primary" style="width: 100%; text-align: center; padding: 8px 16px;">Planifică Bugetul</a>
+            </div>
+
+            <!-- Eseu AI -->
+            <div style="background: white; border-radius: 12px; padding: 24px; border: 1px solid var(--border-color); display: flex; flex-direction: column; align-items: flex-start; box-shadow: 0 4px 20px rgba(0,0,0,0.03);">
+                <div style="background: rgba(79, 70, 229, 0.1); color: #4f46e5; padding: 12px; border-radius: 8px; margin-bottom: 16px;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                </div>
+                <h3 style="margin: 0 0 8px 0; font-size: 18px;">ApexEssay</h3>
+                <p style="color: var(--text-mut); margin: 0 0 20px 0; font-size: 14px; flex-grow: 1;">Generează un eseu motivațional impecabil (PDF).</p>
+                <a href="/eseu" class="btn-primary" style="width: 100%; text-align: center; padding: 8px 16px;">Generează PDF</a>
+            </div>
+
+            <!-- Tracker -->
+            <div style="background: white; border-radius: 12px; padding: 24px; border: 1px solid var(--border-color); display: flex; flex-direction: column; align-items: flex-start; box-shadow: 0 4px 20px rgba(0,0,0,0.03);">
+                <div style="background: rgba(236, 72, 153, 0.1); color: #ec4899; padding: 12px; border-radius: 8px; margin-bottom: 16px;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                </div>
+                <h3 style="margin: 0 0 8px 0; font-size: 18px;">Kanban Tracker</h3>
+                <p style="color: var(--text-mut); margin: 0 0 20px 0; font-size: 14px; flex-grow: 1;">Urmărește statusul admiterilor tale și exportă statistici vizuale.</p>
+                <a href="/tracker" class="btn-primary" style="width: 100%; text-align: center; padding: 8px 16px;">Deschide Tracker</a>
+            </div>
+
+            <!-- Hub -->
+            <div style="grid-column: 1 / -1; max-width: 50%; width: 100%; margin: 0 auto; background: white; border-radius: 12px; padding: 24px; border: 1px solid var(--border-color); display: flex; flex-direction: column; align-items: center; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.03);">
+                <div style="background: rgba(14, 165, 233, 0.1); color: #0ea5e9; padding: 12px; border-radius: 8px; margin-bottom: 16px;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                </div>
+                <h3 style="margin: 0 0 8px 0; font-size: 18px;">Hub Educațional Central</h3>
+                <p style="color: var(--text-mut); margin: 0 0 20px 0; font-size: 14px;">Lista master a tuturor resurselor externe, metodologiilor și ghidurilor naționale.</p>
+                <a href="/hub" class="btn-outline-blue" style="width: 100%; text-align: center; padding: 8px 16px;">Accesează Hub-ul</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Right Column: Nearby Universities -->
+    <div class="dashboard-universities">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; padding-bottom: 12px; border-bottom: 2px solid var(--border-color);">
+            <h2 style="font-size: 24px; color: var(--text-main); margin: 0;">Universități din județul <%= user.county %></h2>
+            <a href="/universities" style="color: var(--unilink-orange); font-weight: 600; text-decoration: none; font-size: 14px;">Vezi toate &rarr;</a>
+        </div>
+        
+        <% if (recommended && recommended.length > 0) { %>
+            <div style="display: flex; flex-direction: column; gap: 20px;">
+                <% recommended.forEach(function(uni) { %>
+                    <div style="background: white; border-radius: 12px; padding: 24px; border: 1px solid var(--border-color); display: flex; align-items: center; gap: 24px; box-shadow: 0 4px 15px rgba(0,0,0,0.02); transition: transform 0.2s;">
+                        <div style="height: 60px; width: 60px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: #f8fafc; border-radius: 8px; padding: 4px;">
+                            <% if (uni.logo_path) { %>
+                                <img src="<%= uni.logo_path %>" alt="<%= uni.acronym %> Logo" style="max-width: 50px; max-height: 50px; object-fit: contain;" onerror="this.src='/imagini/logo/default.png';">
+                            <% } %>
+                        </div>
+                        <div style="flex-grow: 1;">
+                            <h3 style="font-size: 18px; margin: 0 0 8px 0; color: var(--text-main); line-height: 1.3;"><%= uni.name %></h3>
+                            <p style="color: var(--text-mut); font-size: 14px; margin: 0;">
+                                <span style="display: inline-block; background: rgba(0,0,0,0.05); padding: 2px 8px; border-radius: 4px; margin-right: 8px;"><%= uni.type %></span>
+                                <span style="display: inline-block; background: rgba(0,0,0,0.05); padding: 2px 8px; border-radius: 4px;"><%= uni.city %></span>
+                            </p>
+                        </div>
+                        <div style="flex-shrink: 0;">
+                            <a href="<%= uni.url %>" target="_blank" style="display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: #f1f5f9; color: var(--text-main); transition: background 0.2s; text-decoration: none;" title="Vizitează site-ul oficial">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                            </a>
+                        </div>
+                    </div>
+                <% }); %>
+            </div>
+        <% } else { %>
+            <div style="background: white; border-radius: 12px; padding: 40px; border: 1px solid var(--border-color); text-align: center;">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#cbd5e1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 16px;"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                <p style="color: var(--text-mut); margin: 0 0 20px 0;">Momentan nu avem universități înregistrate în județul tău.</p>
+                <a href="/universities" class="btn-primary" style="display: inline-block;">Vezi catalogul național</a>
+            </div>
+        <% } %>
+    </div>
+</main>
+
+<%- include('partials/footer') %>

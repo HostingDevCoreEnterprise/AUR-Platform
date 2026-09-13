@@ -1,0 +1,157 @@
+<%- include('partials/header') %>
+
+<!-- Scripts pentru PDF și Markdown -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+<main class="container" style="max-width: 800px; padding-top: 40px; position: relative;">
+    <!-- Modal Termeni si Conditii (Popup) -->
+    <div id="termsModal" style="display: flex; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 9999; justify-content: center; align-items: center; backdrop-filter: blur(5px);">
+        <div class="card" style="max-width: 500px; width: 90%; background: white; text-align: center; border: 2px solid #4f46e5;">
+            <h2 style="color: #4f46e5; margin-bottom: 16px;">Acord Utilizare AI</h2>
+            <p style="color: var(--text-mut); margin-bottom: 12px;">Pentru a utiliza ApexEssay, trebuie să fii de acord cu prelucrarea datelor de către algoritmii noștri de inteligență artificială.</p>
+            <div style="font-size: 14px; margin-bottom: 24px;">
+                Prin apăsarea butonului de mai jos, confirmi că ai citit și accepți:<br>
+                <div style="margin-top: 8px;">
+                    <a href="/apex-confidentialitate" target="_blank" style="color: #4f46e5; text-decoration: underline; font-weight: 600; margin-right: 8px;">Politica de Confidențialitate</a>
+                    <span style="color: var(--text-mut);">și</span>
+                    <a href="/apex-termeni" target="_blank" style="color: #4f46e5; text-decoration: underline; font-weight: 600; margin-left: 8px;">Termenii de Utilizare</a>
+                </div>
+            </div>
+            <button onclick="acceptTerms()" class="btn-primary" style="width: 100%; background-color: #4f46e5; border-color: #4f46e5; padding: 12px; font-size: 16px;">Sunt de acord, continuă</button>
+        </div>
+    </div>
+    <div style="text-align: center; margin-bottom: 40px;">
+        <span style="display: inline-block; background: rgba(79, 70, 229, 0.1); color: #4f46e5; padding: 6px 16px; border-radius: 20px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px;">Modul Nativ AI</span>
+        <h1 style="font-size: 36px; margin: 0 0 16px 0;">ApexEssay</h1>
+        <p style="color: var(--text-mut); font-size: 18px; max-width: 600px; margin: 0 auto; line-height: 1.6;">Completează ideile tale și lasă AI-ul să te ajute la formularea unui eseu academic pentru dosar.</p>
+    </div>
+
+    <div class="card" id="form_section" style="margin-bottom: 40px;">
+        <h2 style="margin-bottom: 24px; border-bottom: 1px solid var(--border-color); padding-bottom: 12px;">Datele Eseului</h2>
+
+        <div class="form-group">
+            <label>Numele Facultății și Programul de Studiu dorit</label>
+            <input type="text" id="faculty" class="form-control" placeholder="Ex: SNSPA - Relații Internaționale și Studii Europene">
+        </div>
+        
+        <div class="form-group">
+            <label>De ce vrei să studiezi aici? Ce te pasionează la acest domeniu?</label>
+            <textarea id="passion" class="form-control" rows="3" placeholder="Scrie 2-3 idei principale... (ex: pasionat de geopolitică, vreau să înțeleg mecanismele UE)"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Ce realizări ai din liceu? (Voluntariate, concursuri, proiecte)</label>
+            <textarea id="achievements" class="form-control" rows="3" placeholder="Ex: Voluntar la Crucea Roșie, olimpic județean la Istorie..."></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Ce vrei să faci după absolvire? (Planuri de viitor)</label>
+            <textarea id="future" class="form-control" rows="2" placeholder="Ex: Vreau să devin diplomat sau să lucrez într-un ONG internațional."></textarea>
+        </div>
+
+        <button onclick="generateEssay()" id="generateBtn" class="btn-primary" style="width: 100%; background-color: #4f46e5; border-color: #4f46e5; margin-top: 16px;">Generează Eseul cu AI</button>
+        <p id="loading_msg" style="display: none; text-align: center; margin-top: 16px; color: #4f46e5; font-weight: 600;">AI-ul scrie eseul... (durează câteva secunde)</p>
+
+        <!-- Sectiune Logo-uri si Link-uri -->
+        <div style="margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--border-color); text-align: center;">
+            <p style="color: var(--text-mut); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; font-weight: 700;">Powered By</p>
+            <div style="display: flex; justify-content: center; gap: 32px; align-items: center; margin-bottom: 20px; flex-wrap: wrap;">
+                <img src="/imagini/logo/devcore.png" alt="DevCore" style="height: 55px; object-fit: contain; filter: grayscale(100%);">
+                <img src="/imagini/logo/apexessay.png" alt="ApexEssay" style="height: 45px; object-fit: contain; filter: grayscale(100%);">
+                <img src="/imagini/logo/gemini.png" alt="Gemini" style="height: 28px; object-fit: contain; filter: grayscale(100%);">
+                <img src="/imagini/logo/google.png" alt="Google" style="height: 24px; object-fit: contain; filter: grayscale(100%);">
+            </div>
+            <div style="font-size: 13px;">
+                <a href="/apex-confidentialitate" target="_blank" style="color: #4f46e5; text-decoration: none; font-weight: 600; margin-right: 16px;">Politica de Confidențialitate</a>
+                <a href="/apex-termeni" target="_blank" style="color: #4f46e5; text-decoration: none; font-weight: 600;">Termeni de Utilizare</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Zona rezultatului PDF -->
+    <div id="result_section" style="display: none; margin-bottom: 80px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+            <h2 style="margin: 0; color: #4f46e5;">Rezultat</h2>
+            <button onclick="downloadPDF()" class="btn-primary" style="background-color: #ef4444; border-color: #ef4444;">
+                Descarcă PDF (Gata de dosar)
+            </button>
+        </div>
+        <div class="card" style="background: white; padding: 40px;">
+            <div id="essay_content" style="font-family: 'Times New Roman', Times, serif; font-size: 16px; line-height: 1.6; color: black; text-align: justify;">
+                <!-- Conținutul generat de AI intră aici -->
+            </div>
+        </div>
+    </div>
+</main>
+
+<script>
+    function acceptTerms() {
+        document.getElementById('termsModal').style.display = 'none';
+    }
+
+    async function generateEssay() {
+        const faculty = document.getElementById('faculty').value.trim();
+        const passion = document.getElementById('passion').value.trim();
+        const achievements = document.getElementById('achievements').value.trim();
+        const future = document.getElementById('future').value.trim();
+
+        if (!faculty || !passion) {
+            alert('Te rog completează Facultatea și motivul pasiunii!');
+            return;
+        }
+
+        const btn = document.getElementById('generateBtn');
+        const loading = document.getElementById('loading_msg');
+        
+        btn.style.display = 'none';
+        loading.style.display = 'block';
+
+        try {
+            const response = await fetch('/api/generate-essay', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ faculty, passion, achievements, future })
+            });
+
+            if (!response.ok) {
+                const errData = await response.json();
+                throw new Error(errData.error || 'Eroare la generarea eseului.');
+            }
+
+            const data = await response.json();
+            const rawText = data.text;
+            
+            // Convert Markdown from Gemini to HTML
+            const htmlContent = marked.parse(rawText);
+            
+            document.getElementById('essay_content').innerHTML = htmlContent;
+            
+            document.getElementById('form_section').style.display = 'none';
+            document.getElementById('result_section').style.display = 'block';
+
+        } catch (err) {
+            alert('Eroare: ' + err.message);
+            btn.style.display = 'block';
+            loading.style.display = 'none';
+        }
+    }
+
+    function downloadPDF() {
+        const element = document.getElementById('essay_content');
+        const opt = {
+            margin:       25, // Margini generoase ca la documente oficiale
+            filename:     'Eseu_Motivational_Admitere.pdf',
+            image:        { type: 'jpeg', quality: 0.98 },
+            html2canvas:  { scale: 2 },
+            jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+        };
+
+        // Promise-based API for html2pdf
+        html2pdf().set(opt).from(element).save();
+    }
+</script>
+
+<%- include('partials/footer') %>

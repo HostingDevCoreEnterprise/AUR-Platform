@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Disallow: /dashboard
+Disallow: /tracker
+Disallow: /eseu
+Disallow: /buget
+Disallow: /calculator
+Disallow: /profile
+Disallow: /hub
+
+Sitemap: https://unilink.aliantauniversitararomana.ro/sitemap.xml

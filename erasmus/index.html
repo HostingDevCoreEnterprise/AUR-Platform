@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Găsește biroul Erasmus+ al facultății tale din România. Acces rapid la platformele de mobilitate pentru toate universitățile partenere AUR.">
+  <meta name="keywords" content="Erasmus+, România, mobilitate studenți, AUR, studii străinătate, universități partenere">
+  <meta name="robots" content="index, follow">
+  <title>Erasmus+ · Alianța Universitară Română</title>
+  <link rel="icon" type="image/png" href="resurse/photo/aur.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --black: #121110;
+      --black-2: #1a1917;
+      --white: #F7F4EE;
+      --white-dim: #B9B5AC;
+      --orange: #F2A230;
+      --orange-2: #F7C065;
+      --blue: #3D5AFE;
+      --blue-dim: #8C9CFF;
+      --line: rgba(247, 244, 238, 0.12);
+      --line-strong: rgba(247, 244, 238, 0.22);
+      --radius: 2px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    ::selection {
+      background: var(--orange);
+      color: var(--black);
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    h1,
+    h2,
+    h3,
+    .display {
+      font-family: 'Big Shoulders Display', sans-serif;
+      text-transform: uppercase;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+      line-height: 0.92;
+    }
+
+    .mono {
+      font-family: 'IBM Plex Mono', monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--orange);
+      margin-bottom: 18px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 22px;
+      height: 2px;
+      background: var(--orange);
+      display: inline-block;
+    }
+
+    /* ---------- NAV ---------- */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(18, 17, 16, 0.82);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 32px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand img {
+      height: 34px;
+      width: auto;
+      display: block;
+    }
+
+    .brand-text {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10.5px;
+      letter-spacing: 0.1em;
+      color: var(--white-dim);
+      line-height: 1.35;
+      text-transform: uppercase;
+    }
+
+    .brand-text b {
+      color: var(--white);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 34px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      text-decoration: none;
+      color: var(--white-dim);
+      position: relative;
+      padding-bottom: 4px;
+      transition: color .2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--white);
+    }
+
+    .nav-cta {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11.5px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: var(--orange);
+      color: var(--black);
+      padding: 10px 18px;
+      text-decoration: none;
+      font-weight: 600;
+      white-space: nowrap;
+      transition: background .2s ease;
+    }
+
+    .nav-cta:hover {
+      background: var(--orange-2);
+    }
+
+    .nav-toggle {
+      display: none;
+    }
+
+    /* ---------- HERO ---------- */
+    .hero {
+      position: relative;
+      padding: 172px 0 90px;
+      overflow: hidden;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 40px;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero h1 {
+      font-size: clamp(52px, 7vw, 96px);
+      color: var(--white);
+    }
+
+    .hero h1 .cut {
+      position: relative;
+      display: inline-block;
+      color: var(--orange);
+    }
+
+    .hero p.lead {
+      margin-top: 26px;
+      max-width: 520px;
+      font-size: 17px;
+      color: var(--white-dim);
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 14px;
+      margin-top: 38px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 15px 26px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+      border: 1px solid var(--line-strong);
+      transition: all .2s ease;
+    }
+
+    .btn-solid {
+      background: var(--orange);
+      color: var(--black);
+      border-color: var(--orange);
+    }
+
+    .btn-solid:hover {
+      background: var(--orange-2);
+      border-color: var(--orange-2);
+    }
+
+    .btn-ghost {
+      color: var(--white);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--white);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 34px;
+      margin-top: 56px;
+      flex-wrap: wrap;
+    }
+
+    .stat b {
+      display: block;
+      font-family: 'Big Shoulders Display', sans-serif;
+      font-size: 34px;
+      font-weight: 800;
+      color: var(--white);
+    }
+
+    .stat span {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10.5px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--white-dim);
+    }
+
+    /* network diagram */
+    .network {
+      position: relative;
+      height: 420px;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(var(--black-2), var(--black-2));
+    }
+
+    .network svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .network-caption {
+      position: absolute;
+      bottom: 14px;
+      left: 16px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--white-dim);
+    }
+
+    .node-dot {
+      fill: var(--orange);
+    }
+
+    .node-dot.blue {
+      fill: var(--blue);
+    }
+
+    .node-line {
+      stroke: var(--line-strong);
+      stroke-width: 1;
+    }
+
+    .node-line.pulse {
+      stroke: var(--orange);
+      stroke-dasharray: 4 5;
+      animation: dash 26s linear infinite;
+    }
+
+    @keyframes dash {
+      to {
+        stroke-dashoffset: -400;
+      }
+    }
+
+    /* marquee */
+    .marquee-band {
+      border-bottom: 1px solid var(--line);
+      background: var(--black-2);
+      overflow: hidden;
+      padding: 16px 0;
+    }
+
+    .marquee-track {
+      display: flex;
+      gap: 48px;
+      width: max-content;
+      animation: scroll 34s linear infinite;
+    }
+
+    .marquee-track span {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12.5px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--white-dim);
+      white-space: nowrap;
+    }
+
+    .marquee-track span b {
+      color: var(--white);
+    }
+
+    @keyframes scroll {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    /* ---------- SECTION GENERIC ---------- */
+    section {
+      padding: 110px 0;
+      border-bottom: 1px solid var(--line);
+      position: relative;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 64px;
+      align-items: end;
+    }
+
+    .section-head h2 {
+      font-size: clamp(32px, 4.2vw, 52px);
+      color: var(--white);
+    }
+
+    .section-head p {
+      color: var(--white-dim);
+      font-size: 15.5px;
+      max-width: 440px;
+    }
+
+    /* what-is grid */
+    .whatis-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+
+    .whatis-card {
+      background: var(--black);
+      padding: 34px 30px;
+    }
+
+    .whatis-card .num {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      color: var(--orange);
+      letter-spacing: 0.1em;
+    }
+
+    .whatis-card h3 {
+      font-size: 24px;
+      margin: 14px 0 12px;
+      color: var(--white);
+      text-transform: none;
+      font-weight: 700;
+    }
+
+    .whatis-card p {
+      color: var(--white-dim);
+      font-size: 14.5px;
+    }
+
+    /* mobility types */
+    .types-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .type-card {
+      border: 1px solid var(--line);
+      padding: 32px 28px;
+      transition: border-color .25s ease, transform .25s ease;
+      position: relative;
+    }
+
+    .type-card:hover {
+      border-color: var(--orange);
+      transform: translateY(-4px);
+    }
+
+    .type-tag {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10.5px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--black);
+      background: var(--orange);
+      padding: 4px 9px;
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+
+    .type-card h3 {
+      font-size: 26px;
+      color: var(--white);
+      margin-bottom: 12px;
+      text-transform: none;
+      font-weight: 700;
+    }
+
+    .type-card p {
+      color: var(--white-dim);
+      font-size: 14.5px;
+      margin-bottom: 18px;
+    }
+
+    .type-card ul {
+      list-style: none;
+    }
+
+    .type-card li {
+      font-size: 13.5px;
+      color: var(--white-dim);
+      padding: 7px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .type-card li:first-child {
+      border-top: none;
+    }
+
+    .type-card li b {
+      color: var(--white);
+      font-weight: 600;
+    }
+
+    /* eligibility */
+    .eligibility {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .elig-list {
+      list-style: none;
+    }
+
+    .elig-list li {
+      display: flex;
+      gap: 16px;
+      padding: 20px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .elig-list li:first-child {
+      border-top: none;
+    }
+
+    .elig-check {
+      flex: 0 0 auto;
+      width: 24px;
+      height: 24px;
+      border: 1px solid var(--orange);
+      color: var(--orange);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      margin-top: 2px;
+    }
+
+    .elig-list h4 {
+      font-size: 16px;
+      color: var(--white);
+      margin-bottom: 5px;
+      font-weight: 700;
+    }
+
+    .elig-list p {
+      color: var(--white-dim);
+      font-size: 14px;
+    }
+
+    .note-box {
+      border: 1px solid var(--blue);
+      padding: 26px;
+      background: rgba(61, 90, 254, 0.06);
+    }
+
+    .note-box .mono {
+      color: var(--blue-dim);
+    }
+
+    .note-box p {
+      margin-top: 12px;
+      color: var(--white-dim);
+      font-size: 14.5px;
+    }
+
+    .note-box p+p {
+      margin-top: 10px;
+    }
+
+    /* funding table */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .fund-table th,
+    .fund-table td {
+      text-align: left;
+      padding: 16px 14px;
+      border-bottom: 1px solid var(--line);
+      font-size: 14px;
+    }
+
+    .fund-table thead th {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--white-dim);
+      font-weight: 600;
+    }
+
+    .fund-table td b {
+      color: var(--white);
+    }
+
+    .fund-table td.amount {
+      font-family: 'IBM Plex Mono', monospace;
+      color: var(--orange);
+      font-weight: 600;
+    }
+
+    .fund-note {
+      margin-top: 22px;
+      font-size: 13.5px;
+      color: var(--white-dim);
+    }
+
+    /* steps timeline */
+    .steps {
+      position: relative;
+    }
+
+    .steps::before {
+      content: "";
+      position: absolute;
+      left: 29px;
+      top: 10px;
+      bottom: 10px;
+      width: 1px;
+      background: var(--line-strong);
+    }
+
+    .step {
+      position: relative;
+      padding: 0 0 52px 76px;
+    }
+
+    .step:last-child {
+      padding-bottom: 0;
+    }
+
+    .step-num {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 60px;
+      height: 60px;
+      border: 1px solid var(--orange);
+      color: var(--orange);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Big Shoulders Display', sans-serif;
+      font-size: 24px;
+      font-weight: 800;
+      background: var(--black);
+    }
+
+    .step h4 {
+      font-size: 20px;
+      color: var(--white);
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    .step p {
+      color: var(--white-dim);
+      font-size: 14.5px;
+      max-width: 640px;
+    }
+
+    /* calendar timeline */
+    .cal-scroll {
+      overflow-x: auto;
+      padding-bottom: 12px;
+    }
+
+    .cal-track {
+      display: flex;
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      min-width: 900px;
+    }
+
+    .cal-cell {
+      flex: 1;
+      background: var(--black);
+      padding: 24px 20px;
+      min-width: 150px;
+    }
+
+    .cal-cell .mono {
+      color: var(--orange);
+    }
+
+    .cal-cell h4 {
+      font-size: 18px;
+      margin: 10px 0 8px;
+      color: var(--white);
+      font-weight: 700;
+      text-transform: none;
+    }
+
+    .cal-cell p {
+      font-size: 13px;
+      color: var(--white-dim);
+    }
+
+    /* faq */
+    .faq-item {
+      border-top: 1px solid var(--line);
+    }
+
+    .faq-item:last-child {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .faq-q {
+      width: 100%;
+      text-align: left;
+      background: none;
+      border: none;
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 17px;
+      font-weight: 600;
+      padding: 24px 0;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .faq-q .plus {
+      font-family: 'IBM Plex Mono', monospace;
+      color: var(--orange);
+      font-size: 20px;
+      transition: transform .25s ease;
+      flex: 0 0 auto;
+    }
+
+    .faq-item.open .plus {
+      transform: rotate(45deg);
+    }
+
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .3s ease;
+    }
+
+    .faq-a p {
+      color: var(--white-dim);
+      font-size: 14.5px;
+      padding-bottom: 24px;
+      max-width: 720px;
+    }
+
+    /* footer CTA */
+    .cta-final {
+      text-align: center;
+      padding: 130px 0;
+    }
+
+    .cta-final h2 {
+      font-size: clamp(38px, 6vw, 72px);
+      color: var(--white);
+      max-width: 800px;
+      margin: 0 auto 22px;
+    }
+
+    .cta-final .cut {
+      color: var(--orange);
+    }
+
+    .cta-final p {
+      color: var(--white-dim);
+      max-width: 520px;
+      margin: 0 auto 40px;
+    }
+
+    footer {
+      padding: 50px 0;
+    }
+
+    .footer-grid {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .footer-grid .brand-text {
+      font-size: 11px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-links a {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--white-dim);
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      color: var(--white);
+    }
+
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+
+    [data-reveal].in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 920px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .network {
+        height: 280px;
+        order: -1;
+      }
+
+      .section-head {
+        grid-template-columns: 1fr;
+      }
+
+      .whatis-grid,
+      .types-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .eligibility {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+  <link rel="icon" type="image/png" href="resurse/photo/aur.png">
+</head>
+
+<body>
+
+  <header>
+    <nav>
+      <a href="https://aliantauniversitararomana.ro" class="brand" style="text-decoration:none; color:inherit;">
+        <img
+          src="resurse/photo/aur.png"
+          alt="AUR">
+        <div class="brand-text">ALIANȚA UNIVERSITARĂ<br><b>ROMÂNĂ</b></div>
+      </a>
+      <div class="nav-links">
+        <a href="#ce-este">Program</a>
+        <a href="#eligibilitate">Eligibilitate</a>
+        <a href="#finantare">Finanțare</a>
+        <a href="#pasi">Cum aplici</a>
+        <a href="#faq">Întrebări</a>
+      </div>
+      <a href="aplica.html" class="nav-cta">Aplică acum</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div data-reveal>
+        <div style="margin-bottom: 24px;">
+          <img src="resurse/photo/erasmus.png" alt="Erasmus Logo" style="height: 48px; width: auto;">
+        </div>
+        <h1>Studiază<br>oriunde <span class="cut">în</span><br>Europa.</h1>
+        <p class="lead">Alianța Universitară Română centralizează informația despre mobilitățile Erasmus+ pentru toate
+          universitățile din țară — indiferent unde studiezi, ai acces la aceleași oportunități de mobilitate, finanțare
+          și recunoaștere academică.</p>
+        <div class="hero-ctas">
+          <a href="aplica.html" class="btn btn-solid">Aplică acum</a>
+          <a href="#eligibilitate" class="btn btn-ghost">Sunt eligibil?</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><b>33</b><span>Țări participante</span></div>
+          <div class="stat"><b>4.000+</b><span>Universități partenere</span></div>
+          <div class="stat"><b>2–12</b><span>Luni de mobilitate</span></div>
+        </div>
+      </div>
+      <div style="display: flex; justify-content: center; align-items: center;">
+        <img src="resurse/photo/erasmus.jpeg" alt="Erasmus Students"
+          style="width: 100%; height: auto; border-radius: 16px; box-shadow: 0 24px 48px rgba(0,0,0,0.5); object-fit: cover; aspect-ratio: 4/5;">
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee-band">
+    <div class="marquee-track">
+      <span><b>UB</b> · Universitatea din București</span>
+      <span><b>UPB</b> · Universitatea Politehnica</span>
+      <span><b>ASE</b> · Academia de Studii Economice</span>
+      <span><b>UBB</b> · Universitatea Babeș-Bolyai</span>
+      <span><b>UAIC</b> · Universitatea „Al. I. Cuza”</span>
+      <span><b>UVT</b> · Universitatea de Vest Timișoara</span>
+      <span><b>UMF</b> · Universități de Medicină</span>
+      <span><b>+ toate universitățile acreditate din România</b></span>
+      <span><b>UB</b> · Universitatea din București</span>
+      <span><b>UPB</b> · Universitatea Politehnica</span>
+      <span><b>ASE</b> · Academia de Studii Economice</span>
+      <span><b>UBB</b> · Universitatea Babeș-Bolyai</span>
+      <span><b>UAIC</b> · Universitatea „Al. I. Cuza”</span>
+      <span><b>UVT</b> · Universitatea de Vest Timișoara</span>
+      <span><b>UMF</b> · Universități de Medicină</span>
+      <span><b>+ toate universitățile acreditate din România</b></span>
+    </div>
+  </div>
+
+
+
+  <section id="ce-este">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <h2>Ce este<br>Erasmus+?</h2>
+        <p>Cel mai mare program european de mobilitate educațională, deschis oricărui student înmatriculat la o
+          universitate acreditată din România, indiferent de domeniu sau ciclu de studiu.</p>
+      </div>
+      <div class="whatis-grid" data-reveal>
+        <div class="whatis-card">
+          <div class="mono">01 — Ce oferă</div>
+          <h3>Mobilitate academică recunoscută</h3>
+          <p>O perioadă de studiu sau de plasament (internship) la o instituție parteneră dintr-o altă țară
+            participantă, cu recunoașterea integrală a creditelor ECTS obținute, conform contractului de studii semnat
+            înainte de plecare.</p>
+        </div>
+        <div class="whatis-card">
+          <div class="mono">02 — Cine finanțează</div>
+          <h3>Comisia Europeană + universitatea</h3>
+          <p>Programul este finanțat din bugetul Uniunii Europene și administrat în România prin Agenția Națională
+            pentru Programe Comunitare în Domeniul Educației și Formării Profesionale (ANPCDEFP), în parteneriat cu
+            fiecare universitate.</p>
+        </div>
+        <div class="whatis-card">
+          <div class="mono">03 — Pentru cine</div>
+          <h3>Licență, master, doctorat și personal</h3>
+          <p>Studenți de la orice ciclu de studii, proaspăt absolvenți (mobilitate de plasament, în anul următor
+            absolvirii) și personal didactic sau administrativ, prin mobilități de predare și formare.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="tipuri">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <h2>Tipuri de<br>mobilitate</h2>
+        <p>Fiecare universitate din România derulează, prin acorduri interinstituționale proprii, aceleași trei tipuri
+          principale de mobilitate Erasmus+.</p>
+      </div>
+      <div class="types-grid" data-reveal>
+        <div class="type-card">
+          <span class="type-tag">Studii</span>
+          <h3>Mobilitate de studiu</h3>
+          <p>Un semestru sau un an universitar petrecut la o instituție parteneră, urmând cursuri recunoscute integral
+            la întoarcere.</p>
+          <ul>
+            <li>Durată: <b>2–12 luni</b></li>
+            <li>Condiție: <b>acord interinstituțional activ</b> între cele două universități</li>
+            <li>Recunoaștere: <b>transfer ECTS integral</b>, fără examene suplimentare</li>
+          </ul>
+        </div>
+        <div class="type-card">
+          <span class="type-tag">Plasament</span>
+          <h3>Mobilitate de practică</h3>
+          <p>Stagiu de practică sau internship într-o companie, ONG, laborator de cercetare sau instituție publică
+            dintr-o țară parteneră.</p>
+          <ul>
+            <li>Durată: <b>2–12 luni</b></li>
+            <li>Disponibil și: <b>în primul an după absolvire</b></li>
+            <li>Grant suplimentar: <b>+ față de mobilitatea de studiu</b></li>
+          </ul>
+        </div>
+        <div class="type-card">
+          <span class="type-tag">Personal</span>
+          <h3>Mobilitate de predare/formare</h3>
+          <p>Cadre didactice și personal administrativ pot preda sau se pot forma profesional la o instituție parteneră.
+          </p>
+          <ul>
+            <li>Durată: <b>2 zile – 2 luni</b></li>
+            <li>Format: <b>minimum 8 ore de predare/săptămână</b></li>
+            <li>Deschis: <b>tuturor departamentelor universitare</b></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="eligibilitate">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <h2>Cine poate<br>aplica</h2>
+        <p>Criteriile de eligibilitate sunt stabilite la nivel de program european și aplicate uniform de toate
+          universitățile din România.</p>
+      </div>
+      <div class="eligibility" data-reveal>
+        <ul class="elig-list">
+          <li>
+            <div class="elig-check">✓</div>
+            <div>
+              <h4>Ești student înmatriculat</h4>
+              <p>La orice universitate acreditată din România, la ciclul de licență, master sau doctorat, în anul I sau
+                mai avansat.</p>
+            </div>
+          </li>
+          <li>
+            <div class="elig-check">✓</div>
+            <div>
+              <h4>Universitatea ta are acorduri Erasmus+</h4>
+              <p>Verifici lista de acorduri bilaterale la Departamentul de Relații Internaționale al facultății tale.
+              </p>
+            </div>
+          </li>
+          <li>
+            <div class="elig-check">✓</div>
+            <div>
+              <h4>Ai un nivel minim de limbă</h4>
+              <p>De regulă B1–B2 în limba de predare a destinației, dovedit printr-un test intern sau un certificat
+                recunoscut.</p>
+            </div>
+          </li>
+          <li>
+            <div class="elig-check">✓</div>
+            <div>
+              <h4>Media academică</h4>
+              <p>Fiecare facultate stabilește un prag minim de admisibilitate (media anilor anteriori), transparent și
+                afișat public.</p>
+            </div>
+          </li>
+          <li>
+            <div class="elig-check">✓</div>
+            <div>
+              <h4>Nu ai mai epuizat plafonul</h4>
+              <p>Poți cumula până la 12 luni de mobilitate Erasmus+ per ciclu de studii (licență, master, doctorat
+                calculate separat).</p>
+            </div>
+          </li>
+        </ul>
+        <div class="note-box">
+          <div class="mono">Notă pentru toate universitățile</div>
+          <p>Procesul de selecție este descentralizat: fiecare universitate publică propriul apel de candidaturi,
+            propriile termene și propria listă de destinații disponibile, dar respectă aceleași reguli-cadru stabilite
+            de Comisia Europeană și ANPCDEFP.</p>
+          <p>Studenții cu oportunități reduse (venit mic, dizabilități, zone defavorizate) primesc finanțare
+            suplimentară — indiferent de universitate — prin granturi de incluziune.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="finantare">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <h2>Cât<br>primești</h2>
+        <p>Grantul acoperă diferența de cost de viață și este stabilit pe grupe de țări de destinație, actualizat anual
+          de Comisia Europeană.</p>
+      </div>
+      <div data-reveal>
+        <table class="fund-table">
+          <thead>
+            <tr>
+              <th>Grup</th>
+              <th>Țări de destinație</th>
+              <th>Grant lunar (studii)</th>
+              <th>Grant lunar (plasament)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>Grup 1</b></td>
+              <td>Danemarca, Finlanda, Irlanda, Islanda, Liechtenstein, Luxemburg, Norvegia, Suedia</td>
+              <td class="amount">~600 €</td>
+              <td class="amount">~750 €</td>
+            </tr>
+            <tr>
+              <td><b>Grup 2</b></td>
+              <td>Austria, Belgia, Cipru, Franța, Germania, Grecia, Italia, Malta, Olanda, Portugalia, Spania</td>
+              <td class="amount">~550 €</td>
+              <td class="amount">~700 €</td>
+            </tr>
+            <tr>
+              <td><b>Grup 3</b></td>
+              <td>Bulgaria, Croația, Estonia, Letonia, Lituania, Polonia, Rep. Cehă, Slovacia, Slovenia, Ungaria, Turcia
+              </td>
+              <td class="amount">~500 €</td>
+              <td class="amount">~650 €</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="fund-note">Sumele exacte sunt confirmate anual, prin ordin de finanțare, de fiecare universitate —
+          cifrele de mai sus reflectă intervalele-cadru comunicate de ANPCDEFP. Se pot adăuga: grant de incluziune (+250
+          €/lună), sprijin pentru călătorie ecologică (tren) și burse suplimentare de la universitatea de origine.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="pasi">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <h2>Cum<br>aplici</h2>
+        <p>Procesul are aceeași structură în orice universitate din România — doar termenele și platforma de candidatură
+          diferă.</p>
+      </div>
+      <div class="steps" data-reveal>
+        <div class="step">
+          <div class="step-num">01</div>
+          <h4>Verifici acordurile disponibile</h4>
+          <p>Consulți lista de universități partenere la Departamentul de Relații Internaționale (DRI) sau Biroul
+            Erasmus+ al facultății tale.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <h4>Depui candidatura</h4>
+          <p>CV, scrisoare de motivație, situație școlară și, dacă e cazul, dovada nivelului de limbă — în perioada
+            apelului anual (de regulă februarie–aprilie).</p>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <h4>Treci de selecție</h4>
+          <p>Comisia facultății evaluează dosarele pe baza mediei, motivației și, uneori, a unui interviu. Rezultatele
+            sunt publicate cu drept de contestație.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <h4>Semnezi contractul de studii</h4>
+          <p>Learning Agreement — stabilești împreună cu ambele universități cursurile echivalente care ți se vor
+            recunoaște la întoarcere.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">05</div>
+          <h4>Pleci în mobilitate</h4>
+          <p>Primești grantul în tranșe, te înscrii la universitatea gazdă și, la final, aduci Transcript of Records
+            pentru recunoașterea creditelor.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="calendar">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <h2>Calendarul<br>tipic</h2>
+        <p>Orientativ — fiecare universitate publică datele exacte, dar structura anului rămâne aceeași peste tot în
+          țară.</p>
+      </div>
+      <div class="cal-scroll" data-reveal>
+        <div class="cal-track">
+          <div class="cal-cell">
+            <div class="mono">Feb – Apr</div>
+            <h4>Apel de candidaturi</h4>
+            <p>Depunere dosare pentru semestrul următor.</p>
+          </div>
+          <div class="cal-cell">
+            <div class="mono">Mai</div>
+            <h4>Selecție & rezultate</h4>
+            <p>Interviuri, ierarhizare, alocarea destinațiilor.</p>
+          </div>
+          <div class="cal-cell">
+            <div class="mono">Iun – Iul</div>
+            <h4>Nominalizare</h4>
+            <p>Universitatea gazdă confirmă locul.</p>
+          </div>
+          <div class="cal-cell">
+            <div class="mono">Aug – Sep</div>
+            <h4>Pregătire plecare</h4>
+            <p>Cazare, asigurare, Learning Agreement final.</p>
+          </div>
+          <div class="cal-cell">
+            <div class="mono">Sep/Feb</div>
+            <h4>Începe mobilitatea</h4>
+            <p>Semestrul de toamnă sau de primăvară.</p>
+          </div>
+          <div class="cal-cell">
+            <div class="mono">La final</div>
+            <h4>Recunoaștere</h4>
+            <p>Transcript of Records + raport final online.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <h2>Întrebări<br>frecvente</h2>
+        <p>Răspunsuri valabile indiferent de universitatea la care ești înmatriculat.</p>
+      </div>
+      <div data-reveal>
+        <div class="faq-item">
+          <button class="faq-q">Pot pleca dacă universitatea mea nu are un acord direct cu destinația dorită? <span
+              class="plus">+</span></button>
+          <div class="faq-a">
+            <p>Nu — mobilitatea Erasmus+ se desfășoară exclusiv pe baza acordurilor interinstituționale existente. Poți
+              însă solicita DRI-ului să inițieze un acord nou pentru anii următori.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Grantul acoperă toate cheltuielile? <span class="plus">+</span></button>
+          <div class="faq-a">
+            <p>Grantul este gândit ca sprijin pentru diferența de cost de viață, nu ca acoperire integrală. Majoritatea
+              studenților combină grantul cu economii proprii sau burse suplimentare.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Ce se întâmplă cu bursa de studii din România cât timp sunt plecat? <span
+              class="mono plus">+</span></button>
+          <div class="faq-a">
+            <p>Bursele de merit sau sociale de la universitatea de origine se păstrează pe durata mobilității Erasmus+,
+              conform reglementărilor Ministerului Educației.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Se pot recunoaște automat cursurile urmate afară? <span class="plus">+</span></button>
+          <div class="faq-a">
+            <p>Da, dacă respectă exact Learning Agreement-ul semnat înainte de plecare. Orice modificare ulterioară
+              trebuie aprobată de ambele universități prin „Changes to Learning Agreement”.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Pot face Erasmus+ de mai multe ori? <span class="plus">+</span></button>
+          <div class="faq-a">
+            <p>Da, până la plafonul de 12 luni per ciclu de studiu, indiferent câte mobilități separate însumează acest
+              total.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-final" style="border-bottom:none;">
+    <div class="wrap" data-reveal>
+      <h2>Fiecare universitate din <span class="cut">România</span> are o ușă deschisă spre Europa.</h2>
+      <p>Alianța Universitară Română te ajută să găsești contactul potrivit din biroul Erasmus+ al propriei tale
+        facultăți.</p>
+      <a href="aplica.html" class="btn btn-solid">Găsește biroul Erasmus+ al facultății tale</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap footer-grid">
+      <a href="https://erasmus.aliantauniversitararomana.ro" class="brand" style="text-decoration:none; color:inherit;">
+        <img
+          src="resurse/photo/aur.png"
+          alt="AUR" style="height:26px;">
+        <div class="brand-text">ALIANȚA UNIVERSITARĂ ROMÂNĂ<br><b>Program Erasmus+</b></div>
+      </a>
+      <div class="footer-links">
+        <a href="https://workandtravel.aliantauniversitararomana.ro">Work and Travel →</a>
+        <a href="#ce-este">Program</a>
+        <a href="#faq">Întrebări</a>
+      </div>
+    </div>
+    <div style="text-align: center; margin-top: 40px; font-size: 13px; color: var(--white-dim); padding-bottom: 20px;">
+      Platforma a fost dezvoltată de <a href="https://www.devcore-enterprise.site" target="_blank" style="color: var(--orange); text-decoration: none; font-weight: 600;">DevCore Enterprise</a>
+    </div>
+  </footer>
+
+  <script>
+    // FAQ accordion
+    document.querySelectorAll('.faq-item').forEach(item => {
+      const q = item.querySelector('.faq-q');
+      const a = item.querySelector('.faq-a');
+      q.addEventListener('click', () => {
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(o => {
+          o.classList.remove('open');
+          o.querySelector('.faq-a').style.maxHeight = null;
+        });
+        if (!isOpen) {
+          item.classList.add('open');
+          a.style.maxHeight = a.scrollHeight + 'px';
+        }
+      });
+    });
+
+    // reveal on scroll
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
+  </script>
+
+</body>
+
+</html>

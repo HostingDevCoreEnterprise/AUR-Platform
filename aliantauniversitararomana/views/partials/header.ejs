@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Alianța Universitară Română (AUR) - Oportunități, burse, mobilități și platforme pentru studenții din România. Descoperă avantajele.">
+<meta name="keywords" content="AUR, Alianța Universitară Română, studenți, facultate, burse, erasmus, mobilitate, cazare">
+<meta name="robots" content="index, follow">
+<title><%= typeof title !== 'undefined' ? title : 'Alianța Universitară Română' %></title>
+<link rel="icon" type="image/png" href="/imagini/logo/aur.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<header>
+  <nav>
+    <a href="/" class="brand">
+      <img src="/imagini/logo/aur.png" alt="Logo AUR" class="brand-mark">
+      <span class="brand-text">Alianța Universitară Română</span>
+    </a>
+    <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="/">Acasă</a></li>
+      <li>
+        <a href="/despre">Despre Alianță ▾</a>
+        <div class="dropdown-menu">
+            <a href="/despre">Cine suntem (Carta)</a>
+
+            <a href="/universitati">Rețeaua Națională</a>
+        </div>
+      </li>
+      <li>
+        <a href="#">Oportunități ▾</a>
+        <div class="dropdown-menu">
+            <a href="/burse">Burse și Finanțări</a>
+            <a href="/mobilitate">Mobilitate și Schimburi</a>
+            <a href="/practica">Stagii și Practică</a>
+            <a href="/cazare">Cazare și Cămine</a>
+            <a href="/consiliere">Consiliere & Sănătate</a>
+        </div>
+      </li>
+      <li>
+        <a href="#">Cercetare & Carieră ▾</a>
+        <div class="dropdown-menu">
+            <a href="/cercetare">Cercetare Studențească</a>
+            <a href="/doctorat">Doctorat și Cercetare Avansată</a>
+            <a href="/cariera">Carieră și Angajabilitate</a>
+            <a href="/antreprenoriat">Antreprenoriat Studențesc</a>
+        </div>
+      </li>
+      <li>
+        <a href="#">Viață Studențească ▾</a>
+        <div class="dropdown-menu">
+            <a href="/voluntariat">Voluntariat și Organizații</a>
+            <a href="/evenimente">Evenimente Studențești</a>
+            <a href="/legislatie">Drepturi și Legislație</a>
+        </div>
+      </li>
+      <li><a href="/contact">Contact</a></li>
+      <li><a href="/devin-student" style="color: var(--oxblood-l);">Devin Student</a></li>
+    </ul>
+  </nav>
+</header>
+<script>
+    const menuToggle = document.getElementById('mobileMenuToggle');
+    const navLinks = document.querySelector('.nav-links');
+    if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+    }
+</script>

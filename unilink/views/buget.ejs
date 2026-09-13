@@ -1,0 +1,167 @@
+<%- include('partials/header') %>
+
+<main class="container" style="max-width: 800px; padding-top: 40px;">
+    <div style="text-align: center; margin-bottom: 40px;">
+        <span style="display: inline-block; background: rgba(16, 185, 129, 0.1); color: #10b981; padding: 6px 16px; border-radius: 20px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px;">Modul Nativ</span>
+        <h1 style="font-size: 36px; margin: 0 0 16px 0;">Simulatorul de Buget</h1>
+        <p style="color: var(--text-mut); font-size: 18px; margin: 0;">Descoperă costul real al supraviețuirii în orașul universitar pentru a lua o decizie financiară informată împreună cu părinții tăi.</p>
+    </div>
+
+    <div class="card" style="margin-bottom: 40px;">
+        <h2 style="margin-bottom: 24px; border-bottom: 1px solid var(--border-color); padding-bottom: 12px;">Variabilele Tale</h2>
+        
+        <div style="margin-bottom: 24px;">
+            <label style="display: block; margin-bottom: 8px;">1. Locuire</label>
+            <div class="budget-options">
+                <label style="flex: 1; padding: 16px; border: 2px solid var(--border-color); border-radius: 8px; cursor: pointer; display: flex; align-items: center; gap: 12px; transition: all 0.2s;" id="label_loc_camin">
+                    <input type="radio" name="locuire" value="250" checked onchange="calcBudget()"> 
+                    <div style="display: flex; flex-direction: column;">
+                        <strong>Cămin Studențesc</strong> 
+                        <span style="font-size: 14px; color: var(--text-mut); margin-top: 2px;">(Est. 250 RON)</span>
+                    </div>
+                </label>
+                <label style="flex: 1; padding: 16px; border: 2px solid var(--border-color); border-radius: 8px; cursor: pointer; display: flex; align-items: center; gap: 12px; transition: all 0.2s;" id="label_loc_chirie">
+                    <input type="radio" name="locuire" value="1800" onchange="calcBudget()"> 
+                    <div style="display: flex; flex-direction: column;">
+                        <strong>Chirie Privată</strong> 
+                        <span style="font-size: 14px; color: var(--text-mut); margin-top: 2px;">(Est. 1800 RON)</span>
+                    </div>
+                </label>
+                <label style="flex: 1; padding: 16px; border: 2px solid var(--border-color); border-radius: 8px; cursor: pointer; display: flex; align-items: center; gap: 12px; transition: all 0.2s;">
+                    <input type="radio" name="locuire" value="custom" onchange="calcBudget()"> 
+                    <div style="display: flex; flex-direction: column;">
+                        <strong>Altă sumă:</strong>
+                        <div style="display: flex; align-items: center; gap: 4px; margin-top: 2px;">
+                            <input type="number" id="loc_custom" value="1200" style="width: 80px; padding: 4px; border: 1px solid var(--border-color); border-radius: 4px;" oninput="document.querySelector('input[name=\'locuire\'][value=\'custom\']').checked = true; calcBudget()"> 
+                            <span style="font-size: 14px; color: var(--text-mut);">RON</span>
+                        </div>
+                    </div>
+                </label>
+            </div>
+            <div id="chirie_warning" style="display: none; background: #fffbeb; border: 1px solid #fcd34d; color: #b45309; padding: 12px; border-radius: 6px; margin-top: 12px; font-size: 14px;">
+                <strong>⚠️ Atenție la prima lună!</strong> Pe lângă chiria pe prima lună (1800 RON), va trebui să plătești o garanție egală cu o chirie (1800 RON) și comisionul agenției (aprox. 900 RON). Asta înseamnă un efort financiar de <strong>~4500 RON</strong> doar pentru a te muta!
+            </div>
+        </div>
+
+        <div style="margin-bottom: 24px;">
+            <label style="display: block; margin-bottom: 8px;">2. Alimentație</label>
+            <div class="budget-options">
+                <label style="flex: 1; padding: 16px; border: 2px solid var(--border-color); border-radius: 8px; cursor: pointer; display: flex; align-items: center; gap: 12px;">
+                    <input type="radio" name="mancare" value="900" checked onchange="calcBudget()"> 
+                    <div style="display: flex; flex-direction: column;">
+                        <strong>Gătesc / Cantină</strong> 
+                        <span style="font-size: 14px; color: var(--text-mut); margin-top: 2px;">(Est. 900 RON)</span>
+                    </div>
+                </label>
+                <label style="flex: 1; padding: 16px; border: 2px solid var(--border-color); border-radius: 8px; cursor: pointer; display: flex; align-items: center; gap: 12px;">
+                    <input type="radio" name="mancare" value="1800" onchange="calcBudget()"> 
+                    <div style="display: flex; flex-direction: column;">
+                        <strong>Comand des</strong> 
+                        <span style="font-size: 14px; color: var(--text-mut); margin-top: 2px;">(Est. 1800 RON)</span>
+                    </div>
+                </label>
+                <label style="flex: 1; padding: 16px; border: 2px solid var(--border-color); border-radius: 8px; cursor: pointer; display: flex; align-items: center; gap: 12px;">
+                    <input type="radio" name="mancare" value="custom" onchange="calcBudget()"> 
+                    <div style="display: flex; flex-direction: column;">
+                        <strong>Altă sumă:</strong>
+                        <div style="display: flex; align-items: center; gap: 4px; margin-top: 2px;">
+                            <input type="number" id="man_custom" value="1300" style="width: 80px; padding: 4px; border: 1px solid var(--border-color); border-radius: 4px;" oninput="document.querySelector('input[name=\'mancare\'][value=\'custom\']').checked = true; calcBudget()"> 
+                            <span style="font-size: 14px; color: var(--text-mut);">RON</span>
+                        </div>
+                    </div>
+                </label>
+            </div>
+        </div>
+
+        <div style="margin-bottom: 24px;">
+            <label style="display: block; margin-bottom: 8px;">3. Transport</label>
+            <div class="budget-options">
+                <label style="flex: 1; padding: 16px; border: 2px solid var(--border-color); border-radius: 8px; cursor: pointer; display: flex; align-items: center; gap: 12px;">
+                    <input type="radio" name="transport" value="0" checked onchange="calcBudget()"> 
+                    <div style="display: flex; flex-direction: column;">
+                        <strong>Subvenționat 90% (CFR + Local)</strong> 
+                        <span style="font-size: 14px; color: var(--text-mut); margin-top: 2px;">(Est. 0 RON)</span>
+                    </div>
+                </label>
+                <label style="flex: 1; padding: 16px; border: 2px solid var(--border-color); border-radius: 8px; cursor: pointer; display: flex; align-items: center; gap: 12px;">
+                    <input type="radio" name="transport" value="300" onchange="calcBudget()"> 
+                    <div style="display: flex; flex-direction: column;">
+                        <strong>Mașină personală / Bolt</strong> 
+                        <span style="font-size: 14px; color: var(--text-mut); margin-top: 2px;">(Est. 300 RON)</span>
+                    </div>
+                </label>
+                <label style="flex: 1; padding: 16px; border: 2px solid var(--border-color); border-radius: 8px; cursor: pointer; display: flex; align-items: center; gap: 12px;">
+                    <input type="radio" name="transport" value="custom" onchange="calcBudget()"> 
+                    <div style="display: flex; flex-direction: column;">
+                        <strong>Altă sumă:</strong>
+                        <div style="display: flex; align-items: center; gap: 4px; margin-top: 2px;">
+                            <input type="number" id="trans_custom" value="150" style="width: 80px; padding: 4px; border: 1px solid var(--border-color); border-radius: 4px;" oninput="document.querySelector('input[name=\'transport\'][value=\'custom\']').checked = true; calcBudget()"> 
+                            <span style="font-size: 14px; color: var(--text-mut);">RON</span>
+                        </div>
+                    </div>
+                </label>
+            </div>
+        </div>
+        
+        <div style="margin-bottom: 24px;">
+            <label style="display: block; margin-bottom: 8px;">4. Costuri Diverse (Ieșiri, materiale studiu, haine)</label>
+            <input type="range" id="diverse" min="200" max="1500" step="50" value="500" style="width: 100%; accent-color: #10b981;" oninput="calcBudget()">
+            <div style="text-align: right; color: var(--text-mut); font-weight: 600; font-size: 14px; margin-top: 8px;"><span id="diverse_val">500</span> RON / lună</div>
+        </div>
+    </div>
+
+    <div class="card" style="text-align: center; border: 2px solid #10b981; background: white; margin-bottom: 80px;">
+        <p style="color: var(--text-mut); text-transform: uppercase; letter-spacing: 1px; font-size: 14px; font-weight: 700; margin: 0 0 8px 0;">Bugetul Tău Lunar Estimat</p>
+        <div style="font-size: 64px; font-weight: 800; color: #10b981; margin-bottom: 16px; line-height: 1;">
+            <span id="total_buget">1650</span> <span style="font-size: 24px;">RON</span>
+        </div>
+        <p style="color: var(--text-mut); margin: 0; font-size: 15px;">Asta înseamnă aproximativ <span id="total_euro" style="font-weight: bold; color: var(--text-main);">330</span> EUR pe lună.</p>
+    </div>
+</main>
+
+<script>
+    function calcBudget() {
+        let locuire = document.querySelector('input[name="locuire"]:checked').value;
+        if (locuire === 'custom') locuire = parseInt(document.getElementById('loc_custom').value) || 0;
+        else locuire = parseInt(locuire);
+
+        let mancare = document.querySelector('input[name="mancare"]:checked').value;
+        if (mancare === 'custom') mancare = parseInt(document.getElementById('man_custom').value) || 0;
+        else mancare = parseInt(mancare);
+
+        let transport = document.querySelector('input[name="transport"]:checked').value;
+        if (transport === 'custom') transport = parseInt(document.getElementById('trans_custom').value) || 0;
+        else transport = parseInt(transport);
+        const diverse = parseInt(document.getElementById('diverse').value);
+        
+        document.getElementById('diverse_val').textContent = diverse;
+        
+        const total = locuire + mancare + transport + diverse;
+        document.getElementById('total_buget').textContent = total;
+        document.getElementById('total_euro').textContent = Math.round(total / 5);
+
+        const chirieWarning = document.getElementById('chirie_warning');
+        if (locuire === 1800) {
+            chirieWarning.style.display = 'block';
+        } else {
+            chirieWarning.style.display = 'none';
+        }
+        
+        // Highlight active labels
+        document.querySelectorAll('input[type="radio"]').forEach(radio => {
+            const label = radio.parentElement;
+            if (radio.checked) {
+                label.style.borderColor = '#10b981';
+                label.style.backgroundColor = 'rgba(16, 185, 129, 0.05)';
+            } else {
+                label.style.borderColor = 'var(--border-color)';
+                label.style.backgroundColor = 'white';
+            }
+        });
+    }
+
+    // Run once on load
+    document.addEventListener('DOMContentLoaded', calcBudget);
+</script>
+
+<%- include('partials/footer') %>

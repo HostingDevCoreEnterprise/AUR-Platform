@@ -1,0 +1,84 @@
+<%- include('partials/header') %>
+
+<main class="container">
+    <div style="margin-bottom: 40px;">
+        <h1 style="margin-bottom: 8px;">Catalogul Universităților</h1>
+        <p style="color: var(--text-mut); margin-top: 0;">Găsește instituția perfectă pentru tine. Caută după nume, acronim sau oraș.</p>
+    </div>
+
+    <!-- Search Bar -->
+    <div class="card" style="margin-bottom: 40px; padding: 20px;">
+        <input type="text" id="searchInput" class="form-control" placeholder="Caută o universitate..." style="font-size: 18px; padding: 16px;">
+    </div>
+
+    <% 
+        const deStat = universities.filter(u => u.type === 'Stat');
+        const privateUni = universities.filter(u => u.type === 'Privat');
+    %>
+
+    <h2 style="margin-top: 40px; margin-bottom: 24px; color: var(--text-main); border-bottom: 2px solid var(--border-color); padding-bottom: 12px;">Universități de Stat</h2>
+    <div class="card-grid" style="margin-bottom: 40px;">
+        <% deStat.forEach(function(uni) { %>
+            <div class="card uni-card" style="display: flex; flex-direction: column; height: 100%; border-top: 4px solid var(--unilink-orange);" data-name="<%= uni.name.toLowerCase() %>" data-acronym="<%= uni.acronym ? uni.acronym.toLowerCase() : '' %>" data-city="<%= uni.city ? uni.city.toLowerCase() : '' %>">
+                <% if (uni.logo_path) { %>
+                    <div style="height: 100px; display: flex; align-items: center; margin-bottom: 16px;">
+                        <img src="<%= uni.logo_path %>" alt="<%= uni.acronym %> Logo" class="uni-logo" style="max-width: 120px; max-height: 80px; object-fit: contain; margin: 0;" onerror="this.src='/imagini/logo/default.png';">
+                    </div>
+                <% } %>
+                <h3 style="font-size: 18px; margin-bottom: 8px; color: var(--text-main);"><%= uni.name %></h3>
+                <p style="font-size: 14px; margin-bottom: 16px; flex-grow: 1; color: var(--text-mut);">
+                    <strong>Tip:</strong> <%= uni.type %><br>
+                    <strong>Județ:</strong> <%= uni.county %><br>
+                    <strong>Oraș:</strong> <%= uni.city %>
+                </p>
+                <% if (locals.user) { %>
+                    <a href="<%= uni.url %>" target="_blank" class="btn-outline-blue" style="text-align: center; display: block; width: 100%;">Aplicație Oficială</a>
+                <% } else { %>
+                    <a href="/login" class="btn-outline-blue" style="text-align: center; display: block; width: 100%; border-style: dashed;">Login pentru a aplica</a>
+                <% } %>
+            </div>
+        <% }); %>
+    </div>
+
+    <h2 style="margin-top: 60px; margin-bottom: 24px; color: var(--text-main); border-bottom: 2px solid var(--border-color); padding-bottom: 12px;">Universități Private</h2>
+    <div class="card-grid" style="margin-bottom: 40px;">
+        <% privateUni.forEach(function(uni) { %>
+            <div class="card uni-card" style="display: flex; flex-direction: column; height: 100%; border-top: 4px solid #4f46e5;" data-name="<%= uni.name.toLowerCase() %>" data-acronym="<%= uni.acronym ? uni.acronym.toLowerCase() : '' %>" data-city="<%= uni.city ? uni.city.toLowerCase() : '' %>">
+                <!-- Universitățile private nu au logo afișat conform instrucțiunilor -->
+                <h3 style="font-size: 18px; margin-bottom: 8px; color: var(--text-main);"><%= uni.name %></h3>
+                <p style="font-size: 14px; margin-bottom: 16px; flex-grow: 1; color: var(--text-mut);">
+                    <strong>Tip:</strong> <%= uni.type %><br>
+                    <strong>Județ:</strong> <%= uni.county %><br>
+                    <strong>Oraș:</strong> <%= uni.city %>
+                </p>
+                <% if (locals.user) { %>
+                    <a href="<%= uni.url %>" target="_blank" class="btn-outline-blue" style="text-align: center; display: block; width: 100%;">Aplicație Oficială</a>
+                <% } else { %>
+                    <a href="/login" class="btn-outline-blue" style="text-align: center; display: block; width: 100%; border-style: dashed;">Login pentru a aplica</a>
+                <% } %>
+            </div>
+        <% }); %>
+    </div>
+</main>
+
+<script>
+    const searchInput = document.getElementById('searchInput');
+    const uniCards = document.querySelectorAll('.uni-card');
+
+    searchInput.addEventListener('input', function() {
+        const val = this.value.toLowerCase().trim();
+        uniCards.forEach(card => {
+            const name = card.getAttribute('data-name');
+            const acronym = card.getAttribute('data-acronym');
+            const city = card.getAttribute('data-city');
+
+            if (name.includes(val) || acronym.includes(val) || city.includes(val)) {
+                card.style.display = 'flex';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    });
+</script>
+
+<%- include('partials/footer') %>

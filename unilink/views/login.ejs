@@ -1,0 +1,41 @@
+<%- include('partials/header') %>
+
+<div class="auth-split-container">
+    <div class="auth-split-image" style="background-image: url('/imagini/sistem-informatic.jpg');">
+        <div class="auth-split-image-overlay">
+            <h2 class="auth-split-image-text">Bine ai revenit pe UniLink</h2>
+            <p style="color: rgba(255,255,255,0.8); font-size: 18px; text-align: center; max-width: 400px;">
+                Platforma unică pentru ecosistemul universitar românesc.
+            </p>
+        </div>
+    </div>
+    <div class="auth-split-form-wrapper">
+        <div class="auth-split-form">
+            <h2 style="font-size: 32px; font-weight: 800; color: var(--text-main); margin-bottom: 8px;">Autentificare</h2>
+            <p style="color: var(--text-mut); margin-bottom: 32px;">Introdu detaliile contului tău mai jos.</p>
+            
+            <% if (locals.error) { %>
+                <div class="alert-error">
+                    <%= error %>
+                </div>
+            <% } %>
+
+            <form action="/login" method="POST">
+                <div>
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" class="form-control" required placeholder="nume@exemplu.ro">
+                </div>
+                <div>
+                    <label for="password">Parolă</label>
+                    <input type="password" id="password" name="password" class="form-control" required placeholder="••••••••">
+                </div>
+                <button type="submit" class="btn-primary" style="width: 100%; padding: 14px; font-size: 16px; margin-top: 16px; justify-content: center;">Intră în cont</button>
+            </form>
+            <p style="text-align: center; margin-top: 32px; color: var(--text-mut);">
+                Nu ai un cont? <a href="/register" style="color: var(--unilink-orange); font-weight: 600; text-decoration: none;">Creează cont nou</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer') %>

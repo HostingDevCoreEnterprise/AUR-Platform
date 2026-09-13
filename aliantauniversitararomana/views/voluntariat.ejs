@@ -1,0 +1,347 @@
+<%- include('partials/header') %>
+
+<style>
+/* Hero Section */
+.hero-banner {
+    position: relative;
+    width: 100%;
+    height: 450px;
+    border-bottom: 1px solid var(--line-d);
+    overflow: hidden;
+    background: #000;
+}
+.hero-banner .hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.4) grayscale(0.2);
+    transition: filter 0.3s;
+}
+.hero-banner .hero-img:hover {
+    filter: brightness(0.6) grayscale(0);
+}
+
+.hero-text-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 100%;
+    max-width: 1000px;
+    padding: 0 20px;
+    z-index: 10;
+    pointer-events: none;
+}
+.hero-text-overlay h1 {
+    font-size: clamp(36px, 5vw, 54px);
+    color: var(--tx-light);
+    margin-bottom: 16px;
+    text-shadow: 0 4px 10px rgba(0,0,0,0.8);
+}
+.hero-text-overlay p {
+    font-size: clamp(18px, 2vw, 24px);
+    color: var(--tx-light-mut);
+    text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+}
+
+/* Sections */
+.section-title {
+    font-size: 28px;
+    color: var(--tx-light);
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--oxblood-l);
+    display: inline-block;
+}
+
+.tech-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.tech-list li {
+    position: relative;
+    padding-left: 24px;
+    margin-bottom: 16px;
+    color: var(--tx-light-mut);
+    line-height: 1.6;
+}
+.tech-list li::before {
+    content: "▹";
+    position: absolute;
+    left: 0;
+    color: var(--oxblood-l);
+}
+
+/* 3 Federation Cards */
+.fed-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 32px;
+    margin-bottom: 80px;
+}
+.fed-card {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid var(--line-d);
+    border-radius: 12px;
+    padding: 32px;
+    transition: transform 0.3s, border-color 0.3s;
+}
+.fed-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--oxblood-l);
+}
+.fed-logo {
+    height: 80px;
+    object-fit: contain;
+    background: rgba(255,255,255,0.9);
+    padding: 8px;
+    border-radius: 8px;
+    margin-bottom: 24px;
+}
+.fed-card h4 {
+    color: var(--tx-light);
+    font-size: 22px;
+    margin-bottom: 16px;
+}
+.fed-card p {
+    color: var(--tx-light-mut);
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+/* Smart Search Box */
+.search-container {
+    background: rgba(243,146,0,0.05);
+    border: 1px solid var(--oxblood-l);
+    border-radius: 12px;
+    padding: 40px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+.search-container h4 {
+    color: var(--tx-light);
+    font-size: 24px;
+    margin-bottom: 16px;
+}
+.search-box {
+    display: flex;
+    max-width: 600px;
+    margin: 0 auto;
+    gap: 12px;
+}
+.search-box input {
+    flex: 1;
+    padding: 16px;
+    border-radius: 8px;
+    border: 1px solid var(--line-d);
+    background: rgba(0,0,0,0.3);
+    color: var(--tx-light);
+    font-size: 16px;
+}
+.search-box button {
+    padding: 16px 32px;
+    border-radius: 8px;
+    border: none;
+    background: var(--oxblood-l);
+    color: var(--tx-light);
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: filter 0.3s;
+}
+.search-box button:hover {
+    filter: brightness(1.2);
+}
+
+/* Int Orgs Grid */
+.int-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+    margin-bottom: 80px;
+}
+.int-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--line-d);
+    border-radius: 12px;
+    padding: 24px;
+    text-align: left;
+}
+.int-card h5 {
+    color: var(--tx-light);
+    font-size: 20px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.icon-placeholder {
+    width: 40px; height: 40px;
+    border-radius: 8px;
+    background: var(--line-d);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: var(--tx-light);
+}
+</style>
+
+<div class="fade-in-up">
+    <!-- Hero / Banner -->
+    <div class="hero-banner">
+        <img src="/imagini/studenti/voluntariat.jpg" alt="Voluntariat si Reprezentare Studenteasca" class="hero-img">
+        <div class="hero-text-overlay">
+            <h1>Vocea Ta Contează: Ecosistemul de Voluntariat Studențesc</h1>
+            <p>Nu trece prin facultate ca un simplu spectator. Fii parte din mișcarea care schimbă legi, apără drepturi și construiește lideri. Găsește-ți locul în cea mai vibrantă comunitate!</p>
+        </div>
+    </div>
+
+    <main class="content-area" style="max-width: 1100px; margin: 0 auto; padding-top: 80px; padding-bottom: 60px;">
+
+        <!-- 1. De ce sa faci voluntariat -->
+        <h2 class="section-title">1. De ce să faci voluntariat în facultate?</h2>
+        <p style="color: var(--tx-light-mut); font-size: 16px; margin-bottom: 24px; line-height: 1.6;">A fi student înseamnă mai mult decât a obține credite și a trece examene. Piața muncii s-a schimbat, iar angajatorii caută absolvenți care știu să comunice, să gestioneze crize și să lucreze în echipă. Voluntariatul îți oferă exact acest „laborator” practic, complet gratuit.</p>
+        
+        <ul class="tech-list" style="margin-bottom: 80px;">
+            <li><strong style="color: var(--tx-light);">Networking real:</strong> Îți vei face prieteni din toate anii și din toate facultățile. Rețeaua ta de contacte va fi inestimabilă după absolvire.</li>
+            <li><strong style="color: var(--tx-light);">Dezvoltare accelerată (Soft Skills):</strong> Vei învăța să organizezi evenimente cu bugete de mii de euro, să negociezi parteneriate, să vorbești în public și să conduci echipe.</li>
+            <li><strong style="color: var(--tx-light);">Puterea de a schimba sistemul:</strong> Prin organizațiile de reprezentare, ai drept de vot în deciziile universității. Poți lupta pentru cămine mai bune, burse mai mari și evaluări corecte.</li>
+        </ul>
+
+        <!-- 2. Cele 3 Mari Federatii -->
+        <h2 class="section-title">2. Cele 3 Mari Federații Naționale („Umbrelele” Mișcării)</h2>
+        <p style="color: var(--tx-light-mut); font-size: 16px; margin-bottom: 40px; line-height: 1.6;">La nivel național, asociațiile și ligile studențești s-au coagulat în trei mari structuri de forță. Aceste federații sunt recunoscute prin lege ca parteneri de dialog social și negociază direct cu Guvernul, Ministerul Educației și Parlamentul României.</p>
+
+        <div class="fed-grid">
+            <div class="fed-card">
+                <img src="/imagini/logo/anosr.png" alt="ANOSR" class="fed-logo">
+                <h4>ANOSR</h4>
+                <p><strong>Cine sunt:</strong> Cea mai mare și reprezentativă federație la nivel național și singura structură din România membră cu drepturi depline în European Students’ Union (ESU).</p>
+                <p><strong>Ce fac:</strong> ANOSR este recunoscută istoric pentru forța sa de negociere în zona drepturilor studențești (sunt cei care au obținut subvențiile pentru transportul feroviar și respectarea regulii de 25% reprezentare). Se axează masiv pe politicile educaționale, implementarea procesului Bologna și apărarea drepturilor studentului.</p>
+            </div>
+            
+            <div class="fed-card">
+                <img src="/imagini/logo/unsr.png" alt="UNSR" class="fed-logo">
+                <h4>UNSR</h4>
+                <p><strong>Cine sunt:</strong> O federație cu rădăcini puternice, coagulând în special ligile din universitățile tehnice, politehnici, centre de medicină, dar și din zone umaniste.</p>
+                <p><strong>Ce fac:</strong> Au o abordare extrem de pragmatică, militând neobosit pentru îmbunătățirea infrastructurii fizice: modernizarea căminelor, calitatea cantinelor și mărirea fondului de burse. Organizează congrese de amploare și creează festivaluri gigantice studențești.</p>
+            </div>
+            
+            <div class="fed-card">
+                <img src="/imagini/logo/usr.png" alt="USR" class="fed-logo">
+                <h4>USR</h4>
+                <p><strong>Cine sunt:</strong> O federație extrem de dinamică, care unește o diversitate uriașă de asociații din toată țara, recunoscută pentru campaniile masive de tineret și educație non-formală.</p>
+                <p><strong>Ce fac:</strong> USR se distinge prin proiecte naționale vizionare (festivalul național uniFEST, ecologizare - Studenții Plantează, tabere - Summer Camp USR, academii de training). Echipele lor pun un accent deosebit pe sănătatea mentală, sport, cultură și dezvoltarea sustenabilă.</p>
+            </div>
+        </div>
+
+        <!-- 3. Liga Locala -->
+        <h2 class="section-title">3. Găsește-ți Liga Locală! (Universitate & Facultate)</h2>
+        <p style="color: var(--tx-light-mut); font-size: 16px; margin-bottom: 24px; line-height: 1.6;">Marile federații naționale nu există în vid; ele sunt formate din sute de asociații locale. Prima ta interacțiune cu voluntariatul nu va fi la București, la minister, ci chiar pe holul facultății tale!</p>
+
+        <!-- Smart Search Redirect -->
+        <div class="search-container">
+            <h4>Caută liga facultății tale</h4>
+            <p style="color: var(--tx-light-mut); margin-bottom: 24px;">Exemplu: "Litere Universitatea București" sau "Automatica UPB"</p>
+            <div class="search-box">
+                <input type="text" id="ligaSearchInput" placeholder="Introduceți facultatea și universitatea...">
+                <button onclick="searchLiga()">Caută Organizația</button>
+            </div>
+        </div>
+
+        <script>
+        function searchLiga() {
+            const query = document.getElementById('ligaSearchInput').value.trim();
+            if(!query) return;
+            // Smart Redirect logic as requested
+            // Query: ("Liga studentilor" OR "Asociatia studentilor" OR "Organizatia studentilor") [query]
+            const searchQuery = `("Liga studentilor" OR "Asociatia studentilor" OR "Organizatia studentilor") ${query}`;
+            const googleUrl = `https://www.google.com/search?q=${encodeURIComponent(searchQuery)}`;
+            window.open(googleUrl, '_blank');
+        }
+        </script>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 32px;">
+            <img src="/imagini/studenti/asociatii studenti 1.jpeg" alt="Asociatii locale 1" style="width: 100%; height: 300px; object-fit: cover; border-radius: 12px; border: 1px solid var(--line-d);">
+            <img src="/imagini/studenti/asociatii studenti 2.jpeg" alt="Asociatii locale 2" style="width: 100%; height: 300px; object-fit: cover; border-radius: 12px; border: 1px solid var(--line-d);">
+        </div>
+
+        <p style="color: var(--tx-light-mut); margin-bottom: 16px;"><strong>Sindicatul tău studențesc:</strong> Aproape fiecare facultate din România are o ligă sau o asociație proprie. Cum te ajută concret?</p>
+        <ul class="tech-list" style="margin-bottom: 80px;">
+            <li>Organizează Săptămâna Bobocului și legendarul Bal al Bobocilor.</li>
+            <li>Oferă sesiuni de pregătire (te învață cum să treci la examenele grele cu anumiți profesori).</li>
+            <li>Te reprezintă direct în Consiliul Facultății. Dacă un profesor face abuzuri la curs, Liga este prima care te apără.</li>
+            <li><strong>Cum intri?</strong> Toamna și primăvara, asociațiile organizează Campanii de Recrutare. Completezi un formular, treci un interviu prietenos și ești gata de acțiune.</li>
+        </ul>
+
+        <!-- 4. Organizatii Internationale -->
+        <h2 class="section-title">4. Organizații Internaționale și de Profil (Networking Global)</h2>
+        <p style="color: var(--tx-light-mut); font-size: 16px; margin-bottom: 40px; line-height: 1.6;">Dacă vrei ca experiența ta de voluntariat să aibă un impact global sau strict axat pe profesia ta, ecosistemul universitar găzduiește filiale ale celor mai mari ONG-uri internaționale:</p>
+
+        <style>
+        .int-logo {
+            height: 40px;
+            object-fit: contain;
+            background: rgba(255,255,255,0.9);
+            padding: 4px;
+            border-radius: 8px;
+        }
+        .civic-logo {
+            height: 50px;
+            object-fit: contain;
+            background: rgba(255,255,255,0.9);
+            padding: 4px;
+            border-radius: 8px;
+            margin-right: 16px;
+        }
+        </style>
+
+        <div class="int-grid">
+            <div class="int-card">
+                <h5><img src="/imagini/logo/AIESEC.png" alt="AIESEC" class="int-logo"> AIESEC</h5>
+                <p style="color: var(--tx-light-mut); font-size: 14px;"><strong>Profil:</strong> Prezentă în majoritatea universităților mari. Nu este limitată la un domeniu.<br><br><strong>Activitate:</strong> Se axează pe leadership și schimburi internaționale (Global Volunteer, Global Talent).</p>
+            </div>
+            
+            <div class="int-card">
+                <h5><img src="/imagini/logo/ELSA.png" alt="ELSA" class="int-logo"> ELSA</h5>
+                <p style="color: var(--tx-light-mut); font-size: 14px;"><strong>Profil:</strong> Exclusiv pentru studenții facultăților de Drept.<br><br><strong>Activitate:</strong> Organizează procese simulate (Moot Courts), dezbateri academice și schimburi europene, o intrare directă în avocatură.</p>
+            </div>
+
+            <div class="int-card">
+                <h5><img src="/imagini/logo/EESTEC.png" alt="EESTEC" class="int-logo"> BEST & EESTEC</h5>
+                <p style="color: var(--tx-light-mut); font-size: 14px;"><strong>Profil:</strong> Dedicate studenților din universitățile Tehnice și de Inginerie.<br><br><strong>Activitate:</strong> Transformă ingineria în spectacol prin cursuri de vară în Europa, hackathoane și târguri de carieră (EBEC).</p>
+            </div>
+
+            <div class="int-card">
+                <h5><img src="/imagini/logo/FASMR.png" alt="FASMR" class="int-logo"> FASMR & SSCR</h5>
+                <p style="color: var(--tx-light-mut); font-size: 14px;"><strong>Profil:</strong> Exclusiv Medicină și Farmacie.<br><br><strong>Activitate:</strong> Campanii gigantice de sănătate publică și workshop-uri chirurgicale de bază, suturi pe țesut și microchirurgie.</p>
+            </div>
+        </div>
+
+        <!-- 5. Voluntariat Civic -->
+        <h2 class="section-title">5. Voluntariat Civic și de Situații de Urgență</h2>
+        <p style="color: var(--tx-light-mut); font-size: 16px; margin-bottom: 24px; line-height: 1.6;">Dincolo de asociațiile studențești clasice, mediul universitar colaborează cu structuri esențiale ale statului. Aici, voluntariatul tău salvează la propriu vieți:</p>
+        
+        <div style="background: rgba(255,255,255,0.02); border-left: 4px solid var(--oxblood-l); padding: 24px; margin-bottom: 24px; display: flex; align-items: flex-start; gap: 16px;">
+            <img src="/imagini/logo/smurd.png" alt="SMURD" class="civic-logo">
+            <div>
+                <h4 style="color: var(--tx-light); margin-top: 0;">Programul „Salvator din Pasiune” (IGSU / DSU / SMURD)</h4>
+                <p style="color: var(--tx-light-mut); margin-bottom: 0;">Un program de elită, deschis studenților de la orice profil (nu doar celor de la medicină). După efectuarea cursurilor teoretice și practice de prim-ajutor, poți deveni voluntar activ pe ambulanțele SMURD. Vei face gărzi alături de paramedici și vei participa la intervenții reale (accidente, urgențe medicale). Este o experiență definitorie recunoscută cu respect de angajatori.</p>
+            </div>
+        </div>
+
+        <div style="background: rgba(255,255,255,0.02); border-left: 4px solid var(--oxblood-l); padding: 24px; display: flex; align-items: flex-start; gap: 16px;">
+            <img src="/imagini/logo/crucea-rosie.png" alt="Crucea Rosie" class="civic-logo">
+            <div>
+                <h4 style="color: var(--tx-light); margin-top: 0;">Crucea Roșie Română</h4>
+                <p style="color: var(--tx-light-mut); margin-bottom: 0;">Echipele de intervenție la dezastre (Detașamentele de Intervenție) din marile centre universitare sunt formate într-o proporție uriașă din studenți voluntari. Aici înveți prim-ajutor avansat, logistică de urgență și participi la campanii de sprijinire a comunităților vulnerabile.</p>
+            </div>
+        </div>
+
+    </main>
+</div>
+
+<%- include('partials/footer') %>

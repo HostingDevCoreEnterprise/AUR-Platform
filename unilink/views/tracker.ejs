@@ -1,0 +1,353 @@
+<%- include('partials/header') %>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+<main class="container" style="max-width: 1000px; padding-top: 40px;">
+    <div style="text-align: center; margin-bottom: 40px;">
+        <span style="display: inline-block; background: rgba(230,115,0,0.1); color: var(--unilink-orange); padding: 6px 16px; border-radius: 20px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px;">Modul Nativ</span>
+        <h1 style="font-size: 36px; margin: 0 0 16px 0;">Tracker Universități</h1>
+        <p style="color: var(--text-mut); font-size: 18px; margin: 0;">Gestionează-ți opțiunile. Adaugă programele la care vrei să aplici și urmărește statusul fiecăruia.</p>
+    </div>
+
+    <% 
+        let totalAplicatii = applications.length;
+        let totalAdmis = applications.filter(a => a.status === 'Admis' || a.status === 'Loc Confirmat').length;
+        let totalRespins = applications.filter(a => a.status === 'Respins').length;
+        let hasConfirmedSeat = applications.some(a => a.status === 'Loc Confirmat');
+    %>
+
+    <!-- Stats Box for Social Media -->
+    <div id="stats_export_area" class="card stats-export-area" style="margin-bottom: 40px; border: 2px solid var(--border-color); background: linear-gradient(135deg, #1a1a1a, #333); color: white;">
+        <div style="text-align: center;">
+            <div style="font-size: 48px; font-weight: 800; color: white;"><%= totalAplicatii %></div>
+            <div style="font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.7);">Aplicații</div>
+        </div>
+        <div style="width: 1px; height: 60px; background: rgba(255,255,255,0.2);"></div>
+        <div style="text-align: center;">
+            <div style="font-size: 48px; font-weight: 800; color: #10b981;"><%= totalAdmis %></div>
+            <div style="font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.7);">Admis</div>
+        </div>
+        <div style="width: 1px; height: 60px; background: rgba(255,255,255,0.2);"></div>
+        <div style="text-align: center;">
+            <div style="font-size: 48px; font-weight: 800; color: #ef4444;"><%= totalRespins %></div>
+            <div style="font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.7);">Respins</div>
+        </div>
+    </div>
+    
+    <!-- Global Share Stats Modal -->
+    <div style="text-align: center; margin-bottom: 40px;">
+        <button onclick="openShareModal('stats_export_area', 'UniLink-Stats')" class="btn-primary" style="background-color: #8b5cf6; border-color: #8b5cf6;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px; vertical-align: middle;"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+            Distribuie Statisticile
+        </button>
+    </div>
+
+    <!-- The Share Format Modal (Hidden by default) -->
+    <div id="share_modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center;">
+        <div style="background: white; padding: 24px; border-radius: 12px; max-width: 500px; width: 90%; text-align: center; position: relative;">
+            <button onclick="closeShareModal()" style="position: absolute; right: 16px; top: 16px; background: none; border: none; font-size: 24px; cursor: pointer; color: var(--text-mut);">&times;</button>
+            <h3 style="margin-top: 0; font-size: 20px;">Alege Formatul pentru Social Media</h3>
+            <p style="color: var(--text-mut); font-size: 14px; margin-bottom: 24px;">Selectează formatul potrivit pentru platforma ta.</p>
+            <div style="display: flex; justify-content: center; gap: 16px;">
+                <button onclick="triggerExport('9:16')" class="btn-outline-blue" style="flex: 1; padding: 16px;">Story<br><small>(9:16)</small></button>
+                <button onclick="triggerExport('1:1')" class="btn-outline-blue" style="flex: 1; padding: 16px;">Postare<br><small>(1:1)</small></button>
+                <button onclick="triggerExport('16:9')" class="btn-outline-blue" style="flex: 1; padding: 16px;">Landscape<br><small>(16:9)</small></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Application Form -->
+    <div class="card" style="margin-bottom: 40px; background: #f9f9fb;">
+        <h3 style="margin-bottom: 16px;">Adaugă o facultate nouă</h3>
+        <form action="/api/applications" method="POST" style="display: flex; flex-wrap: wrap; gap: 16px; align-items: end;">
+            <div style="flex: 2; min-width: 200px;">
+                <label for="university_name">Universitatea</label>
+                <div style="position: relative;">
+                    <select id="university_name" name="university_name" class="form-control" required style="margin-bottom: 0; appearance: none; padding-right: 32px; background-color: white; border-color: #cbd5e1;">
+                        <option value="">Alege din lista...</option>
+                        <% universities.forEach(function(u) { %>
+                            <option value="<%= u.name %>"><%= u.acronym %> - <%= u.name %></option>
+                        <% }); %>
+                    </select>
+                    <svg style="position: absolute; right: 12px; top: 14px; pointer-events: none; color: #94a3b8;" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </div>
+            </div>
+            <div style="flex: 2; min-width: 150px;">
+                <label for="faculty_name">Facultatea</label>
+                <input type="text" id="faculty_name" name="faculty_name" class="form-control" placeholder="Ex: Facultatea de Litere" style="margin-bottom: 0; background-color: white; border-color: #cbd5e1;">
+            </div>
+            <div style="flex: 2; min-width: 150px;">
+                <label for="program_name">Programul de Studiu</label>
+                <input type="text" id="program_name" name="program_name" class="form-control" placeholder="Ex: Comunicare" required style="margin-bottom: 0; background-color: white; border-color: #cbd5e1;">
+            </div>
+            <div>
+                <label for="grade">Nota (Opțional)</label>
+                <input type="number" step="0.01" id="grade" name="grade" class="form-control" placeholder="Ex: 9.50" style="margin-bottom: 0; background-color: white; border-color: #cbd5e1;">
+            </div>
+            <div>
+                <button type="submit" class="btn-primary" style="padding: 12px 24px; margin-bottom: 0; height: 46px;">Adaugă</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Application List -->
+    <h3 style="margin-bottom: 16px; border-bottom: 2px solid var(--border-color); padding-bottom: 8px;">Lista ta de aplicații</h3>
+    
+    <% if (applications.length > 0) { %>
+        <div style="display: flex; flex-direction: column; gap: 16px; margin-bottom: 80px;">
+            <% applications.forEach(function(app) { %>
+                <% let isGrayedOut = hasConfirmedSeat && app.status !== 'Loc Confirmat'; %>
+                <div style="background: white; border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.02); position: relative; <%= isGrayedOut ? 'opacity: 0.5; pointer-events: none; filter: grayscale(100%);' : '' %>">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 16px;">
+                        
+                        <!-- Individual Export Area (Hidden from view usually, we will style it to look good when exported) -->
+                        <div id="export_app_<%= app.id %>" style="flex-grow: 1; padding: 12px; background: white; border-radius: 8px;">
+                            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 4px;">
+                                <h4 style="margin: 0; font-size: 18px; color: var(--text-main);"><%= app.program_name %></h4>
+                                <% if (app.grade) { %>
+                                    <span style="background: #e0e7ff; color: #4338ca; padding: 2px 8px; border-radius: 12px; font-size: 12px; font-weight: 700;">Nota: <%= app.grade %></span>
+                                <% } %>
+                                <% if (app.status === 'Admis') { %>
+                                    <span style="background: #ecfdf5; color: #059669; padding: 2px 8px; border-radius: 12px; font-size: 12px; font-weight: 700;">ADMIS</span>
+                                <% } else if (app.status === 'Loc Confirmat') { %>
+                                    <span style="background: #dcfce7; color: #166534; padding: 2px 8px; border-radius: 12px; font-size: 12px; font-weight: 700;">LOC CONFIRMAT</span>
+                                <% } %>
+                            </div>
+                            <p style="margin: 0; color: var(--text-mut); font-size: 14px; font-weight: 600;"><%= app.faculty_name %></p>
+                            <p style="margin: 0; color: var(--text-mut); font-size: 14px;"><%= app.university_name %></p>
+                            
+                            <% if (app.university_url) { %>
+                                <a href="<%= app.university_url %>" target="_blank" data-html2canvas-ignore="true" style="display: inline-flex; align-items: center; gap: 4px; font-size: 12px; color: #0ea5e9; text-decoration: none; margin-top: 8px;">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                                    Website Oficial
+                                </a>
+                            <% } %>
+                        </div>
+
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <!-- Share Button -->
+                            <button onclick="openShareModal('export_app_<%= app.id %>', 'Admitere-<%= app.program_name.replace(/\\s+/g, '') %>')" style="background: none; border: 1px solid #e2e8f0; border-radius: 6px; color: #8b5cf6; cursor: pointer; padding: 8px; display: flex; align-items: center; gap: 4px; font-size: 12px; font-weight: 600; transition: all 0.2s;" onmouseover="this.style.background='#f3f4f6'" onmouseout="this.style.background='none'">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+                                Share
+                            </button>
+
+                            <!-- Edit Button -->
+                            <button onclick="openEditModal('<%= app.id %>', `<%= app.university_name %>`, `<%= app.faculty_name %>`, `<%= app.program_name %>`, `<%= app.grade || '' %>`)" style="background: none; border: 1px solid #e2e8f0; border-radius: 6px; color: #0ea5e9; cursor: pointer; padding: 8px; display: flex; align-items: center; transition: all 0.2s;" onmouseover="this.style.background='#f3f4f6'" onmouseout="this.style.background='none'">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                            </button>
+
+                            <!-- Status Form -->
+                            <form action="/api/applications/<%= app.id %>/status" method="POST" style="margin: 0;">
+                                <select name="status" onchange="this.form.submit()" style="padding: 8px; border-radius: 6px; border: 1px solid var(--border-color); font-size: 13px; font-weight: 600; outline: none; cursor: pointer; appearance: none; text-align: center; background: <%= app.status === 'Aplicat' ? '#f8fafc' : (app.status === 'Admis' ? '#ecfdf5' : (app.status === 'Loc Confirmat' ? '#dcfce7' : (app.status === 'Respins' ? '#fef2f2' : '#fffbeb'))) %>; color: <%= app.status === 'Aplicat' ? '#475569' : (app.status === 'Admis' ? '#059669' : (app.status === 'Loc Confirmat' ? '#166534' : (app.status === 'Respins' ? '#dc2626' : '#b45309'))) %>;">
+                                    <option value="Aplicat" <%= app.status === 'Aplicat' ? 'selected' : '' %>>Aplicat (Așteptare)</option>
+                                    <option value="Dosar Incomplet" <%= app.status === 'Dosar Incomplet' ? 'selected' : '' %>>Dosar Incomplet</option>
+                                    <option value="În Rezervă" <%= app.status === 'În Rezervă' ? 'selected' : '' %>>În Rezervă</option>
+                                    <option value="Admis" <%= app.status === 'Admis' ? 'selected' : '' %>>Admis</option>
+                                    <option value="Loc Confirmat" <%= app.status === 'Loc Confirmat' ? 'selected' : '' %>>Loc Confirmat</option>
+                                    <option value="Respins" <%= app.status === 'Respins' ? 'selected' : '' %>>Respins</option>
+                                </select>
+                            </form>
+                            
+                            <!-- Delete Form -->
+                            <form action="/api/applications/<%= app.id %>/delete" method="POST" style="margin: 0;" onsubmit="return confirm('Ștergi această aplicație din tracker?');">
+                                <button type="submit" style="background: none; border: none; color: #ef4444; cursor: pointer; padding: 8px; opacity: 0.7; transition: opacity 0.2s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+    <% } else { %>
+        <div style="background: white; border-radius: 12px; padding: 40px; text-align: center; border: 1px dashed var(--border-color); margin-bottom: 80px;">
+            <p style="color: var(--text-mut);">Nu ai adăugat încă nicio facultate în tracker.</p>
+        </div>
+    <% } %>
+
+</main>
+
+    <!-- Edit Application Modal -->
+    <div id="edit_modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1000; align-items: center; justify-content: center;">
+        <div style="background: white; padding: 24px; border-radius: 12px; max-width: 500px; width: 90%; position: relative;">
+            <button onclick="closeEditModal()" style="position: absolute; right: 16px; top: 16px; background: none; border: none; font-size: 24px; cursor: pointer; color: var(--text-mut);">&times;</button>
+            <h3 style="margin-top: 0; margin-bottom: 16px; font-size: 20px;">Editează Aplicația</h3>
+            <form id="edit_form" method="POST" style="display: flex; flex-direction: column; gap: 12px;">
+                <div>
+                    <label>Universitatea</label>
+                    <div style="position: relative;">
+                        <select id="edit_university_name" name="university_name" class="form-control" required style="appearance: none; padding-right: 32px; background-color: white; border-color: #cbd5e1;">
+                            <% universities.forEach(function(u) { %>
+                                <option value="<%= u.name %>"><%= u.acronym %> - <%= u.name %></option>
+                            <% }); %>
+                        </select>
+                        <svg style="position: absolute; right: 12px; top: 14px; pointer-events: none; color: #94a3b8;" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </div>
+                </div>
+                <div>
+                    <label>Facultatea</label>
+                    <input type="text" id="edit_faculty_name" name="faculty_name" class="form-control" style="background-color: white; border-color: #cbd5e1;">
+                </div>
+                <div>
+                    <label>Programul de Studiu</label>
+                    <input type="text" id="edit_program_name" name="program_name" class="form-control" required style="background-color: white; border-color: #cbd5e1;">
+                </div>
+                <div>
+                    <label>Nota</label>
+                    <input type="number" step="0.01" id="edit_grade" name="grade" class="form-control" style="background-color: white; border-color: #cbd5e1;">
+                </div>
+                <button type="submit" class="btn-primary" style="margin-top: 8px;">Salvează Modificările</button>
+            </form>
+        </div>
+    </div>
+
+<script>
+    let currentExportNodeId = null;
+    let currentExportFilename = null;
+
+    function openShareModal(nodeId, filename) {
+        currentExportNodeId = nodeId;
+        currentExportFilename = filename;
+        document.getElementById('share_modal').style.display = 'flex';
+    }
+
+    function closeShareModal() {
+        document.getElementById('share_modal').style.display = 'none';
+        currentExportNodeId = null;
+        currentExportFilename = null;
+    }
+
+    function openEditModal(id, uniName, facName, progName, grade) {
+        document.getElementById('edit_form').action = '/api/applications/' + id + '/edit';
+        document.getElementById('edit_university_name').value = uniName;
+        document.getElementById('edit_faculty_name').value = facName;
+        document.getElementById('edit_program_name').value = progName;
+        document.getElementById('edit_grade').value = grade;
+        document.getElementById('edit_modal').style.display = 'flex';
+    }
+
+    function closeEditModal() {
+        document.getElementById('edit_modal').style.display = 'none';
+    }
+
+    function triggerExport(ratio) {
+        if (!currentExportNodeId) return;
+        exportGraphic(currentExportNodeId, currentExportFilename, ratio);
+        closeShareModal();
+    }
+
+    function exportGraphic(nodeId, filename, ratio) {
+        const node = document.getElementById(nodeId);
+        
+        // Save original styles
+        const origWidth = node.style.width;
+        const origHeight = node.style.height;
+        const origPadding = node.style.padding;
+        const origFlexDir = node.style.flexDirection;
+        const origJustify = node.style.justifyContent;
+        const origAlign = node.style.alignItems;
+        const origBg = node.style.background;
+        const origBorder = node.style.border;
+        const origColor = node.style.color;
+        const origTransform = node.style.transform;
+        const origDisplay = node.style.display;
+        const origBoxSizing = node.style.boxSizing;
+        const origFlex = node.style.flex;
+        const origMinWidth = node.style.minWidth;
+        const origMaxWidth = node.style.maxWidth;
+        const origMinHeight = node.style.minHeight;
+        const origMaxHeight = node.style.maxHeight;
+        
+        // Setup for high-res export
+        node.style.padding = '40px';
+        node.style.transform = 'none';
+        node.style.display = 'flex';
+        node.style.boxSizing = 'border-box';
+        node.style.alignItems = 'center';
+        node.style.flex = 'none';
+        
+        // Make the individual cards look like the stats card when exported
+        if (nodeId.startsWith('export_app_')) {
+            node.style.background = 'linear-gradient(135deg, #1a1a1a, #333)';
+            node.style.color = 'white';
+            node.style.border = '2px solid #8b5cf6';
+            
+            // Fix inner text colors for dark mode export
+            const texts = node.querySelectorAll('h4, p');
+            texts.forEach(t => t.setAttribute('data-orig-color', t.style.color));
+            texts.forEach(t => t.style.color = 'white');
+        }
+
+        let targetWidth, targetHeight;
+        if (ratio === '9:16') {
+            targetWidth = '450px';
+            targetHeight = '800px';
+            node.style.flexDirection = 'column';
+            node.style.justifyContent = 'center';
+        } else if (ratio === '1:1') {
+            targetWidth = '600px';
+            targetHeight = '600px';
+            node.style.flexDirection = 'column';
+            node.style.justifyContent = 'center';
+        } else {
+            // 16:9
+            targetWidth = '800px';
+            targetHeight = '450px';
+            node.style.flexDirection = 'column';
+            node.style.justifyContent = 'center';
+        }
+        
+        node.style.width = targetWidth;
+        node.style.height = targetHeight;
+        node.style.minWidth = targetWidth;
+        node.style.maxWidth = targetWidth;
+        node.style.minHeight = targetHeight;
+        node.style.maxHeight = targetHeight;
+        
+        // Add a temporary title
+        const title = document.createElement('div');
+        title.innerHTML = 'Stats Admitere - by <strong>UniLink</strong>';
+        title.style.textAlign = 'center';
+        title.style.marginTop = 'auto';
+        title.style.color = 'rgba(255,255,255,0.5)';
+        title.style.fontSize = '14px';
+        node.appendChild(title);
+
+        html2canvas(node, { scale: 2, backgroundColor: '#1a1a1a' }).then(canvas => {
+            const link = document.createElement('a');
+            link.download = `${filename}-${ratio.replace(':','-')}.png`;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+            
+            // Restore cleanup
+            node.removeChild(title);
+            node.style.width = origWidth;
+            node.style.height = origHeight;
+            node.style.padding = origPadding;
+            node.style.flexDirection = origFlexDir;
+            node.style.justifyContent = origJustify;
+            node.style.alignItems = origAlign;
+            node.style.background = origBg;
+            node.style.border = origBorder;
+            node.style.color = origColor;
+            node.style.transform = origTransform;
+            node.style.display = origDisplay;
+            node.style.boxSizing = origBoxSizing;
+            node.style.flex = origFlex;
+            node.style.minWidth = origMinWidth;
+            node.style.maxWidth = origMaxWidth;
+            node.style.minHeight = origMinHeight;
+            node.style.maxHeight = origMaxHeight;
+            
+            if (nodeId.startsWith('export_app_')) {
+                const texts = node.querySelectorAll('h4, p');
+                texts.forEach(t => {
+                    t.style.color = t.getAttribute('data-orig-color');
+                    t.removeAttribute('data-orig-color');
+                });
+            }
+        });
+    }
+</script>
+
+<%- include('partials/footer') %>

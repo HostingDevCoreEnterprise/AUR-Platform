@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Descoperă oportunitățile programului Work and Travel prin Alianța Universitară Română. Găsește resursele necesare pentru o vară de neuitat în străinătate.">
+  <meta name="keywords" content="Work and Travel, studenți, SUA, job de vară, AUR, universități România, experiență internațională">
+  <meta name="robots" content="index, follow">
+  <title>Work and Travel · Alianța Universitară Română</title>
+  <link rel="icon" type="image/png" href="resurse/photo/aur.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --black: #121110;
+      --black-2: #1a1917;
+      --white: #F7F4EE;
+      --white-dim: #B9B5AC;
+      --orange: #F2A230;
+      --orange-2: #F7C065;
+      --teal: #1F6F62;
+      --teal-dim: #67A99B;
+      --line: rgba(247, 244, 238, 0.12);
+      --line-strong: rgba(247, 244, 238, 0.22);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    ::selection {
+      background: var(--orange);
+      color: var(--black);
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    h1,
+    h2,
+    h3,
+    .display {
+      font-family: 'Big Shoulders Display', sans-serif;
+      text-transform: uppercase;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+      line-height: 0.92;
+    }
+
+    .mono {
+      font-family: 'IBM Plex Mono', monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--orange);
+      margin-bottom: 18px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 22px;
+      height: 2px;
+      background: var(--orange);
+      display: inline-block;
+    }
+
+    /* NAV */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(18, 17, 16, 0.82);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 32px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand img {
+      height: 34px;
+      width: auto;
+      display: block;
+    }
+
+    .brand-text {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10.5px;
+      letter-spacing: 0.1em;
+      color: var(--white-dim);
+      line-height: 1.35;
+      text-transform: uppercase;
+    }
+
+    .brand-text b {
+      color: var(--white);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 34px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      text-decoration: none;
+      color: var(--white-dim);
+    }
+
+    .nav-links a:hover {
+      color: var(--white);
+    }
+
+    .nav-cta {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11.5px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: var(--orange);
+      color: var(--black);
+      padding: 10px 18px;
+      text-decoration: none;
+      font-weight: 600;
+      white-space: nowrap;
+      transition: background .2s ease;
+    }
+
+    .nav-cta:hover {
+      background: var(--orange-2);
+    }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      padding: 172px 0 90px;
+      overflow: hidden;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 40px;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero h1 {
+      font-size: clamp(48px, 6.4vw, 88px);
+      color: var(--white);
+    }
+
+    .hero h1 .cut {
+      color: var(--orange);
+    }
+
+    .hero p.lead {
+      margin-top: 26px;
+      max-width: 520px;
+      font-size: 17px;
+      color: var(--white-dim);
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 14px;
+      margin-top: 38px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 15px 26px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+      border: 1px solid var(--line-strong);
+      transition: all .2s ease;
+    }
+
+    .btn-solid {
+      background: var(--orange);
+      color: var(--black);
+      border-color: var(--orange);
+    }
+
+    .btn-solid:hover {
+      background: var(--orange-2);
+      border-color: var(--orange-2);
+    }
+
+    .btn-ghost {
+      color: var(--white);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--white);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 34px;
+      margin-top: 56px;
+      flex-wrap: wrap;
+    }
+
+    .stat b {
+      display: block;
+      font-family: 'Big Shoulders Display', sans-serif;
+      font-size: 34px;
+      font-weight: 800;
+      color: var(--white);
+    }
+
+    .stat span {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10.5px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--white-dim);
+    }
+
+    /* passport card signature */
+    .passport {
+      position: relative;
+      border: 1px solid var(--line);
+      background: var(--black-2);
+      padding: 30px;
+      min-height: 420px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .passport-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .passport-top .mono {
+      color: var(--white-dim);
+    }
+
+    .stamp {
+      width: 118px;
+      height: 118px;
+      border-radius: 50%;
+      border: 3px solid var(--teal);
+      color: var(--teal-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      transform: rotate(-14deg);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      position: relative;
+    }
+
+    .stamp::before {
+      content: "";
+      position: absolute;
+      inset: 8px;
+      border: 1px solid var(--teal);
+      border-radius: 50%;
+    }
+
+    .stamp b {
+      display: block;
+      font-family: 'Big Shoulders Display', sans-serif;
+      font-size: 20px;
+      letter-spacing: 0.03em;
+      margin: 4px 0;
+      color: var(--teal-dim);
+    }
+
+    .passport-mid {
+      margin: 26px 0;
+    }
+
+    .passport-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-top: 1px solid var(--line);
+      font-size: 13.5px;
+    }
+
+    .passport-row:last-child {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .passport-row span:first-child {
+      color: var(--white-dim);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .passport-row span:last-child {
+      color: var(--white);
+      font-weight: 600;
+    }
+
+    .passport-bottom .mono {
+      color: var(--orange);
+    }
+
+    .passport-caption {
+      font-size: 11px;
+      color: var(--white-dim);
+      font-family: 'IBM Plex Mono', monospace;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-top: 14px;
+    }
+
+    /* marquee */
+    .marquee-band {
+      border-bottom: 1px solid var(--line);
+      background: var(--black-2);
+      overflow: hidden;
+      padding: 16px 0;
+    }
+
+    .marquee-track {
+      display: flex;
+      gap: 48px;
+      width: max-content;
+      animation: scroll 32s linear infinite;
+    }
+
+    .marquee-track span {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12.5px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--white-dim);
+      white-space: nowrap;
+    }
+
+    .marquee-track span b {
+      color: var(--white);
+    }
+
+    @keyframes scroll {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    section {
+      padding: 110px 0;
+      border-bottom: 1px solid var(--line);
+      position: relative;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 64px;
+      align-items: end;
+    }
+
+    .section-head h2 {
+      font-size: clamp(32px, 4.2vw, 52px);
+      color: var(--white);
+    }
+
+    .section-head p {
+      color: var(--white-dim);
+      font-size: 15.5px;
+      max-width: 440px;
+    }
+
+    .whatis-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+
+    .whatis-card {
+      background: var(--black);
+      padding: 34px 30px;
+    }
+
+    .whatis-card .num {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      color: var(--orange);
+      letter-spacing: 0.1em;
+    }
+
+    .whatis-card h3 {
+      font-size: 24px;
+      margin: 14px 0 12px;
+      color: var(--white);
+      text-transform: none;
+      font-weight: 700;
+    }
+
+    .whatis-card p {
+      color: var(--white-dim);
+      font-size: 14.5px;
+    }
+
+    .eligibility {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .elig-list {
+      list-style: none;
+    }
+
+    .elig-list li {
+      display: flex;
+      gap: 16px;
+      padding: 20px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .elig-list li:first-child {
+      border-top: none;
+    }
+
+    .elig-check {
+      flex: 0 0 auto;
+      width: 24px;
+      height: 24px;
+      border: 1px solid var(--orange);
+      color: var(--orange);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      margin-top: 2px;
+    }
+
+    .elig-list h4 {
+      font-size: 16px;
+      color: var(--white);
+      margin-bottom: 5px;
+      font-weight: 700;
+    }
+
+    .elig-list p {
+      color: var(--white-dim);
+      font-size: 14px;
+    }
+
+    .note-box {
+      border: 1px solid var(--teal);
+      padding: 26px;
+      background: rgba(31, 111, 98, 0.08);
+    }
+
+    .note-box .mono {
+      color: var(--teal-dim);
+    }
+
+    .note-box p {
+      margin-top: 12px;
+      color: var(--white-dim);
+      font-size: 14.5px;
+    }
+
+    .note-box p+p {
+      margin-top: 10px;
+    }
+
+    /* steps timeline */
+    .steps {
+      position: relative;
+    }
+
+    .steps::before {
+      content: "";
+      position: absolute;
+      left: 29px;
+      top: 10px;
+      bottom: 10px;
+      width: 1px;
+      background: var(--line-strong);
+    }
+
+    .step {
+      position: relative;
+      padding: 0 0 52px 76px;
+    }
+
+    .step:last-child {
+      padding-bottom: 0;
+    }
+
+    .step-num {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 60px;
+      height: 60px;
+      border: 1px solid var(--orange);
+      color: var(--orange);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Big Shoulders Display', sans-serif;
+      font-size: 24px;
+      font-weight: 800;
+      background: var(--black);
+    }
+
+    .step h4 {
+      font-size: 20px;
+      color: var(--white);
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+
+    .step p {
+      color: var(--white-dim);
+      font-size: 14.5px;
+      max-width: 640px;
+    }
+
+    /* season calendar */
+    .cal-scroll {
+      overflow-x: auto;
+      padding-bottom: 12px;
+    }
+
+    .cal-track {
+      display: flex;
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      min-width: 900px;
+    }
+
+    .cal-cell {
+      flex: 1;
+      background: var(--black);
+      padding: 24px 20px;
+      min-width: 150px;
+    }
+
+    .cal-cell .mono {
+      color: var(--orange);
+    }
+
+    .cal-cell h4 {
+      font-size: 18px;
+      margin: 10px 0 8px;
+      color: var(--white);
+      font-weight: 700;
+      text-transform: none;
+    }
+
+    .cal-cell p {
+      font-size: 13px;
+      color: var(--white-dim);
+    }
+
+    /* cost table */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .fund-table th,
+    .fund-table td {
+      text-align: left;
+      padding: 16px 14px;
+      border-bottom: 1px solid var(--line);
+      font-size: 14px;
+    }
+
+    .fund-table thead th {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--white-dim);
+      font-weight: 600;
+    }
+
+    .fund-table td b {
+      color: var(--white);
+    }
+
+    .fund-table td.amount {
+      font-family: 'IBM Plex Mono', monospace;
+      color: var(--orange);
+      font-weight: 600;
+    }
+
+    .fund-note {
+      margin-top: 22px;
+      font-size: 13.5px;
+      color: var(--white-dim);
+    }
+
+    /* safety grid */
+    .safety-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+
+    .safety-card {
+      border: 1px solid var(--line);
+      padding: 26px 22px;
+    }
+
+    .safety-card .mono {
+      color: var(--teal-dim);
+    }
+
+    .safety-card h4 {
+      font-size: 17px;
+      color: var(--white);
+      margin: 12px 0 8px;
+      font-weight: 700;
+    }
+
+    .safety-card p {
+      font-size: 13.5px;
+      color: var(--white-dim);
+    }
+
+    /* faq */
+    .faq-item {
+      border-top: 1px solid var(--line);
+    }
+
+    .faq-item:last-child {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .faq-q {
+      width: 100%;
+      text-align: left;
+      background: none;
+      border: none;
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 17px;
+      font-weight: 600;
+      padding: 24px 0;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .faq-q .plus {
+      font-family: 'IBM Plex Mono', monospace;
+      color: var(--orange);
+      font-size: 20px;
+      transition: transform .25s ease;
+      flex: 0 0 auto;
+    }
+
+    .faq-item.open .plus {
+      transform: rotate(45deg);
+    }
+
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .3s ease;
+    }
+
+    .faq-a p {
+      color: var(--white-dim);
+      font-size: 14.5px;
+      padding-bottom: 24px;
+      max-width: 720px;
+    }
+
+    .cta-final {
+      text-align: center;
+      padding: 130px 0;
+    }
+
+    .cta-final h2 {
+      font-size: clamp(38px, 6vw, 72px);
+      color: var(--white);
+      max-width: 800px;
+      margin: 0 auto 22px;
+    }
+
+    .cta-final .cut {
+      color: var(--orange);
+    }
+
+    .cta-final p {
+      color: var(--white-dim);
+      max-width: 520px;
+      margin: 0 auto 40px;
+    }
+
+    footer {
+      padding: 50px 0;
+    }
+
+    .footer-grid {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-links a {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--white-dim);
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      color: var(--white);
+    }
+
+    [data-reveal] {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+
+    [data-reveal].in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 920px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .passport {
+        order: -1;
+      }
+
+      .section-head {
+        grid-template-columns: 1fr;
+      }
+
+      .whatis-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .eligibility {
+        grid-template-columns: 1fr;
+      }
+
+      .safety-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+  <link rel="icon" type="image/png" href="resurse/photo/aur.png">
+</head>
+
+<body>
+
+  <header>
+    <nav>
+      <a href="https://aliantauniversitararomana.ro" class="brand" style="text-decoration:none; color:inherit;">
+        <img
+          src="resurse/photo/aur.png"
+          alt="AUR">
+        <div class="brand-text">ALIANȚA UNIVERSITARĂ<br><b>ROMÂNĂ</b></div>
+      </a>
+      <div class="nav-links">
+        <a href="#ce-este">Program</a>
+        <a href="#eligibilitate">Eligibilitate</a>
+        <a href="#costuri">Costuri</a>
+        <a href="#pasi">Cum funcționează</a>
+        <a href="#faq">Întrebări</a>
+      </div>
+      <a href="aplica.html" class="nav-cta">Aplică acum</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <img src="resurse/photo/workandtravel.jpg" alt="Work and Travel"
+      style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1; opacity: 0.3; mix-blend-mode: luminosity;">
+    <div class="wrap hero-grid">
+      <div data-reveal>
+        <h1>O vară.<br>O slujbă.<br><span class="cut">O lume.</span></h1>
+        <p class="lead">Alianța Universitară Română centralizează informația despre Work and Travel pentru studenții din
+          toate universitățile din țară: cum te înscrii, ce sponsor alegi, ce acte îți trebuie și cum arată, pas cu pas,
+          o vară de muncă legală în străinătate.</p>
+        <div class="hero-ctas">
+          <a href="#pasi" class="btn btn-solid">Vezi cum funcționează →</a>
+          <a href="#eligibilitate" class="btn btn-ghost">Sunt eligibil?</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><b>4</b><span>Luni de muncă vara</span></div>
+          <div class="stat"><b>+30</b><span>Zile de travel opțional</span></div>
+          <div class="stat"><b>J-1</b><span>Viză de schimb cultural</span></div>
+        </div>
+      </div>
+      <div class="passport" data-reveal>
+        <div class="passport-top">
+          <div class="mono">CARD DE PROGRAM<br>WORK AND TRAVEL</div>
+          <div style="margin-top: 16px;">
+            <img src="resurse/photo/workandtravel.png" alt="Work and Travel"
+              style="height: 60px; width: auto; max-width: 100%; object-fit: contain;">
+          </div>
+        </div>
+        <div class="passport-mid">
+          <div class="passport-row"><span>Program</span><span>Work and Travel</span></div>
+          <div class="passport-row"><span>Perioadă muncă</span><span>Iunie – Septembrie</span></div>
+          <div class="passport-row"><span>Travel opțional</span><span>Până la 30 zile</span></div>
+          <div class="passport-row"><span>Tip viză</span><span>J-1, schimb cultural</span></div>
+          <div class="passport-row"><span>Eligibilitate</span><span>Student cu statut activ</span></div>
+        </div>
+        <div class="passport-bottom">
+          <div class="mono">Valabil în peste 20 de destinații</div>
+          <div class="passport-caption">Document orientativ — detaliile exacte se stabilesc împreună cu agenția sponsor
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee-band">
+    <div class="marquee-track">
+      <span><b>SUA</b> · destinația principală</span>
+      <span><b>Anglia</b> · Summer Work Experience</span>
+      <span><b>Malta</b> · sezon estival</span>
+      <span><b>Cipru</b> · hotel & resort</span>
+      <span><b>Grecia</b> · turism sezonier</span>
+      <span><b>+ toate universitățile din România</b></span>
+      <span><b>SUA</b> · destinația principală</span>
+      <span><b>Anglia</b> · Summer Work Experience</span>
+      <span><b>Malta</b> · sezon estival</span>
+      <span><b>Cipru</b> · hotel & resort</span>
+      <span><b>Grecia</b> · turism sezonier</span>
+      <span><b>+ toate universitățile din România</b></span>
+    </div>
+  </div>
+
+  <section id="ce-este">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <h2>Ce este<br>Work and Travel?</h2>
+        <p>Un program de schimb cultural care combină o slujbă plătită de vară cu experiența de a trăi și călători
+          într-o altă țară, deschis studenților din orice universitate acreditată din România.</p>
+      </div>
+      <div class="whatis-grid" data-reveal>
+        <div class="whatis-card">
+          <div class="mono">01 — Ce oferă</div>
+          <h3>Muncă legală + schimb cultural</h3>
+          <p>Un job sezonier plătit (hotel, restaurant, parc de distracții, resort) în perioada vacanței de vară, sub o
+            viză de schimb cultural, nu de muncă obișnuită.</p>
+        </div>
+        <div class="whatis-card">
+          <div class="mono">02 — Cine organizează</div>
+          <h3>Agenții sponsor autorizate</h3>
+          <p>Programul se derulează prin agenții sponsor acreditate de statul destinație, care intermediază oferta de
+            job, viza și suportul pe parcursul sejurului.</p>
+        </div>
+        <div class="whatis-card">
+          <div class="mono">03 — Pentru cine</div>
+          <h3>Studenți cu statut activ</h3>
+          <p>Deschis studenților de la licență sau master, indiferent de facultate sau oraș, atât timp cât se vor
+            întoarce la studii în toamnă.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="eligibilitate">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <h2>Cine poate<br>participa</h2>
+        <p>Criteriile sunt stabilite de statul destinație și de agențiile sponsor, dar rămân aceleași pentru orice
+          student din România.</p>
+      </div>
+      <div class="eligibility" data-reveal>
+        <ul class="elig-list">
+          <li>
+            <div class="elig-check">✓</div>
+            <div>
+              <h4>Ești student cu statut activ</h4>
+              <p>Înmatriculat la zi, la orice universitate acreditată din România, și te întorci la cursuri în toamnă.
+              </p>
+            </div>
+          </li>
+          <li>
+            <div class="elig-check">✓</div>
+            <div>
+              <h4>Ai vârsta potrivită</h4>
+              <p>De regulă între 18 și 28 de ani, în funcție de țara de destinație și de cerințele agenției sponsor.</p>
+            </div>
+          </li>
+          <li>
+            <div class="elig-check">✓</div>
+            <div>
+              <h4>Ai un nivel de engleză conversațional</h4>
+              <p>Suficient pentru un interviu de angajare și pentru activitatea zilnică la locul de muncă.</p>
+            </div>
+          </li>
+          <li>
+            <div class="elig-check">✓</div>
+            <div>
+              <h4>Ești disponibil pe toată perioada</h4>
+              <p>Majoritatea joburilor cer minimum 10–12 săptămâni consecutive de muncă, fără întreruperi programate.
+              </p>
+            </div>
+          </li>
+          <li>
+            <div class="elig-check">✓</div>
+            <div>
+              <h4>Treci un interviu cu angajatorul</h4>
+              <p>Online, organizat de agenția sponsor, înainte de confirmarea ofertei de job și de aplicarea la viză.
+              </p>
+            </div>
+          </li>
+        </ul>
+        <div class="note-box">
+          <div class="mono">Notă pentru toate universitățile</div>
+          <p>Nu contează orașul sau profilul facultății — condiția esențială este statutul de student activ pe durata
+            programului. Multe universități recunosc oficial participarea ca experiență de mobilitate practică sau
+            voluntariat, la cerere.</p>
+          <p>Documentul de statut de student (adeverință) este singura hârtie pe care trebuie să o obții de la
+            secretariatul propriei facultăți.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="pasi">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <h2>Cum<br>funcționează</h2>
+        <p>Structura procesului e identică indiferent de agenția sponsor sau de universitatea la care ești înscris.</p>
+      </div>
+      <div class="steps" data-reveal>
+        <div class="step">
+          <div class="step-num">01</div>
+          <h4>Alegi o agenție sponsor autorizată</h4>
+          <p>Verifici acreditarea agenției pentru statul destinație și programul de schimb cultural pe care îl operează.
+          </p>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <h4>Aplici și treci interviul</h4>
+          <p>Completezi profilul, participi la un interviu online și primești acces la lista de joburi disponibile
+            pentru sezonul respectiv.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <h4>Primești oferta de job</h4>
+          <p>Angajatorul confirmă poziția, programul de lucru și cazarea, printr-un contract clar înainte de plecare.
+          </p>
+        </div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <h4>Aplici pentru viză</h4>
+          <p>Cu documentele de la agenție (formular de sponsorizare, oferta de job) mergi la interviul de viză la
+            ambasadă/consulat.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">05</div>
+          <h4>Pleci, muncești, călătorești</h4>
+          <p>Lucrezi perioada convenită, apoi poți folosi zilele de travel rămase pentru a vizita țara înainte de
+            întoarcerea la cursuri.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="calendar">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <h2>Calendarul<br>sezonului</h2>
+        <p>Orientativ — termenele exacte depind de agenția sponsor și de țara de destinație aleasă.</p>
+      </div>
+      <div class="cal-scroll" data-reveal>
+        <div class="cal-track">
+          <div class="cal-cell">
+            <div class="mono">Oct – Ian</div>
+            <h4>Alegi agenția</h4>
+            <p>Compari programe, destinații și tipuri de joburi disponibile.</p>
+          </div>
+          <div class="cal-cell">
+            <div class="mono">Ian – Mar</div>
+            <h4>Interviu & ofertă</h4>
+            <p>Aplici, treci interviul, primești oferta de job confirmată.</p>
+          </div>
+          <div class="cal-cell">
+            <div class="mono">Mar – Mai</div>
+            <h4>Dosar de viză</h4>
+            <p>Programezi interviul la ambasadă, pregătești actele.</p>
+          </div>
+          <div class="cal-cell">
+            <div class="mono">Mai – Iun</div>
+            <h4>Pregătire plecare</h4>
+            <p>Bilet de avion, cazare, buget inițial pentru primele săptămâni.</p>
+          </div>
+          <div class="cal-cell">
+            <div class="mono">Iun – Sep</div>
+            <h4>Perioada de muncă</h4>
+            <p>10–14 săptămâni de job, conform contractului semnat.</p>
+          </div>
+          <div class="cal-cell">
+            <div class="mono">Sep</div>
+            <h4>Travel & întoarcere</h4>
+            <p>Zilele rămase de travel, apoi revii pentru noul an universitar.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="costuri">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <h2>Cât<br>costă</h2>
+        <p>Investiția inițială variază pe destinație, dar se recuperează, de regulă, în primele 3–4 săptămâni de muncă.
+        </p>
+      </div>
+      <div data-reveal>
+        <table class="fund-table">
+          <thead>
+            <tr>
+              <th>Componentă</th>
+              <th>Detalii</th>
+              <th>Interval estimativ</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>Taxă program</b></td>
+              <td>Taxa agenției, găsirea angajatorului, documentele de sponsorizare și suport</td>
+              <td class="amount">500–1.200 €</td>
+            </tr>
+            <tr>
+              <td><b>Viză + taxe</b></td>
+              <td>Taxa SEVIS (~220 USD), taxa pentru viza J-1 (~185 USD) și eventual transport la interviu</td>
+              <td class="amount">350–500 €</td>
+            </tr>
+            <tr>
+              <td><b>Bilet de avion</b></td>
+              <td>Dus-întors România–SUA, în funcție de sezon și destinație</td>
+              <td class="amount">600–1.200 €</td>
+            </tr>
+            <tr>
+              <td><b>Buget inițial</b></td>
+              <td>Cazare, mâncare și transport până la primul salariu (2–3 săptămâni)</td>
+              <td class="amount">700–1.200 €</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="fund-note">Sumele sunt orientative și depind de agenția sponsor, sezon și destinație. Majoritatea
+          participanților recuperează investiția inițială din primele săptămâni de salariu, iar restul sezonului rămâne
+          venit net.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="siguranta">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <h2>Siguranță<br>& sprijin</h2>
+        <p>Programul funcționează sub reglementări clare, iar Alianța Universitară Română te ajută să identifici
+          resursele potrivite.</p>
+      </div>
+      <div class="safety-grid" data-reveal>
+        <div class="safety-card">
+          <div class="mono">Contract</div>
+          <h4>Ofertă scrisă</h4>
+          <p>Niciun job nu se confirmă fără contract clar: program, salariu, cazare.</p>
+        </div>
+        <div class="safety-card">
+          <div class="mono">Asigurare</div>
+          <h4>Obligatorie pe durata vizei</h4>
+          <p>Asigurare medicală inclusă în taxa de program sau achiziționată separat, obligatorie pentru viza J-1.</p>
+        </div>
+        <div class="safety-card">
+          <div class="mono">Linie de suport</div>
+          <h4>Contact non-stop cu sponsorul</h4>
+          <p>Agenția sponsor are obligația legală de a oferi asistență de urgență pe toată durata sejurului.</p>
+        </div>
+        <div class="safety-card">
+          <div class="mono">Rețea de studenți</div>
+          <h4>Comunitate din toate universitățile</h4>
+          <p>Studenți din alte universități românești, deja plecați în sezoanele anterioare, disponibili pentru sfaturi.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <h2>Întrebări<br>frecvente</h2>
+        <p>Răspunsuri valabile indiferent de universitatea la care ești înmatriculat.</p>
+      </div>
+      <div data-reveal>
+        <div class="faq-item">
+          <button class="faq-q">Pot pleca dacă am restanțe la facultate? <span class="plus">+</span></button>
+          <div class="faq-a">
+            <p>Condiția esențială e statutul de student activ, nu media sau restanțele. Fiecare facultate stabilește
+              propriile reguli pentru continuarea studiilor, dar acestea nu blochează, de regulă, participarea la
+              program.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">E nevoie de facultate cu profil turistic sau economic? <span
+              class="plus">+</span></button>
+          <div class="faq-a">
+            <p>Nu. Programul este deschis studenților de la orice facultate — inginerie, medicină, drept, arte — atât
+              timp cât ești student activ.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Ce se întâmplă dacă viza este refuzată? <span class="plus">+</span></button>
+          <div class="faq-a">
+            <p>Agenția sponsor poate reprograma interviul sau, în funcție de politica proprie, rambursa parțial taxa de
+              program. Verifică politica exactă înainte de a semna contractul cu agenția.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Pot lucra la mai multe joburi în timpul sezonului? <span class="plus">+</span></button>
+          <div class="faq-a">
+            <p>Da, un al doilea job (part-time) este permis în multe cazuri, cu acordul angajatorului principal și
+              respectând termenii vizei.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Contează pentru CV sau pentru facultate? <span class="plus">+</span></button>
+          <div class="faq-a">
+            <p>Multe universități recunosc experiența ca practică extracurriculară sau voluntariat internațional, la
+              solicitarea scrisă a studentului către secretariat.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-final" style="border-bottom:none;">
+    <div class="wrap" data-reveal>
+      <h2>Fiecare student din <span class="cut">România</span> poate avea o vară care contează dublu: bani și
+        experiență.</h2>
+      <p>Alianța Universitară Română te ajută să alegi agenția sponsor potrivită și să pregătești dosarul, indiferent de
+        universitatea ta.</p>
+      <a href="#pasi" class="btn btn-solid">Vezi cum funcționează, pas cu pas →</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap footer-grid">
+      <a href="https://workandtravel.aliantauniversitararomana.ro" class="brand"
+        style="text-decoration:none; color:inherit;">
+        <img
+          src="resurse/photo/aur.png"
+          alt="AUR" style="height:26px;">
+        <div class="brand-text">ALIANȚA UNIVERSITARĂ ROMÂNĂ<br><b>Program Work and Travel</b></div>
+      </a>
+      <div class="footer-links">
+        <a href="https://erasmus.aliantauniversitararomana.ro">Erasmus+ →</a>
+        <a href="#ce-este">Program</a>
+        <a href="#faq">Întrebări</a>
+      </div>
+    </div>
+    <div style="text-align: center; margin-top: 40px; font-size: 13px; color: var(--white-dim); padding-bottom: 20px;">
+      Platforma a fost dezvoltată de <a href="https://www.devcore-enterprise.site" target="_blank" style="color: var(--orange); text-decoration: none; font-weight: 600;">DevCore Enterprise</a>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.faq-item').forEach(item => {
+      const q = item.querySelector('.faq-q');
+      const a = item.querySelector('.faq-a');
+      q.addEventListener('click', () => {
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(o => {
+          o.classList.remove('open');
+          o.querySelector('.faq-a').style.maxHeight = null;
+        });
+        if (!isOpen) {
+          item.classList.add('open');
+          a.style.maxHeight = a.scrollHeight + 'px';
+        }
+      });
+    });
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
+  </script>
+
+</body>
+
+</html>

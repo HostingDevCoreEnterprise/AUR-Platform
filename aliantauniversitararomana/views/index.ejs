@@ -1,0 +1,489 @@
+<%- include('partials/header') %>
+
+<style>
+/* Hero Styles */
+.hero {
+    position: relative;
+    overflow: hidden;
+    padding: 80px 0;
+}
+.hero-bg-dynamic {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: -1;
+}
+.hero-bg-dynamic img {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    filter: brightness(0.2) grayscale(0.2);
+    opacity: 0;
+    animation: crossfade-hero 15s infinite;
+}
+.hero-bg-dynamic img:nth-child(1) { animation-delay: 0s; }
+.hero-bg-dynamic img:nth-child(2) { animation-delay: 5s; }
+.hero-bg-dynamic img:nth-child(3) { animation-delay: 10s; }
+
+@keyframes crossfade-hero {
+    0%, 10% { opacity: 1; }
+    33%, 100% { opacity: 0; }
+}
+
+.hero .wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+@media (max-width: 900px) {
+    .hero .wrap { grid-template-columns: 1fr; }
+}
+
+.hero h1 {
+    font-size: clamp(36px, 4vw, 54px);
+    line-height: 1.2;
+    margin-bottom: 24px;
+    color: var(--tx-light);
+}
+
+.hero p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--tx-light-mut);
+    margin-bottom: 32px;
+}
+
+/* Stat Row */
+.stat-row {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+}
+.stat-item {
+    text-align: left;
+}
+.stat-num {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--tx-light);
+    line-height: 1;
+}
+.stat-label {
+    font-size: 13px;
+    color: var(--oxblood-l);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 4px;
+}
+
+/* Actions */
+.hero-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+.btn-admitere {
+    background: var(--oxblood-l);
+    color: var(--tx-light);
+    padding: 14px 28px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: filter 0.3s, transform 0.3s;
+    font-size: 16px;
+}
+.btn-admitere:hover {
+    filter: brightness(1.2);
+    transform: translateY(-2px);
+}
+.btn-explore {
+    background: transparent;
+    color: var(--tx-light);
+    padding: 14px 28px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid var(--line-d);
+    transition: background 0.3s, border-color 0.3s;
+    font-size: 16px;
+}
+.btn-explore:hover {
+    background: rgba(255,255,255,0.05);
+    border-color: var(--tx-light-mut);
+}
+
+/* Core Features */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 32px;
+}
+.feature-card {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid var(--line-d);
+    border-radius: 12px;
+    padding: 32px;
+    transition: transform 0.3s, border-color 0.3s;
+}
+.feature-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--oxblood-l);
+}
+.feature-icon {
+    font-size: 40px;
+    margin-bottom: 24px;
+    display: block;
+}
+.feature-card h3 {
+    color: var(--tx-light);
+    font-size: 20px;
+    margin-bottom: 16px;
+}
+.feature-card p {
+    color: var(--tx-light-mut);
+    line-height: 1.6;
+    margin-bottom: 0;
+    font-size: 15px;
+}
+
+/* Navigare Rapida */
+.nav-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 24px;
+}
+.nav-box {
+    position: relative;
+    height: 250px;
+    border-radius: 12px;
+    overflow: hidden;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 24px;
+}
+.nav-box img {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    transition: transform 0.5s;
+}
+.nav-overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.2) 100%);
+    z-index: 2;
+    transition: background 0.3s;
+}
+.nav-box:hover img {
+    transform: scale(1.05);
+}
+.nav-box:hover .nav-overlay {
+    background: linear-gradient(to top, rgba(243,146,0,0.9) 0%, rgba(0,0,0,0.4) 100%);
+}
+.nav-content {
+    position: relative;
+    z-index: 3;
+}
+.nav-content h4 {
+    color: var(--tx-light);
+    font-size: 22px;
+    margin: 0 0 8px 0;
+}
+.nav-content p {
+    color: rgba(255,255,255,0.8);
+    font-size: 14px;
+    margin: 0 0 16px 0;
+    line-height: 1.4;
+}
+.nav-action {
+    color: var(--tx-light);
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Carousel Parteneri */
+.carousel-container {
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    padding: 40px 0;
+    border-top: 1px solid var(--line-d);
+    border-bottom: 1px solid var(--line-d);
+    background: rgba(255,255,255,0.01);
+}
+.carousel-track {
+    display: inline-block;
+    animation: scroll-left 30s linear infinite;
+}
+.carousel-track:hover {
+    animation-play-state: paused;
+}
+.carousel-logo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 40px;
+    color: var(--tx-light-mut);
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    vertical-align: middle;
+}
+
+@keyframes scroll-left {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+</style>
+
+<div class="fade-in-up">
+    <!-- Secțiunea 1: Hero -->
+    <section class="hero">
+        <div class="hero-bg-dynamic">
+            <img src="/imagini/studenti/studenti 1.jpg" alt="Studenti 1">
+            <img src="/imagini/studenti/studenti 2.jpg" alt="Studenti 2">
+            <img src="/imagini/studenti/studenti 3.jpg" alt="Studenti 3">
+        </div>
+        <div class="wrap">
+            <div>
+                <div class="eyebrow hero-eyebrow" style="margin-bottom: 16px;">Proiect de Interconectare Academică</div>
+                <h1>Universitățile din România.<br>Sute de oportunități pentru <em>studenți</em>.</h1>
+                <p>Proiectul Alianța Universitară Română (AUR) este o inițiativă care își propune să conecteze mediul universitar de stat și privat, cu scopul de a facilita un parcurs academic flexibil și de a promova colaborarea fără bariere birocratice.</p>
+                
+                <div class="stat-row">
+                    <div class="stat-item"><div class="stat-num counter">91</div><div class="stat-label">Univ. din RO</div></div>
+                    <div class="stat-item"><div class="stat-num counter">54</div><div class="stat-label">Univ. de Stat</div></div>
+                    <div class="stat-item"><div class="stat-num counter">37</div><div class="stat-label">Inst. Private</div></div>
+                    <div class="stat-item"><div class="stat-num counter">5</div><div class="stat-label">Consorții Profil</div></div>
+                    <div class="stat-item"><div class="stat-num counter">3</div><div class="stat-label">Federații Stud.</div></div>
+                </div>
+                
+                <div class="hero-actions">
+                    <a href="http://unilink.aliantauniversitararomana.ro" class="btn-admitere" target="_blank">Portal Admitere</a>
+                    <a href="/universitati" class="btn-explore">Explorează Rețeaua</a>
+                </div>
+            </div>
+
+            <div style="display:flex; justify-content:center; align-items:center;">
+                <!-- Grafica "Network Art" păstrată -->
+                <div class="network-art" style="transform: scale(0.9);">
+                    <div class="network-orbit orbit-1">
+                        <div class="network-node node-founder" style="top: 0; left: 50%;"></div>
+                        <div class="network-node node-founder" style="top: 75%; left: 10%;"></div>
+                        <div class="network-node node-founder" style="top: 75%; left: 90%;"></div>
+                    </div>
+                    <div class="network-orbit orbit-2">
+                        <div class="network-node" style="top: 0; left: 50%;"></div>
+                        <div class="network-node" style="top: 50%; left: 100%;"></div>
+                        <div class="network-node" style="top: 100%; left: 50%;"></div>
+                        <div class="network-node" style="top: 50%; left: 0%;"></div>
+                    </div>
+                    <div class="network-orbit orbit-3">
+                        <div class="network-node" style="top: 10%; left: 30%;"></div>
+                        <div class="network-node" style="top: 80%; left: 20%;"></div>
+                        <div class="network-node" style="top: 30%; left: 90%;"></div>
+                        <div class="network-node" style="top: 90%; left: 60%;"></div>
+                    </div>
+                    <div class="network-core">AUR</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<style>
+/* ... other styles remain the same ... */
+
+/* Update feature icon styling for images */
+.feature-icon-img {
+    height: 64px;
+    object-fit: contain;
+    margin-bottom: 24px;
+    display: block;
+    filter: brightness(0.9);
+}
+</style>
+
+    <!-- Secțiunea 2: Avantajele Integrării -->
+    <section style="background: var(--ink-2); padding: 80px 0;">
+        <div class="wrap">
+            <div class="section-head" style="text-align: center; margin-bottom: 60px;">
+                <h2 style="font-size: 32px; color: var(--tx-light); margin-bottom: 16px;">O Viziune Fără Granițe</h2>
+                <p style="color: var(--tx-light-mut); font-size: 18px; max-width: 800px; margin: 0 auto;">Obiectivul acestui proiect este de a încuraja reducerea barierelor administrative între instituțiile de învățământ superior din România, susținând un parcurs academic fluid și adaptat nevoilor studentului modern.</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <img src="/imagini/mobilitate.png" alt="Mobilitate" class="feature-icon-img">
+                    <h3>Mobilitate Internă Liberă</h3>
+                    <p>Sistemul de credite (ECTS) este complet aliniat la nivelul universităților din România. Poți începe anul I la București, poți studia un semestru la Cluj și poți finaliza licența la Iași. Transferul notelor și creditelor e garantat automat, fără examene abuzive.</p>
+                </div>
+                <div class="feature-card">
+                    <img src="/imagini/infrastructura.png" alt="Infrastructura" class="feature-icon-img">
+                    <h3>Acces Național la Infrastructură</h3>
+                    <p>Cardul tău de student este un pașaport universal. Îți oferă acces instantaneu la bibliotecile centrale, bazele de cercetare și facilitățile sportive ale universităților din orașul în care te afli.</p>
+                </div>
+                <div class="feature-card">
+                    <img src="/imagini/finance.png" alt="Finantari" class="feature-icon-img">
+                    <h3>Incubatoare și Finanțări Comune</h3>
+                    <p>Prin hub-urile antreprenoriale unificate, studenții din centre diferite pot forma echipe pentru a accesa fonduri masive de capitalizare (ex. Innotech Student) administrate și promovate centralizat prin Alianță.</p>
+                </div>
+                <div class="feature-card">
+                    <img src="/imagini/careers.png" alt="Cariera" class="feature-icon-img">
+                    <h3>Angajabilitate și Carieră</h3>
+                    <p>Târgurile de carieră, programele de internship plătite și oportunitățile de Work & Travel sunt agregate într-o singură bază de date națională, deschisă tuturor studenților din rețea.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Secțiunea 3: Navigare Rapidă -->
+    <section style="padding: 80px 0;">
+        <div class="wrap">
+            <div class="section-head" style="margin-bottom: 40px;">
+                <h2 style="font-size: 32px; color: var(--tx-light); margin-bottom: 16px;">Tot ce ai nevoie, într-un singur loc.</h2>
+                <p style="color: var(--tx-light-mut); font-size: 18px;">Accesează rapid resursele vitale pentru parcursul tău academic.</p>
+            </div>
+
+            <div class="nav-grid">
+                <a href="/burse" class="nav-box">
+                    <img src="/imagini/studenti/burse 1.jpg" alt="Burse">
+                    <div class="nav-overlay"></div>
+                    <div class="nav-content">
+                        <h4>💸 Burse și Finanțări</h4>
+                        <p>Ghidul complet al sprijinului financiar de stat și privat.</p>
+                        <div class="nav-action">Află mai multe &rarr;</div>
+                    </div>
+                </a>
+
+                <a href="/cazare" class="nav-box">
+                    <img src="/imagini/studenti/camin.jpg" alt="Cazare">
+                    <div class="nav-overlay"></div>
+                    <div class="nav-content">
+                        <h4>🏠 Cazare și Cămine</h4>
+                        <p>Cum funcționează repartizările și campusurile din România.</p>
+                        <div class="nav-action">Află mai multe &rarr;</div>
+                    </div>
+                </a>
+
+                <a href="/voluntariat" class="nav-box">
+                    <img src="/imagini/studenti/voluntariat.jpg" alt="Voluntariat">
+                    <div class="nav-overlay"></div>
+                    <div class="nav-content">
+                        <h4>🤝 Voluntariat și Ligi</h4>
+                        <p>Găsește-ți asociația și cunoaște-ți drepturile.</p>
+                        <div class="nav-action">Află mai multe &rarr;</div>
+                    </div>
+                </a>
+
+                <a href="/cariera" class="nav-box">
+                    <img src="/imagini/studenti/targ de joburi 1.jpg" alt="Cariera">
+                    <div class="nav-overlay"></div>
+                    <div class="nav-content">
+                        <h4>🧠 Carieră și Consiliere</h4>
+                        <p>Suport psihologic gratuit și tranziția spre piața muncii.</p>
+                        <div class="nav-action">Află mai multe &rarr;</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Secțiunea 4: Parteneri și Recunoaștere Europeană -->
+    <section style="padding-bottom: 80px;">
+        <div class="wrap">
+            <div class="section-head" style="text-align: center; margin-bottom: 40px;">
+                <h2 style="font-size: 32px; color: var(--tx-light); margin-bottom: 16px;">Deschiși spre Europa</h2>
+                <p style="color: var(--tx-light-mut); font-size: 18px; max-width: 800px; margin: 0 auto;">Această inițiativă se aliniază direcțiilor Spațiului European al Învățământului Superior, promovând colaborarea internațională și conectarea studenților români la oportunități transnaționale.</p>
+            </div>
+        </div>
+
+        <!-- Carousel -->
+        <div class="carousel-container">
+            <div class="carousel-track">
+                <!-- Doubling for continuous effect -->
+                <div class="carousel-logo">CIVIS</div>
+                <div class="carousel-logo">EUTOPIA</div>
+                <div class="carousel-logo">UNITA</div>
+                <div class="carousel-logo">EELISA</div>
+                <div class="carousel-logo">EC2U</div>
+                <div class="carousel-logo">EU-CONEXUS</div>
+                <div class="carousel-logo">INNOV8</div>
+                
+                <div class="carousel-logo">CIVIS</div>
+                <div class="carousel-logo">EUTOPIA</div>
+                <div class="carousel-logo">UNITA</div>
+                <div class="carousel-logo">EELISA</div>
+                <div class="carousel-logo">EC2U</div>
+                <div class="carousel-logo">EU-CONEXUS</div>
+                <div class="carousel-logo">INNOV8</div>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<script>
+// Simple counter-up animation for numbers on scroll
+document.addEventListener("DOMContentLoaded", () => {
+    const counters = document.querySelectorAll('.counter');
+    const speed = 200; 
+
+    const animateCounters = () => {
+        counters.forEach(counter => {
+            const updateCount = () => {
+                const target = +counter.innerText;
+                const count = +counter.getAttribute('data-count') || 0;
+                
+                // Set target data attribute first time
+                if(!counter.getAttribute('data-target')) {
+                    counter.setAttribute('data-target', target);
+                    counter.innerText = '0';
+                    setTimeout(updateCount, 10);
+                    return;
+                }
+
+                const finalTarget = +counter.getAttribute('data-target');
+                const inc = finalTarget / speed;
+
+                if (count < finalTarget) {
+                    const newCount = count + inc;
+                    counter.setAttribute('data-count', newCount);
+                    counter.innerText = Math.ceil(newCount);
+                    setTimeout(updateCount, 10);
+                } else {
+                    counter.innerText = finalTarget;
+                }
+            };
+            updateCount();
+        });
+    };
+
+    // Use Intersection Observer to trigger when visible
+    const observer = new IntersectionObserver((entries) => {
+        if(entries[0].isIntersecting) {
+            animateCounters();
+            observer.disconnect();
+        }
+    });
+    
+    if(counters.length > 0) {
+        observer.observe(counters[0]);
+    }
+});
+</script>
+
+<%- include('partials/footer') %>

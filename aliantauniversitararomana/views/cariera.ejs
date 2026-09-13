@@ -1,0 +1,69 @@
+<%- include('partials/header') %>
+<style>
+.hero-banner { position: relative; width: 100%; height: 450px; border-bottom: 1px solid var(--line-d); overflow: hidden; background: #000; }
+.hero-banner img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.4); transition: filter 0.3s; }
+.hero-banner img:hover { filter: brightness(0.6); }
+.hero-text-overlay { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; width: 100%; max-width: 1000px; padding: 0 20px; z-index: 10; pointer-events: none; }
+.hero-text-overlay h1 { font-size: clamp(36px, 5vw, 54px); color: var(--tx-light); margin-bottom: 16px; text-shadow: 0 4px 10px rgba(0,0,0,0.8); }
+.hero-text-overlay p { font-size: clamp(18px, 2vw, 24px); color: var(--tx-light-mut); text-shadow: 0 2px 8px rgba(0,0,0,0.8); }
+.content-area { max-width: 1000px; margin: 0 auto; padding: 80px 20px 60px 20px; }
+.section-title { font-size: 28px; color: var(--tx-light); margin-bottom: 24px; padding-bottom: 12px; border-bottom: 2px solid var(--oxblood-l); display: inline-block; }
+.card-box { background: rgba(255,255,255,0.02); border: 1px solid var(--line-d); border-radius: 12px; padding: 24px; margin-bottom: 24px; border-left: 4px solid var(--oxblood-l); }
+.card-box h4 { color: var(--tx-light); margin-top: 0; margin-bottom: 12px; font-size: 20px; }
+.card-box p { color: var(--tx-light-mut); margin: 0; line-height: 1.6; }
+.tech-list { list-style: none; padding: 0; margin: 0; }
+.tech-list li { position: relative; padding-left: 24px; margin-bottom: 16px; color: var(--tx-light-mut); line-height: 1.6; }
+.tech-list li::before { content: "▹"; position: absolute; left: 0; color: var(--oxblood-l); }
+</style>
+<div class="fade-in-up">
+    <div class="hero-banner">
+        <img src="/imagini/studenti/cariere.jpg" alt="Cariera" style="object-position: center top;">
+        <div class="hero-text-overlay">
+            <h1>Arhitectura Carierei: Construiește-ți Brandul Profesional Înainte de Absolvire</h1>
+            <p>Piața muncii nu așteaptă diplomă. Descoperă cum centrele CCOC te transformă într-un candidat căutat, cum funcționează târgurile și cum construiești o rețea Alumni.</p>
+        </div>
+    </div>
+    <main class="content-area">
+        <h2 class="section-title">1. Centrul de Consiliere și Orientare în Carieră (CCOC)</h2>
+        <img src="/imagini/studenti/ccoc.jpg" alt="CCOC" style="width: 100%; height: 300px; object-fit: cover; border-radius: 12px; margin-bottom: 32px; border: 1px solid var(--line-d);">
+        <p style="color: var(--tx-light-mut); font-size: 16px; margin-bottom: 32px; line-height: 1.6;">Fiecare universitate acreditată din România are prin lege un CCOC. Acesta nu este un simplu birou administrativ, ci departamentul tău personal de resurse umane, oferit 100% gratuit pe toată perioada studenției.</p>
+        
+        <div class="card-box">
+            <h4>Profilarea Vocațională și Testarea Psihometrică</h4>
+            <p>CCOC utilizează teste psihometrice standardizate la nivel internațional (de tip Myers-Briggs) pentru a-ți cartografia punctele forte. Te ajută să înțelegi dacă te potrivești mai degrabă într-un rol analitic sau într-unul dinamic, orientat spre oameni.</p>
+        </div>
+        <div class="card-box">
+            <h4>Optimizarea CV-ului și a Profilului de LinkedIn</h4>
+            <p>Recruiterii marilor companii petrec în medie doar 6 secunde analizând un CV. Consilierii CCOC te învață cum să îți construiești CV-ul optimizat pentru sistemele automate ATS. De asemenea, te asistă în crearea unui profil de LinkedIn hiper-optimizat.</p>
+        </div>
+        <div class="card-box" style="margin-bottom: 60px;">
+            <h4>Simulări Realiste de Interviu (Mock Interviews)</h4>
+            <p>Frica de interviu este principalul blocaj al absolvenților. La CCOC poți programa sesiuni individuale de simulare a unui interviu. Primești feedback detaliat privind tonul vocii, ticurile verbale, limbajul non-verbal și structura logică a răspunsurilor (metoda STAR).</p>
+        </div>
+
+        <h2 class="section-title">2. Târgurile de Carieră și Networkingul Direct în Amfiteatre</h2>
+        <img src="/imagini/studenti/targ de joburi 1.jpg" alt="Târguri de joburi" style="width: 100%; height: 300px; object-fit: cover; border-radius: 12px; margin-bottom: 32px; border: 1px solid var(--line-d);">
+        <p style="color: var(--tx-light-mut); font-size: 16px; margin-bottom: 32px; line-height: 1.6;">Recrutarea "în masă" a tinerilor talente nu se mai face prin anunțuri trimise în "orb" pe internet; ea s-a mutat fizic în inima campusurilor universitare.</p>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-bottom: 60px;">
+            <div class="card-box" style="border-left: none; border-top: 4px solid var(--oxblood-l);">
+                <h4>Evenimente Gigant (Angajatori de TOP, JobShop)</h4>
+                <p>Zeci de corporații multinaționale, bănci de investiții și giganți IT își montează standurile direct pe holurile facultăților. Te duci direct la recrutor, predai CV-ul fizic și poți primi o invitație la un interviu preliminar chiar a doua zi.</p>
+            </div>
+            <div class="card-box" style="border-left: none; border-top: 4px solid var(--oxblood-l);">
+                <h4>Open Doors & Tech Talks (Prelegeri Active)</h4>
+                <p>Lideri de industrie vin periodic în universități pentru a ține prelegeri tehnice și workshop-uri. Cei mai buni studenți remarcați la aceste workshop-uri sunt adesea "regrutați pe scurtătură" direct în programe de Summer Internship plătite.</p>
+            </div>
+        </div>
+
+        <h2 class="section-title">3. Puterea Inestimabilă a Rețelei Alumni</h2>
+        <img src="/imagini/studenti/alumni.jpeg" alt="Alumni" style="width: 100%; height: 400px; object-fit: cover; object-position: bottom; border-radius: 12px; margin-bottom: 32px; border: 1px solid var(--line-d);">
+        <p style="color: var(--tx-light-mut); font-size: 16px; margin-bottom: 32px; line-height: 1.6;">Unul dintre cele mai valoroase active ale unei universități de prestigiu este comunitatea sa de absolvenți (Alumni).</p>
+
+        <ul class="tech-list" style="margin-bottom: 60px;">
+            <li><strong>Mentorat intergenerațional:</strong> Universitățile organizează frecvent gale și mese rotunde unde foștii absolvenți – ajunși acum directori generali sau fondatori – se întorc în amfiteatre pentru a împărtăși din experiența lor.</li>
+            <li><strong>Scurtătura spre angajare (The Referral):</strong> Dacă aplici online, ești un CV anonim. Dar dacă intri în contact cu un Alumni și primești o recomandare directă (employee referral) de la acesta, CV-ul tău va urca instant în topul listei departamentului de HR.</li>
+        </ul>
+    </main>
+</div>
+<%- include('partials/footer') %>

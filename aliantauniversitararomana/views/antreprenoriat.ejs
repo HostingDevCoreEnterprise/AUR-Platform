@@ -1,0 +1,70 @@
+<%- include('partials/header') %>
+<style>
+.hero-banner { position: relative; width: 100%; height: 450px; border-bottom: 1px solid var(--line-d); overflow: hidden; background: #000; }
+.hero-banner img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.4); transition: filter 0.3s; }
+.hero-banner img:hover { filter: brightness(0.6); }
+.hero-text-overlay { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; width: 100%; max-width: 1000px; padding: 0 20px; z-index: 10; pointer-events: none; }
+.hero-text-overlay h1 { font-size: clamp(36px, 5vw, 54px); color: var(--tx-light); margin-bottom: 16px; text-shadow: 0 4px 10px rgba(0,0,0,0.8); }
+.hero-text-overlay p { font-size: clamp(18px, 2vw, 24px); color: var(--tx-light-mut); text-shadow: 0 2px 8px rgba(0,0,0,0.8); }
+.content-area { max-width: 1000px; margin: 0 auto; padding: 80px 20px 60px 20px; }
+.section-title { font-size: 28px; color: var(--tx-light); margin-bottom: 24px; padding-bottom: 12px; border-bottom: 2px solid var(--oxblood-l); display: inline-block; }
+.card-box { background: rgba(255,255,255,0.02); border: 1px solid var(--line-d); border-radius: 12px; padding: 24px; margin-bottom: 24px; border-left: 4px solid var(--oxblood-l); }
+.card-box h4 { color: var(--tx-light); margin-top: 0; margin-bottom: 12px; font-size: 20px; }
+.card-box p { color: var(--tx-light-mut); margin: 0; line-height: 1.6; }
+.tech-list { list-style: none; padding: 0; margin: 0; }
+.tech-list li { position: relative; padding-left: 24px; margin-bottom: 16px; color: var(--tx-light-mut); line-height: 1.6; }
+.tech-list li::before { content: "▹"; position: absolute; left: 0; color: var(--oxblood-l); }
+</style>
+<div class="fade-in-up">
+    <div class="hero-banner">
+        <img src="/imagini/studenti/antreprenoriat.jpg" alt="Antreprenoriat">
+        <div class="hero-text-overlay">
+            <h1>Fii Propriul Tău Șef: Ecosistemul de Startup-uri și Finanțări din Campus</h1>
+            <p>Succesul nu mai înseamnă doar să fii un angajat bun, ci să creezi valoare. Ghidul Societăților Antreprenoriale, acceleratoarelor tech și granturilor de până la 100.000 EUR.</p>
+        </div>
+    </div>
+    <main class="content-area">
+        <h2 class="section-title">1. Societățile Antreprenoriale Studențești (SAS)</h2>
+        <p style="color: var(--tx-light-mut); font-size: 16px; margin-bottom: 32px; line-height: 1.6;">Prin mandatele Ministerului Educației, universitățile moderne găzduiesc acum SAS (Societăți Antreprenoriale Studențești) – adevărate incubatoare de afaceri amplasate direct în campusuri.</p>
+        <img src="/imagini/sas.png" alt="SAS" style="width: 100%; height: auto; max-height: 400px; object-fit: contain; border-radius: 12px; margin-bottom: 32px;">
+        
+        <div class="card-box">
+            <h4>Infrastructură și Consultanță Gratuită</h4>
+            <p>Dacă ai o idee de business, la SAS primești acces gratuit la spații de tip co-working, internet de mare viteză, consultanță juridică pentru înființarea unui SRL/PFA, consultanță contabilă și acces la mentori din mediul de business local.</p>
+        </div>
+        <div class="card-box" style="margin-bottom: 60px;">
+            <h4>Competițiile Interne de Planuri de Afaceri</h4>
+            <p>Echipele câștigătoare la competițiile de pitch-ing sunt premiate cu finanțări de tip seed capital (1.000 - 5.000 EUR), bani suficienți pentru a dezvolta primul prototip funcțional (MVP) sau a achiziționa primele licențe software.</p>
+        </div>
+
+        <h2 class="section-title">2. Acceleratoare Tehnologice de Top și Spin-off-uri Universitare</h2>
+        <p style="color: var(--tx-light-mut); font-size: 16px; margin-bottom: 32px; line-height: 1.6;">Dacă ideea ta are un potențial tehnologic ridicat, ieși din granițele locale ale universității și intri în ecosistemul național de acceleratoare.</p>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-bottom: 60px;">
+            <div class="card-box" style="border-left: none; border-top: 4px solid var(--oxblood-l);">
+                <img src="/imagini/innovation-lab.jpg" alt="Innovation Labs" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 16px;">
+                <h4>Innovation Labs</h4>
+                <p>Cel mai puternic program de pre-accelerare tech din România. După un hackathon, echipele selectate intră într-un mentorat intensiv de 3 luni alături de ingineri de top și antreprenori, iar la Demo Day își prezintă soluțiile în fața investitorilor (VC) pentru fonduri majore.</p>
+            </div>
+            <div class="card-box" style="border-left: none; border-top: 4px solid var(--oxblood-l);">
+                <img src="/imagini/creative-lab.jpg" alt="Spin-off-urile Universitare" style="width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 16px;">
+                <h4>Spin-off-urile Universitare</h4>
+                <p>Dacă cercetarea ta din cadrul laboratorului generează un produs inovator brevetabil, legea permite crearea unui spin-off. Universitatea, profesorul și tu, studentul, deveniți acționari într-o companie comercială dedicată valorificării invenției pe piața globală.</p>
+            </div>
+        </div>
+
+        <h2 class="section-title">3. Granturi și Finanțări Majore: Innotech Student și Start-up Nation</h2>
+        <p style="color: var(--tx-light-mut); font-size: 16px; margin-bottom: 32px; line-height: 1.6;">Cea mai mare barieră a unui tânăr antreprenor este lipsa capitalului de pornire. Statul român și Uniunea Europeană alocă fonduri masive nerambursabile dedicate exclusiv tinerilor.</p>
+        <ul class="tech-list" style="margin-bottom: 60px;">
+            <li style="margin-bottom: 24px;">
+                <img src="/imagini/logo/innotech-student.png" alt="Innotech Student" style="height: 40px; margin-bottom: 12px; display: block;">
+                <strong>Innotech Student (Fonduri Europene Masive):</strong> Treci printr-un program gratuit de formare antreprenorială și, dacă proiectul tău este selectat, primești o finanțare nerambursabilă între 40.000 EUR și 100.000 EUR. Banii acoperă echipamente, licențe, marketing și salarii, condiția fiind să creezi locuri de muncă pentru alți tineri.
+            </li>
+            <li>
+                <img src="/imagini/logo/startup-nation.png" alt="Start-up Nation" style="height: 40px; margin-bottom: 12px; display: block;">
+                <strong>Start-up Nation (Programul Național Guvernamental):</strong> Un pilon clasic, unde tinerii absolvenți și studenții care propun proiecte inovatoare primesc punctaje preferențiale majore în procesul de selecție, facilitând obținerea de fonduri substanțiale pentru lansarea business-ului.
+            </li>
+        </ul>
+    </main>
+</div>
+<%- include('partials/footer') %>

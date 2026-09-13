@@ -1,0 +1,308 @@
+<%- include('partials/header') %>
+
+<style>
+/* Hero Section */
+.hero-banner {
+    position: relative;
+    width: 100%;
+    height: 450px;
+    border-bottom: 1px solid var(--line-d);
+    overflow: hidden;
+}
+.hero-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.4) grayscale(0.2);
+    transition: filter 0.3s;
+}
+.hero-banner img:hover {
+    filter: brightness(0.6) grayscale(0);
+}
+.hero-text-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 100%;
+    max-width: 1000px;
+    padding: 0 20px;
+    z-index: 10;
+    pointer-events: none;
+}
+.hero-text-overlay h1 {
+    font-size: clamp(36px, 5vw, 54px);
+    color: var(--tx-light);
+    margin-bottom: 16px;
+    text-shadow: 0 4px 10px rgba(0,0,0,0.8);
+}
+.hero-text-overlay p {
+    font-size: clamp(18px, 2vw, 24px);
+    color: var(--tx-light-mut);
+    text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+}
+
+/* Sections */
+.law-section {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid var(--line-d);
+    border-radius: 12px;
+    padding: 40px;
+    margin-bottom: 48px;
+    transition: border-color 0.3s;
+}
+.law-section:hover {
+    border-color: var(--oxblood-l);
+}
+
+.sub-heading {
+    color: var(--oxblood-l);
+    font-size: 20px;
+    margin: 32px 0 16px 0;
+    font-weight: 600;
+    border-bottom: 1px solid var(--line-d);
+    padding-bottom: 8px;
+}
+
+.tech-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.tech-list li {
+    position: relative;
+    padding-left: 24px;
+    margin-bottom: 16px;
+    color: var(--tx-light-mut);
+    line-height: 1.6;
+}
+.tech-list li::before {
+    content: "▹";
+    position: absolute;
+    left: 0;
+    color: var(--oxblood-l);
+}
+
+/* Document Buttons */
+.doc-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--line-d);
+    color: var(--tx-light);
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    margin-top: 16px;
+    transition: background 0.3s, border-color 0.3s;
+}
+.doc-btn:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: var(--oxblood-l);
+}
+
+/* Platform Buttons Grid */
+.platform-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin: 24px 0;
+}
+.platform-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--line-d);
+    padding: 24px;
+    border-radius: 12px;
+    text-decoration: none;
+    color: var(--tx-light);
+    font-weight: 600;
+    transition: transform 0.3s, border-color 0.3s, background 0.3s;
+}
+.platform-btn:hover {
+    transform: translateY(-5px);
+    border-color: var(--oxblood-l);
+    background: rgba(243,146,0,0.1);
+}
+.platform-btn .icon {
+    font-size: 32px;
+    margin-bottom: 12px;
+    color: var(--oxblood-l);
+}
+
+.highlight-box {
+    background: rgba(243,146,0,0.1);
+    border-left: 4px solid var(--oxblood-l);
+    padding: 20px;
+    border-radius: 4px;
+    margin: 24px 0;
+}
+</style>
+
+<div class="fade-in-up">
+    <!-- Hero / Banner -->
+    <div class="hero-banner">
+        <img src="/imagini/documente.jpg" alt="Legislatie si Administratie">
+        <div class="hero-text-overlay">
+            <h1>Constituția Studentului: Manualul Tău de Drepturi și Legislație</h1>
+            <p>Cunoașterea legii face diferența dintre un student vulnerabil și unul care profită la maximum de ecosistemul academic. Aici ai ghidul tău juridic și administrativ.</p>
+        </div>
+    </div>
+
+    <main class="content-area" style="max-width: 1000px; margin: 0 auto; padding-top: 80px; padding-bottom: 60px;">
+
+        <!-- 1. Legea Invatamantului Superior -->
+        <div class="law-section">
+            <h3 class="section-title" style="margin-top: 0;">1. Legea Învățământului Superior (Legea nr. 199/2023): Scutul Tău Național</h3>
+            <p style="color: var(--tx-light-mut); font-size: 16px; margin-bottom: 24px; line-height: 1.6;">Legea 199/2023 a reformat masiv sistemul, transformând multe dintre „favorurile” facultăților în obligații legale stricte pe care universitatea trebuie să ți le asigure.</p>
+            
+            <div class="sub-heading">Facilități de Transport Garantate și Cum le Accesezi</div>
+            <ul class="tech-list">
+                <li><strong style="color: var(--tx-light);">Transport Feroviar (Reducere 90%):</strong> Până la vârsta de 30 de ani, dacă ești la cursuri de zi (frecvență), ai 90% reducere la biletele de tren (clasa a II-a).<br>
+                <span style="color: var(--tx-light-mut); font-size: 14px;"><strong>Cum se aplică practic:</strong> Reducerea este valabilă la CFR Călători, dar și la operatorii privați (Softrans, Astra Trans, Transferoviar). Se aplică pe tot parcursul anului (inclusiv vacanțele de vară). Pentru a o folosi online, facultatea trebuie să îți elibereze un ID digital sau să îți vizeze legitimația de transport la începutul fiecărui an.</span></li>
+                <li><strong style="color: var(--tx-light);">Transport Public Local (Metrou și STB/CTP):</strong><br>
+                <strong>București (Metrorex):</strong> Beneficiezi de 90% reducere la abonamentul lunar. Acesta se eliberează direct la casieriile speciale din stațiile de metrou, pe baza legitimației de student vizată.<br>
+                <strong>Transport de suprafață:</strong> Legea obligă la o subvenție de minimum 90%, însă Consiliile Locale pot decide gratuitatea totală 100% (cum se întâmplă frecvent pentru studenții de la buget în marile orașe).</li>
+            </ul>
+
+            <div class="sub-heading">Interzicerea Taxelor Ascunse</div>
+            <p style="color: var(--tx-light-mut); margin-bottom: 16px;">În trecut, studenții plăteau pentru orice hârtie. Astăzi, legea este clară:</p>
+            <ul class="tech-list">
+                <li><strong style="color: var(--tx-light);">Fără taxe pentru documente:</strong> Este ilegal ca secretariatul să îți ceară bani pentru eliberarea adeverințelor de student (necesare la medic sau angajator), a foilor matricole sau a diplomelor de absolvire.</li>
+                <li><strong style="color: var(--tx-light);">Prima examinare este gratuită:</strong> Nu poți fi taxat pentru a participa la un examen în prima sesiune (cea normală). Taxele de reexaminare pot fi aplicate doar dacă ai picat examenul (în sesiunile de restanțe) sau dacă vrei să îți mărești nota.</li>
+            </ul>
+
+            <div class="sub-heading">Trecerea de la Buget la Taxă („Glisarea”) și Renunțarea la Studii</div>
+            <ul class="tech-list">
+                <li><strong style="color: var(--tx-light);">Dreptul la un singur ciclu gratuit:</strong> Statul român îți finanțează un singur program de licență, unul de master și unul de doctorat.</li>
+                <li><strong style="color: var(--tx-light);">Glisarea (Clasificarea anuală):</strong> Faptul că ai intrat pe un loc subvenționat (la buget) în anul I nu înseamnă că rămâi acolo automat. La finalul fiecărui an, se face un clasament bazat pe creditele ECTS obținute. Dacă ai restanțe, vei pica pe locurile cu taxă, iar un student de la taxă cu note mari îți va lua locul la buget.</li>
+                <li><strong style="color: var(--tx-light);">Renunțarea:</strong> Dacă te retragi de la facultate în primele luni, nu ești obligat să plătești statului anii neefectuați, păstrându-ți dreptul de a aplica gratuit la o altă facultate în viitor pentru perioada rămasă.</li>
+            </ul>
+
+            <a href="https://legislatie.just.ro/Public/DetaliiDocument/272426" target="_blank" class="doc-btn">
+                <span>🔗</span> Descarcă Legea 199/2023 - Portalul Ministerului Justiției
+            </a>
+        </div>
+
+
+        <!-- 2. CDOS -->
+        <div class="law-section">
+            <h3 class="section-title" style="margin-top: 0;">2. Codul Drepturilor și Obligațiilor Studentului (CDOS)</h3>
+            <p style="color: var(--tx-light-mut); font-size: 16px; margin-bottom: 24px; line-height: 1.6;">CDOS este regulamentul de bază al relației tale cu profesorii. Dacă o decizie internă a profesorului sau a decanului încalcă CDOS, acea decizie poate fi anulată legal.</p>
+            
+            <div class="sub-heading">Drepturile Tale în Raport cu Profesorii și Examenele</div>
+            <ul class="tech-list">
+                <li><strong style="color: var(--tx-light);">Fișa Disciplinei este Contractul Tău:</strong> În prima săptămână de școală, profesorul este obligat să îți prezinte Fișa Disciplinei. Acolo scrie exact cum se calculează nota finală (ex. 50% examen, 30% proiect, 20% prezență la seminar). Profesorul nu are dreptul să schimbe regulile de notare în timpul semestrului sau cu o zi înainte de examen.</li>
+                <li><strong style="color: var(--tx-light);">Refuzul sarcinilor suplimentare:</strong> Nu poți fi obligat să participi la cursuri, seminare sau activități extracurriculare care nu sunt trecute oficial în orar sau în planul de învățământ, sub amenințarea scăderii notei.</li>
+                <li><strong style="color: var(--tx-light);">Dreptul la Reexaminare (Contestația):</strong> Dacă primești o notă pe care o consideri subiectivă, ai dreptul să depui o contestație la decanat în termenul stabilit (de regulă 24/48h). O comisie nouă va corecta lucrarea, iar nota finală va fi cea dată de comisia de recorectare.</li>
+                <li><strong style="color: var(--tx-light);">Evaluarea Profesorilor:</strong> Este singura ta armă instituțională. Formularele de evaluare se completează obligatoriu și 100% anonim la finalul semestrului. Rezultatele sunt discutate în departament și influențează direct cariera cadrului didactic.</li>
+            </ul>
+
+            <div class="sub-heading">Regula de 25% (Puterea de Veto)</div>
+            <p style="color: var(--tx-light-mut); margin-bottom: 24px; line-height: 1.6;">Niciun for decizional (Consiliul Facultății, Senatul Universității, Comisia de Burse sau Cazare) nu poate funcționa și nu poate emite hotărâri valabile dacă studenții nu sunt reprezentați în proporție de minim 25% din totalul membrilor. Ești partener cu drepturi depline în conducerea facultății.</p>
+
+            <a href="https://legislatie.just.ro/Public/DetaliiDocument/280879" target="_blank" class="doc-btn">
+                <span>🔗</span> Descarcă CDOS - Ordinul Ministerului Educației
+            </a>
+        </div>
+
+
+        <!-- 3. Asistenta Medicala -->
+        <div class="law-section">
+            <h3 class="section-title" style="margin-top: 0;">3. Asistența Medicală și Consilierea: Drepturile Tale de Sănătate</h3>
+            <p style="color: var(--tx-light-mut); font-size: 16px; margin-bottom: 24px; line-height: 1.6;">Facultatea este un maraton stresant. Statul te protejează atât fizic, cât și mental.</p>
+            
+            <ul class="tech-list">
+                <li><strong style="color: var(--tx-light);">Asigurarea de Sănătate (CNAS):</strong> Ești asigurat automat și gratuit până la vârsta de 26 de ani. Nu plătești contribuția CASS. Dacă te angajezi part-time, angajatorul tău va prelua plata acestor contribuții.<br>
+                <span style="color: var(--tx-light-mut); font-size: 14px;"><strong>Cum dovedești:</strong> Dacă mergi la un spital de stat și sistemul nu te găsește asigurat, e suficient să prezinți o adeverință de student valabilă eliberată de secretariat.</span></li>
+                <li><strong style="color: var(--tx-light);">Scutirile Medicale:</strong> Absențele de la laboratoarele obligatorii se motivează doar cu scutire medicală. Aceasta se obține gratuit de la medicul din cadrul Policlinicii Studențești din campusul tău (sau de la medicul de familie) și trebuie vizată de cabinetul facultății în termen de regulă de 7 zile lucrătoare.</li>
+                <li><strong style="color: var(--tx-light);">Dreptul la Consiliere Psihologică (CCOC):</strong> Nu este un lux, este un serviciu garantat de lege. Fiecare universitate are un Centru de Consiliere unde poți beneficia, gratuit și sub confidențialitate absolută (secret medical), de ședințe de psihoterapie pentru a depăși episoade de burnout, depresie sau anxietate de sesiune.</li>
+            </ul>
+        </div>
+
+
+        <!-- 4. Viza de flotant -->
+        <div class="law-section">
+            <h3 class="section-title" style="margin-top: 0;">4. Birocrația Locuirii: Cum Obții Viza de Flotant</h3>
+            <p style="color: var(--tx-light-mut); font-size: 16px; margin-bottom: 24px; line-height: 1.6;">Mutarea într-un oraș nou atrage obligații civile. Conform legii, dacă locuiești mai mult de 15 zile la o altă adresă decât cea din buletin, ești obligat să declari noua reședință.</p>
+            
+            <div class="sub-heading">De ce ai nevoie de ea?</div>
+            <p style="color: var(--tx-light-mut); margin-bottom: 24px; line-height: 1.6;">Fără viză de flotant nu poți obține abonamentele subvenționate pentru transportul în comun din orașul respectiv și nu poți vota la alegerile locale, pierzându-ți vocea în fața primăriei care gestionează orașul tău universitar.</p>
+
+            <div class="sub-heading">Pașii exacți pentru a o obține:</div>
+            <div class="highlight-box" style="margin-top: 0;">
+                <strong style="color: var(--tx-light);">Dacă stai la cămin:</strong> Procesul este simplu. Predai o copie după buletin și formularul completat administrației căminului în luna octombrie. Ei se ocupă centralizat de depunerea dosarelor la poliție și îți returnează buletinul cu autocolantul aplicat pe spate.
+            </div>
+
+            <p style="color: var(--tx-light-mut); margin-bottom: 16px;"><strong>Dacă stai în chirie:</strong></p>
+            <ul class="tech-list">
+                <li>Printezi și completezi Cererea pentru stabilirea reședinței.</li>
+                <li>Faci o programare la Direcția Județeană de Evidență a Persoanelor (Evidența Populației) aferentă sectorului/orașului tău.</li>
+                <li><strong>Obligatoriu:</strong> Trebuie să mergi fizic însoțit de proprietarul apartamentului. Acesta trebuie să aibă asupra lui actul de identitate și actul de proprietate al apartamentului (în original) pentru a semna că te ia în spațiu.</li>
+                <li>În 7-10 zile lucrătoare îți vei ridica buletinul cu viza valabilă (de regulă pentru 1 an).</li>
+            </ul>
+
+
+        </div>
+
+
+        <!-- 5. Ecosistem Digital -->
+        <h3 class="section-title" style="margin-top: 80px;">5. Ecosistemul Digital și Privat (Legitimații și Pachete Software)</h3>
+        <p style="color: var(--tx-light-mut); font-size: 16px; margin-bottom: 24px; line-height: 1.6;">Drepturile tale se extind și în lumea digitală. Universitățile și marii vendori IT îți oferă un arsenal de unelte premium, gratuit.</p>
+        
+        <div class="sub-heading">Legitimații Digitale de Reduceri (Aplică Online)</div>
+        
+        <style>
+            .platform-btn .icon-img {
+                height: 48px;
+                object-fit: contain;
+                margin-bottom: 12px;
+                transition: transform 0.3s;
+            }
+            .platform-btn:hover .icon-img {
+                transform: scale(1.1);
+            }
+        </style>
+        <div class="platform-grid">
+            <a href="https://www.isic.ro/" target="_blank" class="platform-btn">
+                <img src="/imagini/logo/isic.png" alt="ISIC" class="icon-img">
+                ISIC
+                <span style="font-size: 13px; font-weight: 400; color: var(--tx-light-mut); margin-top: 8px;">Legitimație Globală (Spotify, Zboruri)</span>
+            </a>
+            <a href="https://www.omnipass.ro/" target="_blank" class="platform-btn">
+                <img src="/imagini/logo/omnipass.png" alt="Omnipass" class="icon-img">
+                Omnipass
+                <span style="font-size: 13px; font-weight: 400; color: var(--tx-light-mut); margin-top: 8px;">Reduceri Naționale & Festivaluri</span>
+            </a>
+            <a href="https://www.studcard.ro/" target="_blank" class="platform-btn">
+                <img src="/imagini/logo/studcard.png" alt="StudCard" class="icon-img">
+                StudCard
+                <span style="font-size: 13px; font-weight: 400; color: var(--tx-light-mut); margin-top: 8px;">Reduceri Locale & Campus</span>
+            </a>
+            <a href="https://europeanyouthcard.ro/" target="_blank" class="platform-btn">
+                <img src="/imagini/logo/eyca.png" alt="EYCA" class="icon-img">
+                EYCA
+                <span style="font-size: 13px; font-weight: 400; color: var(--tx-light-mut); margin-top: 8px;">Cardul European (36 țări)</span>
+            </a>
+        </div>
+
+        <div class="sub-heading" style="margin-top: 60px;">Software și Licențe Gratuite (E-mailul de Student .edu.ro)</div>
+        <p style="color: var(--tx-light-mut); margin-bottom: 24px; line-height: 1.6;">În prima zi de facultate vei primi o adresă de email instituțională (de tipul <em>nume@s.unibuc.ro</em>, <em>nume@stud.upb.ro</em>). Acea adresă valorează mii de euro în licențe software:</p>
+
+        <ul class="tech-list">
+            <li><strong style="color: var(--tx-light);">Microsoft Office 365 Education:</strong> Toate universitățile din România îți oferă gratuit licența completă (Word, Excel, PowerPoint, Teams) și 1 TB de stocare în cloud pe OneDrive pe baza emailului instituțional.</li>
+            <li><strong style="color: var(--tx-light);">GitHub Student Developer Pack:</strong> Dacă ești la profile tehnice, logarea cu emailul de student îți oferă gratuit acces la unelte de programare, domenii web și licențe cloud în valoare de zeci de mii de dolari.</li>
+            <li><strong style="color: var(--tx-light);">Autodesk, JetBrains, MATLAB:</strong> Toate aceste softuri industriale (folosite de ingineri și programatori), ale căror licențe comerciale sunt prohibitive, sunt oferite 100% gratuit studenților pe perioada studiilor.</li>
+        </ul>
+
+    </main>
+</div>
+
+<%- include('partials/footer') %>

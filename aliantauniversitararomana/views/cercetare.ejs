@@ -1,0 +1,94 @@
+<%- include('partials/header') %>
+<style>
+.hero-banner { position: relative; width: 100%; height: 450px; border-bottom: 1px solid var(--line-d); overflow: hidden; background: #000; }
+.hero-banner img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.4); transition: filter 0.3s; }
+.hero-banner img:hover { filter: brightness(0.6); }
+.hero-text-overlay { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; width: 100%; max-width: 1000px; padding: 0 20px; z-index: 10; pointer-events: none; }
+.hero-text-overlay h1 { font-size: clamp(36px, 5vw, 54px); color: var(--tx-light); margin-bottom: 16px; text-shadow: 0 4px 10px rgba(0,0,0,0.8); }
+.hero-text-overlay p { font-size: clamp(18px, 2vw, 24px); color: var(--tx-light-mut); text-shadow: 0 2px 8px rgba(0,0,0,0.8); }
+.content-area { max-width: 1000px; margin: 0 auto; padding: 80px 20px 60px 20px; }
+.section-title { font-size: 28px; color: var(--tx-light); margin-bottom: 24px; padding-bottom: 12px; border-bottom: 2px solid var(--oxblood-l); display: inline-block; }
+.card-box { background: rgba(255,255,255,0.02); border: 1px solid var(--line-d); border-radius: 12px; padding: 24px; margin-bottom: 24px; border-left: 4px solid var(--oxblood-l); }
+.card-box h4 { color: var(--tx-light); margin-top: 0; margin-bottom: 12px; font-size: 20px; }
+.card-box p { color: var(--tx-light-mut); margin: 0; line-height: 1.6; }
+.tech-list { list-style: none; padding: 0; margin: 0; }
+.tech-list li { position: relative; padding-left: 24px; margin-bottom: 16px; color: var(--tx-light-mut); line-height: 1.6; }
+.tech-list li::before { content: "▹"; position: absolute; left: 0; color: var(--oxblood-l); }
+</style>
+<div class="fade-in-up">
+    <div class="hero-banner">
+        <img src="/imagini/studenti/cercetare.jpg" alt="Cercetare Studențească" style="object-position: center top;">
+        <div class="hero-text-overlay">
+            <h1>Inovează Încă din Anul I: De la Teorie la Brevet</h1>
+            <p>Ghidul complet al laboratoarelor, cercurilor științifice de elită, granturilor naționale UEFISCDI și primilor pași spre cariera de cercetător.</p>
+        </div>
+    </div>
+    <main class="content-area">
+        <h2 class="section-title">1. Sesiunile de Comunicări Științifice Studențești (SCSS)</h2>
+        <div style="display: flex; gap: 24px; align-items: center; margin-bottom: 32px;">
+            <img src="/imagini/logo/scss.png" alt="SCSS Logo" style="max-height: 80px; object-fit: contain;">
+            <p style="color: var(--tx-light-mut); font-size: 16px; margin: 0; line-height: 1.6;">Piatra de temelie a carierei academice pentru orice student ambițios este participarea la SCSS. Aproape fiecare facultate acreditată din România organizează acest eveniment de anvergură anual (de regulă în perioada aprilie-mai).</p>
+        </div>
+        <img src="/imagini/scss.jpg" alt="SCSS" style="width: 100%; height: 350px; object-fit: cover; border-radius: 12px; margin-bottom: 40px; border: 1px solid var(--line-d);">
+        
+        <h3 style="color: var(--tx-light); margin-bottom: 24px;">Anatomia unui Paper (Lucrare Științifică):</h3>
+        <div class="card-box">
+            <h4>Alegerea temei</h4>
+            <p>Nu trebuie să inventezi roata, dar poți aduce o perspectivă nouă (ex. o analiză comparativă a algoritmilor de machine learning pe un set de date local, un studiu de caz economic pe inflație sau o revizuire a jurisprudenței într-o speță civilă).</p>
+        </div>
+        <div class="card-box">
+            <h4>Mentoratul</h4>
+            <p>Găsești un cadru didactic (lector, conferențiar sau profesor) care acceptă să îți coordoneze pașii. Relația cu mentorul este critică: el te va învăța cum se citează corect academic, cum se structurează metodologia și cum se elimină erorile logice.</p>
+        </div>
+        <div class="card-box">
+            <h4>Susținerea publică</h4>
+            <p>Prezinți lucrarea în fața unei comisii formate din profesori și cercetători seniores, utilizând o prezentare, urmată de o sesiune de Q&A (întrebări și răspunsuri).</p>
+        </div>
+        
+        <h3 style="color: var(--tx-light); margin-bottom: 24px; margin-top: 40px;">De ce este un punct de cotitură în CV:</h3>
+        <ul class="tech-list" style="margin-bottom: 60px;">
+            <li><strong>Recunoaștere financiară:</strong> Cele mai bune lucrări sunt premiate cu diplome de excelență și premii în bani (oferite de universitate sau de companiile partenere din industrie).</li>
+            <li><strong>Publicarea în Revistele Universității:</strong> Lucrările cotate ca fiind excepționale sunt acceptate spre publicare în revistele științifice ale universității, indexate în baze de date internaționale (BDI). Având prima ta publicație încă din timpul licenței, pornești cu un avantaj colosal la interviurile pentru masterate de elită din străinătate sau pentru poziții de Research Assistant.</li>
+        </ul>
+
+        <h2 class="section-title">2. Cercurile Științifice și Competițiile Internaționale de Elită</h2>
+        <p style="color: var(--tx-light-mut); font-size: 16px; margin-bottom: 32px; line-height: 1.6;">Dacă SCSS este examenul anual, cercurile științifice sunt "sala de antrenament" în care îți petreci serile și weekendurile alături de colegi pasionați.</p>
+        <img src="/imagini/competitie.jpg" alt="Competiții" style="width: 100%; height: 400px; object-fit: cover; border-radius: 12px; margin-bottom: 40px; border: 1px solid var(--line-d);">
+        
+        <div class="card-box">
+            <h4>Domeniul Tehnic, Inginerie și Automotive (Formula Student & Robotică)</h4>
+            <p><strong>Formula Student:</strong> Echipe formate din zeci de studenți trec prin toate fazele inginerești: proiectare CAD, simulări de rezistență a materialelor, atragere de sponsori, fabricare fizică și pilotarea monoposturilor pe circuite internaționale de Formula 1.<br><br><strong>Robotică și AI:</strong> Cercuri dedicate dezvoltării de roboți autonomi care participă la competiții mondiale (RoboChallenge, MicroMouse).</p>
+        </div>
+        <div class="card-box">
+            <h4>Domeniul Medical și Biotehnologii (Chirurgie Experimentală)</h4>
+            <p>Prin organizații precum SSCR (Societatea Studențească de Chirurgie din România), studenții la medicină au acces la laboratoare de anatomie patologică și chirurgie experimentală. Se organizează stagii unde înveți tehnici avansate de microchirurgie și manopere de laparoscopie pe simulatoare.</p>
+        </div>
+        <div class="card-box" style="margin-bottom: 60px;">
+            <h4>Domeniul Umanist, Arheologie și Științe Sociale</h4>
+            <p>Studenții de la Istorie și Litere participă la săpături arheologice de amploare națională alături de arheologi ai Academiei Române, descoperind artefacte. Cei de la Sociologie colaborează cu institute de sondare pentru a culege date sociometrice și a rula modele statistice.</p>
+        </div>
+
+        <h2 class="section-title">3. Finanțarea Cercetării: De la Asistent la Granturi UEFISCDI</h2>
+        <p style="color: var(--tx-light-mut); font-size: 16px; margin-bottom: 32px; line-height: 1.6;">Nu trebuie să aștepți să termini doctoratul pentru a fi plătit din știință. Sistemul românesc și fondurile europene încurajează integrarea timpurie a tinerilor.</p>
+        <div style="margin-bottom: 32px;">
+            <img src="/imagini/logo/UEFISCDI.png" alt="UEFISCDI Logo" style="height: 80px; object-fit: contain;">
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
+            <div class="card-box" style="border-left: none; border-top: 4px solid var(--oxblood-l);">
+                <h4>Granturile Naționale UEFISCDI</h4>
+                <p>UEFISCDI finanțează anual sute de proiecte de cercetare fundamentală. În cererea de finanțare a acestor granturi, profesorii au bugete dedicate special pentru angajarea studenților.</p>
+            </div>
+            <div class="card-box" style="border-left: none; border-top: 4px solid var(--oxblood-l);">
+                <h4>Statutul de Asistent de Cercetare</h4>
+                <p>Dacă te remarci la cursuri, poți fi recrutat direct de un profesor într-un grant. Vei fi angajat cu contract de muncă în universitate, primind un salariu lunar pentru activitatea ta de laborator sau scriere de cod.</p>
+            </div>
+            <div class="card-box" style="border-left: none; border-top: 4px solid var(--oxblood-l);">
+                <h4>Burse de Performanță Științifică</h4>
+                <p>Universitățile de top alocă fonduri substanțiale pentru a-i recompensa lunar pe studenții care obțin rezultate notabile în cercetare. Publicarea unui articol într-o revistă cotată ISI îți poate garanta cele mai mari burse din universitate.</p>
+            </div>
+        </div>
+        <img src="/imagini/studenti/cercetare.jpg" alt="Cercetare" style="width: 100%; height: 350px; object-fit: cover; object-position: center; border-radius: 12px; margin-top: 60px; margin-bottom: 20px; border: 1px solid var(--line-d);">
+    </main>
+</div>
+<%- include('partials/footer') %>

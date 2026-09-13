@@ -1,0 +1,287 @@
+<%- include('partials/header') %>
+
+<style>
+/* Hero Split */
+.hero-split {
+    position: relative;
+    width: 100%;
+    height: 450px;
+    display: flex;
+    border-bottom: 1px solid var(--line-d);
+}
+.hero-split .hero-half {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+}
+.hero-split .hero-half img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.4) grayscale(0.2);
+    transition: filter 0.4s;
+}
+.hero-split .hero-half:hover img {
+    filter: brightness(0.6) grayscale(0);
+}
+.hero-text-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 100%;
+    max-width: 1000px;
+    padding: 0 20px;
+    z-index: 10;
+    pointer-events: none;
+}
+
+/* Flex Sections */
+.section-flex {
+    display: flex;
+    gap: 48px;
+    align-items: center;
+    margin-bottom: 60px;
+}
+.section-flex.reverse {
+    flex-direction: row-reverse;
+}
+.section-flex-text { flex: 1; }
+.section-flex-img { flex: 1; }
+.section-flex-img img {
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid var(--line-d);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    object-fit: cover;
+}
+
+/* Tabs */
+.tabs-container {
+    margin-bottom: 60px;
+    border: 1px solid var(--line-d);
+    border-radius: 12px;
+    overflow: hidden;
+    background: rgba(255,255,255,0.02);
+}
+.tabs-header {
+    display: flex;
+    border-bottom: 1px solid var(--line-d);
+    background: rgba(0,0,0,0.2);
+}
+.tab-btn {
+    flex: 1;
+    padding: 20px;
+    text-align: center;
+    background: none;
+    border: none;
+    color: var(--tx-light-mut);
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    border-bottom: 3px solid transparent;
+}
+.tab-btn:hover {
+    color: var(--tx-light);
+    background: rgba(255,255,255,0.05);
+}
+.tab-btn.active {
+    color: var(--oxblood-l);
+    border-bottom-color: var(--oxblood-l);
+    background: rgba(243,146,0,0.05);
+}
+.tab-content {
+    display: none;
+    padding: 32px;
+    color: var(--tx-light-mut);
+    line-height: 1.6;
+    animation: fadeIn 0.4s ease-out;
+}
+.tab-content.active {
+    display: block;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Dictionary Grid */
+.dict-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    margin-top: 32px;
+}
+.dict-card {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid var(--line-d);
+    border-radius: 12px;
+    padding: 32px;
+    transition: transform 0.3s;
+}
+.dict-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--oxblood-l);
+}
+
+@media (max-width: 768px) {
+    .section-flex, .section-flex.reverse { flex-direction: column; }
+    .tabs-header { flex-direction: column; }
+    .hero-split { flex-direction: column; height: 500px; }
+}
+</style>
+
+<div class="fade-in-up">
+    <!-- Hero / Banner -->
+    <div class="hero-split">
+        <div class="hero-half">
+            <img src="/imagini/studenti/angajati 1.jpg" alt="Lab Research">
+        </div>
+        <div class="hero-half">
+            <img src="/imagini/studenti/angajati 2.jpg" alt="Corporate/Clinical">
+        </div>
+        
+        <div class="hero-text-overlay">
+            <h1 style="font-size: clamp(36px, 5vw, 60px); color: var(--tx-light); margin-bottom: 16px; text-shadow: 0 4px 10px rgba(0,0,0,0.8);">Cariera Ta Începe în Amfiteatru</h1>
+            <p style="font-size: clamp(18px, 2vw, 24px); color: var(--tx-light-mut); text-shadow: 0 2px 8px rgba(0,0,0,0.8);">Cum faci tranziția de la teorie la piața muncii: practică obligatorie, internship-uri plătite și sectorul public.</p>
+        </div>
+    </div>
+
+    <main class="content-area" style="max-width: 1200px; padding-top: 80px;">
+
+        <!-- 1. Dictionarul Legislativ -->
+        <h3 class="section-title">1. Dicționarul Legislativ: Practică vs. Internship vs. Traineeship</h3>
+        <p style="font-size: 18px; color: var(--tx-light-mut); margin-bottom: 32px; line-height: 1.6;">Pentru a-ți construi o carieră stabilă, trebuie să cunoști diferențele legale și financiare dintre formele de muncă studențească din România:</p>
+
+        <div class="section-flex">
+            <div class="section-flex-text">
+                <div class="dict-grid" style="grid-template-columns: 1fr;">
+                    <div class="dict-card" style="padding: 24px;">
+                        <h4 style="font-size: 20px; color: var(--oxblood-l); margin-bottom: 12px;">Practica de specialitate (Obligatoria)</h4>
+                        <ul class="tech-list" style="margin-bottom: 0;">
+                            <li><strong>Ce este:</strong> O componentă obligatorie a planului de învățământ, desfășurată de obicei în anul II sau III de licență (însumând între 90 și 360 de ore).</li>
+                            <li><strong>Scop:</strong> Este strict educațional. La final, prezinți un caiet de practică și primești o notă (și creditele ECTS aferente).</li>
+                            <li><strong>Remunerație:</strong> Fiind o obligație școlară, de regulă nu este plătită. Universitățile au deja convenții-cadru semnate cu mii de parteneri, eliminând birocrația căutării.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="section-flex-img">
+                <img src="/imagini/studenti/angajati 3.jpg" alt="Studenti in practica" style="max-height: 350px;">
+            </div>
+        </div>
+
+        <div class="dict-grid">
+            <div class="dict-card">
+                <h4 style="font-size: 20px; color: var(--tx-light); margin-bottom: 12px;">Internship-urile (Legea 176/2018)</h4>
+                <ul class="tech-list" style="margin-bottom: 0;">
+                    <li><strong>Ce sunt:</strong> Programe extra-curriculare (de 1-6 luni), desfășurate frecvent pe perioada verii ("Summer Internships") în companii private.</li>
+                    <li><strong>Dreptul tău:</strong> Conform legii din România, orice internship trebuie să fie remunerat cu cel puțin 50% din salariul minim brut pe economie, proporțional cu orele lucrate.</li>
+                    <li><strong style="color: var(--oxblood-l);">Perspective:</strong> Peste 70% dintre aceste programe se finalizează cu un contract de muncă permanent (poziții de Junior).</li>
+                </ul>
+            </div>
+
+            <div class="dict-card">
+                <h4 style="font-size: 20px; color: var(--tx-light); margin-bottom: 12px;">Programele Trainee</h4>
+                <ul class="tech-list" style="margin-bottom: 0;">
+                    <li><strong>Ce sunt:</strong> Dedicate masteranzilor sau studenților aflați în an terminal. Reprezintă o angajare full-time pe 1-2 ani, cu salariu competitiv de piață.</li>
+                    <li><strong>Cum funcționează:</strong> Ești rotit la fiecare câteva luni prin diverse departamente ale corporației (Marketing, Vânzări, HR, Operațiuni) pentru a înțelege întregul business.</li>
+                    <li><strong style="color: var(--oxblood-l);">Scop final:</strong> Formarea ta accelerată pentru o poziție viitoare de management.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 2. Specificul Carierei -->
+        <h3 class="section-title" style="margin-top: 80px;">2. Specificul Carierei pe Domenii de Studiu</h3>
+        <p style="font-size: 18px; color: var(--tx-light-mut); margin-bottom: 32px; line-height: 1.6;">Nu există o rețetă unică pentru angajare. Fiecare mare domeniu universitar are un ecosistem propriu, parteneri corporate specifici și ritmuri de recrutare diferite. Iată cum arată tranziția spre piața muncii în funcție de facultatea ta:</p>
+
+        <div class="tabs-container">
+            <div class="tabs-header">
+                <button class="tab-btn active" onclick="openTab('tab-it')">Tehnic & IT</button>
+                <button class="tab-btn" onclick="openTab('tab-eco')">Economic</button>
+                <button class="tab-btn" onclick="openTab('tab-med')">Medical</button>
+                <button class="tab-btn" onclick="openTab('tab-uman')">Umanist & Juridic</button>
+            </div>
+            
+            <div id="tab-it" class="tab-content active">
+                <h4 style="font-size: 22px; color: var(--tx-light); margin-bottom: 16px;">Domeniul Tehnic, Inginerie și IT (UPB, UTCN, UPT, TUIASI, UTCB, FMI-uri)</h4>
+                <p style="margin-bottom: 16px;">Este cel mai dinamic și bine plătit sector pentru studenți, caracterizat printr-o „vânătoare de talente” care începe adesea din anul II.</p>
+                <p style="margin-bottom: 12px;"><strong>Software & IT:</strong> Giganții tech (Amazon, Microsoft, Bitdefender, UiPath, Adobe) organizează anual academii de vară și "Summer Internships". Aici nu faci „muncă de birou” sau fotocopii. Ești integrat într-o echipă Agile, ai un mentor direct, scrii cod pe medii de testare și participi la ședințele de produs. Peste 70% dintre studenții care trec cu bine de internshipul de vară primesc oferte de Junior Developer / QA Tester part-time începând cu anul III.</p>
+                <p style="margin-bottom: 12px;"><strong>Inginerie Automotive & Electronică:</strong> În hub-uri precum Timișoara, Cluj, Brașov sau București, companiile de profil (Continental, Bosch, NXP, Renault, Dacia) oferă laboratoare direct în facultăți. Practica implică dezvoltarea de sisteme embedded, testarea de circuite fizice, programarea senzorilor auto sau lucrul cu roboți industriali.</p>
+                <p><strong>Construcții și Arhitectură (UTCB, UAUIM):</strong> Practica se împarte între birourile de proiectare (lucru avansat în AutoCAD, Revit, programe de calcul structural) și prezența fizică pe șantiere majore (urmărirea etapelor de execuție, protecția muncii, materiale de construcții).</p>
+            </div>
+            
+            <div id="tab-eco" class="tab-content">
+                <h4 style="font-size: 22px; color: var(--tx-light); margin-bottom: 16px;">Domeniul Economic și de Business (ASE, FSEGA, FEAA etc.)</h4>
+                <p style="margin-bottom: 16px;">Un ecosistem extrem de structurat, dominat de proceduri clare de recrutare în masă și trasee de carieră previzibile.</p>
+                <p style="margin-bottom: 12px;"><strong>Audit și Consultanță Financiară (The Big 4):</strong> Cei patru giganți globali (PwC, EY, KPMG, Deloitte) sunt cei mai mari "aspiratori" de studenți la economie. Internship-urile presupun asistență în auditarea reală a companiilor, verificarea balanțelor și lucrul intensiv în Excel. Este un mediu de stres ridicat, dar care îți lansează cariera financiară, punând bazele obținerii certificărilor internaționale (ACCA, CFA).</p>
+                <p style="margin-bottom: 12px;"><strong>Sectorul Bancar și Finanțe:</strong> Băncile comerciale (BCR, Banca Transilvania, ING, BRD) oferă programe de practică în analiză de risc, creditare corporate, trezorerie sau dezvoltare de produse bancare digitale.</p>
+                <p><strong>Outsourcing (BPO) și FMCG:</strong> Companiile multinaționale (Genpact, Accenture, P&G, Unilever) recrutează masiv studenți cunoscători de limbi străine pentru departamentele lor globale de Supply Chain (lanțuri de aprovizionare), Resurse Umane sau Marketing și Vânzări, oferind un mediu extrem de divers și pachete de beneficii atractive.</p>
+            </div>
+            
+            <div id="tab-med" class="tab-content">
+                <h4 style="font-size: 22px; color: var(--tx-light); margin-bottom: 16px;">Domeniul Medical și Farmaceutic (Alianța G6-UMF)</h4>
+                <p style="margin-bottom: 16px;">Aici, practica nu este o opțiune de carieră, ci însăși esența formării. Este un domeniu complet reglementat, unde nu poți "sări" etape.</p>
+                <p style="margin-bottom: 12px;"><strong>Practica Clinică în Spitale:</strong> Începând cu anul III, stagiile se mută din amfiteatru direct la patul bolnavului în marile spitale clinice universitare (ex. Spitalul Floreasca, Spitalul Județean Cluj, Sf. Spiridon Iași). Studenții învață anamneza (istoricul pacientului), asistă medicii rezidenți, participă la vizitele de dimineață pe secții și, în anii terminali, pot asista la intervenții chirurgicale.</p>
+                <p style="margin-bottom: 12px;"><strong>Farmacie și Stomatologie:</strong> Practica se desfășoară în laboratoare universitare intens dotate, dar și prin convenții cu marile lanțuri de farmacii (pentru fluxul de medicamente, rețetare) sau în clinici stomatologice private (asistarea medicilor dentiști).</p>
+                <p><strong>Ecosistemul de Voluntariat Vital:</strong> Deoarece programa oficială poate fi rigidă, excelența se atinge prin voluntariat extra-curricular. Activitatea în SMURD (Programul "Salvator din Pasiune") te pune pe ambulanță, la intervenții reale de prim-ajutor. Totodată, workshop-urile SSCR (Societatea Studențească de Chirurgie) te învață practic cum să faci suturi pe țesut animal sau tehnici de microchirurgie, pregătindu-te masiv pentru rezidențiat.</p>
+            </div>
+            
+            <div id="tab-uman" class="tab-content">
+                <h4 style="font-size: 22px; color: var(--tx-light); margin-bottom: 16px;">Domeniul Umanist, Social și Juridic (UB, UAIC, UBB, SNSPA etc.)</h4>
+                <p style="margin-bottom: 16px;">Deoarece acest domeniu nu produce o meserie „unică” (cum e cea de medic sau inginer software), flexibilitatea este cheia. Oportunitățile variază enorm în funcție de specializare:</p>
+                <p style="margin-bottom: 12px;"><strong>Facultățile de Drept:</strong> Traseul este foarte competitiv. Practica oficială se derulează în instanțe (judecătorii, tribunale, curți de apel), unde studenții analizează dosare și asistă la ședințe de judecată. Internship-urile plătite de vară au loc la marile case de avocatură de business (corporate law), la cabinete notariale sau pe lângă executori judecătorești. Activitățile extra, precum Moot Courts (Procese Simulate), sunt esențiale pentru CV.</p>
+                <p style="margin-bottom: 12px;"><strong>Comunicare, PR și Jurnalism:</strong> Practica te aruncă direct în industriile creative. Stagiile se fac în mari agenții de publicitate (McCann, Leo Burnett, Ogilvy) lucrând pe campanii reale, în departamentele de comunicare ale corporațiilor, la televiziuni de știri, radiouri sau portaluri media online, unde studenții redactează materiale și fac monitorizare de presă.</p>
+                <p style="margin-bottom: 12px;"><strong>Sociologie și Științe Politice:</strong> Oportunități excelente în institutele de sondare a opiniei publice (CURS, INSCOP), unde studenții fac analiză de date (SPSS) sau aplică chestionare. Mulți aleg stagiile la Parlament, Administrația Prezidențială sau în ONG-uri mari axate pe politici publice și drepturile omului.</p>
+                <p><strong>Litere, Limbi Străine, Istorie și Psihologie:</strong> Studenții de la Litere lucrează frecvent ca stagiari în edituri majore (Humanitas, Polirom) făcând corectură, traduceri sau redactare. Cei de la istorie/arheologie participă la săpături pe situri arheologice sau fac practică în muzee naționale. Studenții la psihologie sunt extrem de căutați în departamentele de Resurse Umane (Recrutare/HR) ale corporațiilor, sau fac stagii de observație clinică în cabinete și școli.</p>
+            </div>
+        </div>
+
+        <script>
+        function openTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+        </script>
+
+        <!-- 3 & 4. Sectorul Public & Targuri -->
+        <h3 class="section-title" style="margin-top: 80px;">3. Instituțiile Statului și Sectorul Diplomatic</h3>
+        <p style="font-size: 18px; color: var(--tx-light-mut); margin-bottom: 32px; line-height: 1.6;">Dacă vizezi o carieră în administrația publică, diplomație sau siguranță națională, există rute formale excelente.</p>
+        
+        <div class="section-flex reverse">
+            <div class="section-flex-text">
+                <ul class="tech-list">
+                    <li><strong style="color: var(--tx-light);">Programul Oficial de Internship al Guvernului României:</strong> Se desfășoară anual, vara (iulie-august), fiind plătit. Studenții lucrează direct la Palatul Victoria sau în sediile diferitelor ministere, primind un certificat oficial care cântărește enorm la viitoarele concursuri de angajare la stat.</li>
+                    <li><strong style="color: var(--tx-light);">Alte Rute Administrative:</strong> Stagii oficiale organizate de Administrația Prezidențială, Ministerul Afacerilor Externe (MAE) sau programe de pregătire pentru Institutul Național al Magistraturii (INM).</li>
+                </ul>
+            </div>
+            <div class="section-flex-img">
+                <img src="/imagini/studenti/internship-guvern.jpg" alt="Sector Public / Cariere">
+            </div>
+        </div>
+
+        <h3 class="section-title" style="margin-top: 80px;">4. Hub-ul Tău de Recrutare: CCOC și Târgurile de Carieră</h3>
+        
+        <div class="section-flex">
+            <div class="section-flex-text">
+                <ul class="tech-list">
+                    <li><strong style="color: var(--oxblood-l);">Consiliere 1 la 1:</strong> Centrul de Consiliere și Orientare în Carieră (CCOC) te ajută gratuit să îți redactezi CV-ul în format Europass, să îți optimizezi profilul de LinkedIn și să faci simulări practice de interviu (inclusiv interviuri tehnice sau de panel).</li>
+                    <li><strong style="color: var(--oxblood-l);">Târgurile direct în Campus:</strong> Companiile nu așteaptă să aplici online. Prin evenimente gigantice precum POLIJobs sau Angajatori de TOP, angajatorii aduc standurile direct în holurile facultăților, desfășurând interviuri pe loc.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 32px;">
+            <img src="/imagini/studenti/targ de joburi 1.jpg" alt="Targ de Joburi 1" style="width: 100%; height: 250px; object-fit: cover; border-radius: 12px; border: 1px solid var(--line-d);">
+            <img src="/imagini/studenti/targ de joburi 2.jpg" alt="Targ de Joburi 2" style="width: 100%; height: 250px; object-fit: cover; border-radius: 12px; border: 1px solid var(--line-d);">
+        </div>
+
+    </main>
+</div>
+
+<%- include('partials/footer') %>

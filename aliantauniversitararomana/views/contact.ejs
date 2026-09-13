@@ -1,0 +1,107 @@
+<%- include('partials/header') %>
+    <style>
+        .hero-banner {
+            position: relative;
+            width: 100%;
+            height: 350px;
+            border-bottom: 1px solid var(--line-d);
+            overflow: hidden;
+            background: #000;
+        }
+
+        .hero-banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.3);
+        }
+
+        .hero-text-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            width: 100%;
+            max-width: 800px;
+            padding: 0 20px;
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        .hero-text-overlay h1 {
+            font-size: clamp(36px, 5vw, 54px);
+            color: var(--tx-light);
+            margin-bottom: 16px;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
+        }
+
+        .hero-text-overlay p {
+            font-size: clamp(18px, 2vw, 24px);
+            color: var(--tx-light-mut);
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+        }
+
+        .content-area {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 80px 20px 60px 20px;
+            text-align: center;
+        }
+
+        .contact-info {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--line-d);
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 24px;
+            border-top: 4px solid var(--oxblood-l);
+        }
+
+        .contact-info h3 {
+            font-size: 24px;
+            color: var(--tx-light);
+            margin-bottom: 24px;
+        }
+
+        .contact-info p {
+            font-size: 18px;
+            color: var(--tx-light-mut);
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+
+        .contact-info a {
+            color: var(--oxblood-l);
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+
+    <div class="fade-in-up">
+        <div class="hero-banner">
+            <img src="/imagini/sediu.jpg" alt="Contact AUR">
+            <div class="hero-text-overlay">
+                <h1>Contact</h1>
+                <p>Alianța Universitară Română</p>
+            </div>
+        </div>
+
+        <main class="content-area">
+            <div class="contact-info">
+                <h3>Informații de Contact</h3>
+                <p><strong>Sediul Central:</strong> Str. Dionisie Lupu, nr. 46, Sector 1, 010455, București</p>
+                <p><strong>Email:</strong> <a
+                        href="mailto:contact@aliantauniversitararomana.ro">contact@aliantauniversitararomana.ro</a></p>
+                <p><strong>Telefon:</strong> +40 736 779 026</p>
+                <p><strong>Program de lucru:</strong> Luni - Vineri, 09:00 - 17:00</p>
+
+                <hr style="border: none; border-top: 1px solid var(--line-d); margin: 32px 0;">
+
+                <p style="font-size: 16px;">Pentru întrebări specifice referitoare la programele de mobilitate, vă rugăm
+                    să vă adresați direct prin secțiunile Erasmus+ sau Work and Travel.</p>
+            </div>
+        </main>
+    </div>
+
+    <%- include('partials/footer') %>

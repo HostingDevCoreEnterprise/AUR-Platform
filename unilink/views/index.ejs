@@ -1,0 +1,124 @@
+<%- include('partials/header') %>
+
+<!-- Galerie Dinamică Full Width (Hero) -->
+<div class="slider-container" style="position: relative; width: 100%; height: 450px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+    <div class="slides" style="width: 100%; height: 100%;">
+        <div class="slide active" style="width: 100%; height: 100%; position: absolute; top: 0; left: 0; opacity: 1; transition: opacity 1s ease-in-out;">
+            <img src="/imagini/studenti 1.jpg" style="width: 100%; height: 100%; object-fit: cover;">
+            <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.4), transparent);"></div>
+        </div>
+        <div class="slide" style="width: 100%; height: 100%; position: absolute; top: 0; left: 0; opacity: 0; transition: opacity 1s ease-in-out;">
+            <img src="/imagini/studenti 2.jpg" style="width: 100%; height: 100%; object-fit: cover;">
+            <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.4), transparent);"></div>
+        </div>
+        <div class="slide" style="width: 100%; height: 100%; position: absolute; top: 0; left: 0; opacity: 0; transition: opacity 1s ease-in-out;">
+            <img src="/imagini/studenti 3.jpg" style="width: 100%; height: 100%; object-fit: cover;">
+            <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.4), transparent);"></div>
+        </div>
+    </div>
+    
+    <button id="prevSlide" style="position: absolute; left: 20px; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.4); color: white; border: 2px solid rgba(255,255,255,0.5); width: 48px; height: 48px; border-radius: 50%; cursor: pointer; font-size: 20px; transition: all 0.3s; z-index: 5;">&#10094;</button>
+    <button id="nextSlide" style="position: absolute; right: 20px; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.4); color: white; border: 2px solid rgba(255,255,255,0.5); width: 48px; height: 48px; border-radius: 50%; cursor: pointer; font-size: 20px; transition: all 0.3s; z-index: 5;">&#10095;</button>
+</div>
+
+<main class="split-layout" style="margin-top: -60px; position: relative; z-index: 10;">
+    <!-- Left Column (Auth Box) -->
+    <aside class="auth-sidebar" style="border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.08);">
+        <div class="auth-section">
+            <h2>Autentificare</h2>
+            <p>Dacă ai primit credențiale din partea liceului. <span class="info-icon" title="Codurile sunt distribuite de diriginți.">i</span></p>
+            <a href="/login" class="btn-orange">Intră în cont</a>
+        </div>
+        
+        <div class="auth-section no-border-bottom">
+            <h2 class="dark-blue">Pentru restul candidaților</h2>
+            <p>Dacă nu ai primit credențiale de la liceu. <span class="info-icon" title="Îți poți face cont manual folosind adresa de email.">i</span></p>
+            <a href="/login" class="btn-outline-blue">Autentificare</a>
+            <a href="/register" class="btn-outline-blue" style="margin-top: 12px;">Creare cont</a>
+        </div>
+        
+    </aside>
+
+    <!-- Right Column (Content) -->
+    <section class="content-main" style="background: #ffffff; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.04); padding-top: 40px;">
+        <h1 class="main-title">Noi suntem legătura dintre tine și instituția ta de învățământ</h1>
+        
+        <p class="main-text">
+            Prin UniLink, îți poți gestiona înscrierea la orice program din cadrul instituțiilor de învățământ superior din România.
+        </p>
+        <p class="main-text">
+            Pentru mai multe informații privind procedurile de aplicare și cerințele de admitere, consultă direct platforma instituției dorite.
+        </p>
+        
+        <a href="/universities" class="action-link">
+            Găsește instituția de învățământ potrivită
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="arrow-icon"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+
+        <!-- Bottom Cards Section -->
+        <div class="bottom-cards">
+            <div class="info-card">
+                <h3>Informații despre UniLink</h3>
+                <p>Accesează ghiduri, teste vocaționale și resurse legale pentru a lua cea mai bună decizie.</p>
+                <a href="/informatii" class="action-link-small">Vezi resursele <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+            </div>
+            <div class="info-card">
+                <h3>Burse și finanțări</h3>
+                <p>Aplică pentru locuri la buget, burse de performanță și fonduri PNRR destinate cercetării.</p>
+                <a href="/burse" class="action-link-small">Află mai multe <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Logos Section Full Width -->
+<div style="max-width: 1200px; margin: 60px auto 40px auto; padding: 0 24px; text-align: center;">
+    <p style="color: var(--text-mut); font-weight: 600; margin-bottom: 32px; text-transform: uppercase; font-size: 15px; letter-spacing: 1px; border-bottom: 1px solid var(--border-color); padding-bottom: 24px;">Parteneri Instituționali</p>
+    
+    <div style="display: flex; justify-content: center; gap: 60px; margin-bottom: 40px; flex-wrap: wrap; align-items: center;">
+        <img src="/imagini/logo/anosr.png" alt="ANOSR" style="height: 70px; object-fit: contain; filter: grayscale(100%) opacity(0.7); transition: all 0.3s;" onmouseover="this.style.filter='none'" onmouseout="this.style.filter='grayscale(100%) opacity(0.7)'">
+        <img src="/imagini/logo/unsr.png" alt="UNSR" style="height: 70px; object-fit: contain; filter: grayscale(100%) opacity(0.7); transition: all 0.3s;" onmouseover="this.style.filter='none'" onmouseout="this.style.filter='grayscale(100%) opacity(0.7)'">
+        <img src="/imagini/logo/usr.png" alt="USR" style="height: 70px; object-fit: contain; filter: grayscale(100%) opacity(0.7); transition: all 0.3s;" onmouseover="this.style.filter='none'" onmouseout="this.style.filter='grayscale(100%) opacity(0.7)'">
+    </div>
+
+    <div style="display: flex; justify-content: center;">
+        <img src="/imagini/logo/consiliul-elevilor.png" alt="Consiliul Național al Elevilor" style="height: 90px; object-fit: contain; filter: grayscale(100%) opacity(0.7); transition: all 0.3s;" onmouseover="this.style.filter='none'" onmouseout="this.style.filter='grayscale(100%) opacity(0.7)'">
+    </div>
+</div>
+
+<script>
+    // Logică Galerie Dinamică
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+
+    function showSlide(index) {
+        slides.forEach((slide, i) => {
+            if(i === index) {
+                slide.style.opacity = '1';
+                slide.classList.add('active');
+            } else {
+                slide.style.opacity = '0';
+                slide.classList.remove('active');
+            }
+        });
+    }
+
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        showSlide(currentSlide);
+    }
+
+    function prevSlide() {
+        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+        showSlide(currentSlide);
+    }
+
+    document.getElementById('nextSlide').addEventListener('click', nextSlide);
+    document.getElementById('prevSlide').addEventListener('click', prevSlide);
+
+    // Auto-advance
+    setInterval(nextSlide, 5000);
+</script>
+
+<%- include('partials/footer') %>

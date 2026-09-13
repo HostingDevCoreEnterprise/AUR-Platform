@@ -1,0 +1,152 @@
+<%- include('partials/header') %>
+
+<main class="container" style="max-width: 800px; padding-top: 40px;">
+    <div style="text-align: center; margin-bottom: 40px;">
+        <span style="display: inline-block; background: rgba(230,115,0,0.1); color: var(--unilink-orange); padding: 6px 16px; border-radius: 20px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px;">Modul Nativ</span>
+        <h1 style="font-size: 36px; margin: 0 0 16px 0;">Super-Calculator de Admitere</h1>
+        <p style="color: var(--text-mut); font-size: 18px; margin: 0;">Fără matematică complicată. Introdu notele tale și vezi instantaneu media finală la facultate, conform metodologiei alese.</p>
+    </div>
+
+    <div class="card" style="margin-bottom: 40px;">
+        <h2 style="margin-bottom: 24px; border-bottom: 1px solid var(--border-color); padding-bottom: 12px;">1. Notele Tale (BAC + Admitere)</h2>
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;">
+            <div>
+                <label for="media_bac">Media de la BAC</label>
+                <input type="number" id="media_bac" class="form-control" step="0.01" min="1" max="10" placeholder="Ex: 9.15" oninput="calculate()">
+            </div>
+            <div>
+                <label for="nota_admitere">Media de admitere</label>
+                <input type="number" id="nota_admitere" class="form-control" step="0.01" min="1" max="10" placeholder="Ex: 8.80 (dacă e cazul)" oninput="calculate()">
+            </div>
+        </div>
+    </div>
+
+    <div class="card" style="margin-bottom: 40px; background: #f9f9fb;">
+        <h2 style="margin-bottom: 24px;">2. Formula Facultății (Ponderi)</h2>
+        <div style="margin-bottom: 24px;">
+            <label style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                <span>Procent Probă Scrisă (Admitere)</span>
+                <span id="label_pondere_admitere" style="color: var(--unilink-orange); font-weight: 700;">80%</span>
+            </label>
+            <input type="range" id="pondere_admitere" min="0" max="100" value="80" style="width: 100%; accent-color: var(--unilink-orange);" oninput="updateSliders('admitere')">
+        </div>
+        <div>
+            <label style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                <span>Procent Media BAC</span>
+                <span id="label_pondere_bac" style="color: var(--unilink-orange); font-weight: 700;">20%</span>
+            </label>
+            <input type="range" id="pondere_bac" min="0" max="100" value="20" style="width: 100%; accent-color: var(--unilink-orange);" oninput="updateSliders('bac')">
+        </div>
+        <p style="color: var(--text-mut); font-size: 13px; margin-top: 16px;">* Dacă facultatea are admitere exclusiv pe dosar, setează Media BAC la 100%.</p>
+    </div>
+
+    <div class="card" style="text-align: center; border: 2px solid var(--unilink-orange); background: white;">
+        <p style="color: var(--text-mut); text-transform: uppercase; letter-spacing: 1px; font-size: 14px; font-weight: 700; margin: 0 0 8px 0;">Media Ta Finală de Admitere</p>
+        <div id="final_result" style="font-size: 64px; font-weight: 800; color: var(--text-main); margin-bottom: 24px; line-height: 1;">- -</div>
+        
+        <% if (locals.user) { %>
+            <div style="display: flex; justify-content: center; gap: 12px; margin-bottom: 16px;">
+                <input type="text" id="sim_university" class="form-control" style="width: 250px; margin: 0;" placeholder="Numele Facultății (ex: FMI Unibuc)">
+                <button onclick="saveSimulation()" class="btn-primary" style="margin: 0; padding: 12px 24px;">Salvează Simularea</button>
+            </div>
+            <p id="save_msg" style="color: #10b981; font-weight: 600; display: none;">Simulare salvată cu succes!</p>
+        <% } else { %>
+            <p style="color: var(--text-mut);"><a href="/login" style="color: var(--unilink-orange);">Loghează-te</a> pentru a salva această simulare în contul tău.</p>
+        <% } %>
+    </div>
+
+    <% if (locals.user) { %>
+        <div class="card" style="margin-bottom: 80px;">
+            <h2 style="margin-bottom: 24px; border-bottom: 1px solid var(--border-color); padding-bottom: 12px;">Simulările Tale Salvate</h2>
+            <% if (simulations && simulations.length > 0) { %>
+                <div style="display: flex; flex-direction: column; gap: 16px;">
+                    <% simulations.forEach(function(sim) { %>
+                        <div style="display: flex; justify-content: space-between; align-items: center; padding: 16px; border: 1px solid var(--border-color); border-radius: 8px; background: white;">
+                            <div>
+                                <h4 style="margin: 0 0 4px 0; color: var(--text-main); font-size: 18px;"><%= sim.title %></h4>
+                                <p style="margin: 0; color: var(--text-mut); font-size: 14px;">Formula: <%= sim.formula %></p>
+                            </div>
+                            <div style="font-size: 24px; font-weight: 800; color: var(--unilink-orange);">
+                                <%= sim.final_grade %>
+                            </div>
+                        </div>
+                    <% }); %>
+                </div>
+            <% } else { %>
+                <p style="color: var(--text-mut); text-align: center; padding: 24px;">Nu ai nicio simulare salvată momentan.</p>
+            <% } %>
+        </div>
+    <% } %>
+</main>
+
+<script>
+    function updateSliders(source) {
+        const pondereAdmitere = document.getElementById('pondere_admitere');
+        const pondereBac = document.getElementById('pondere_bac');
+        
+        if (source === 'admitere') {
+            pondereBac.value = 100 - parseInt(pondereAdmitere.value);
+        } else {
+            pondereAdmitere.value = 100 - parseInt(pondereBac.value);
+        }
+        
+        document.getElementById('label_pondere_admitere').textContent = pondereAdmitere.value + '%';
+        document.getElementById('label_pondere_bac').textContent = pondereBac.value + '%';
+        
+        calculate();
+    }
+
+    function calculate() {
+        const mediaBac = parseFloat(document.getElementById('media_bac').value) || 0;
+        const adm = parseFloat(document.getElementById('nota_admitere').value) || 0;
+        
+        const pAdm = parseInt(document.getElementById('pondere_admitere').value) / 100;
+        const pBac = parseInt(document.getElementById('pondere_bac').value) / 100;
+        
+        let final = 0;
+        if (mediaBac > 0) {
+            final = (mediaBac * pBac) + (adm * pAdm);
+        }
+        
+        const resultEl = document.getElementById('final_result');
+        if (final > 0) {
+            resultEl.textContent = final.toFixed(2);
+            resultEl.style.color = 'var(--unilink-orange)';
+        } else {
+            resultEl.textContent = '- -';
+            resultEl.style.color = 'var(--text-main)';
+        }
+    }
+
+    async function saveSimulation() {
+        const title = document.getElementById('sim_university').value;
+        const final_grade = document.getElementById('final_result').textContent;
+        const pAdm = document.getElementById('pondere_admitere').value;
+        const pBac = document.getElementById('pondere_bac').value;
+        const formula = `${pAdm}% Probă + ${pBac}% BAC`;
+
+        if (!title || final_grade === '- -') {
+            alert('Te rog introdu note valide și numele facultății!');
+            return;
+        }
+
+        try {
+            const res = await fetch('/api/simulations', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ title, formula, final_grade })
+            });
+            if (res.ok) {
+                document.getElementById('save_msg').style.display = 'block';
+                setTimeout(() => { 
+                    document.getElementById('save_msg').style.display = 'none'; 
+                    window.location.reload(); // Refresh to show the new simulation
+                }, 1500);
+            }
+        } catch(err) {
+            console.error(err);
+        }
+    }
+</script>
+
+<%- include('partials/footer') %>

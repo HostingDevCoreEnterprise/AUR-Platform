@@ -1,0 +1,331 @@
+<%- include('partials/header') %>
+
+<style>
+/* Hero Collage */
+.hero-collage {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    border-bottom: 1px solid var(--line-d);
+}
+.hero-collage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.4) grayscale(0.1);
+    transition: filter 0.3s;
+}
+.hero-collage img:hover {
+    filter: brightness(0.7) grayscale(0);
+}
+.hero-text-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 100%;
+    max-width: 1000px;
+    padding: 0 20px;
+    z-index: 10;
+    pointer-events: none;
+}
+@media (max-width: 768px) {
+    .hero-collage { grid-template-columns: 1fr; height: 400px; }
+    .hero-collage img:nth-child(2), .hero-collage img:nth-child(3) { display: none; }
+}
+
+/* Flex Sections */
+.section-flex {
+    display: flex;
+    gap: 48px;
+    align-items: center;
+    margin-bottom: 60px;
+}
+.section-flex.reverse {
+    flex-direction: row-reverse;
+}
+.section-flex-text { flex: 1; }
+.section-flex-img { flex: 1; }
+.section-flex-img img {
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid var(--line-d);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    object-fit: cover;
+}
+
+/* Info Cards */
+.info-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin: 32px 0;
+}
+.info-card {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid var(--line-d);
+    border-radius: 12px;
+    padding: 32px;
+    transition: transform 0.3s, border-color 0.3s;
+}
+.info-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--oxblood-l);
+}
+.highlight-box {
+    background: rgba(243,146,0,0.1);
+    border-left: 4px solid var(--oxblood-l);
+    padding: 20px;
+    border-radius: 4px;
+    margin: 24px 0;
+}
+
+/* Accordion styles */
+.accordion {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid var(--line-d);
+    border-radius: 12px;
+    margin-bottom: 16px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+.accordion-header {
+    padding: 24px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    font-size: 18px;
+    color: var(--tx-light);
+    background: transparent;
+    transition: background 0.3s, color 0.3s;
+}
+.accordion-header:hover {
+    background: rgba(255,255,255,0.04);
+}
+.accordion-content {
+    padding: 0 24px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out, padding 0.4s ease;
+    color: var(--tx-light-mut);
+    line-height: 1.6;
+}
+.accordion.active {
+    border-color: var(--oxblood-l);
+    background: rgba(255,255,255,0.04);
+}
+.accordion.active .accordion-header {
+    color: var(--oxblood-l);
+}
+.accordion.active .accordion-content {
+    padding: 0 24px 24px 24px;
+    max-height: 3000px;
+}
+.accordion-header::after {
+    content: '+';
+    font-size: 28px;
+    font-weight: 300;
+    transition: transform 0.3s;
+}
+.accordion.active .accordion-header::after {
+    transform: rotate(45deg);
+}
+
+@media (max-width: 768px) {
+    .section-flex, .section-flex.reverse { flex-direction: column; }
+}
+</style>
+
+<div class="fade-in-up">
+    <!-- Hero / Banner -->
+    <div class="hero-collage">
+        <img src="/imagini/studenti/camin.jpg" alt="Campus 1">
+        <img src="/imagini/studenti/camera camin.jpg" alt="Campus 2">
+        <img src="/imagini/studenti/cantina.jpg" alt="Campus 3">
+        <div class="hero-text-overlay">
+            <h1 style="font-size: clamp(36px, 5vw, 60px); color: var(--tx-light); margin-bottom: 16px; text-shadow: 0 4px 10px rgba(0,0,0,0.8);">Ghidul Național al Campusurilor Universitare</h1>
+            <p style="font-size: clamp(18px, 2vw, 24px); color: var(--tx-light-mut); text-shadow: 0 2px 8px rgba(0,0,0,0.8);">Tot ce trebuie să știi despre repartizarea subvenționată, centrele universitare și alternativele de locuire.</p>
+        </div>
+    </div>
+
+    <main class="content-area" style="max-width: 1000px; margin: 0 auto; padding-top: 80px;">
+
+        <!-- 1. Ecosistemul Căminelor de Stat -->
+        <h3 class="section-title">1. Ecosistemul Căminelor de Stat (Subvenționate)</h3>
+        <p style="font-size: 18px; color: var(--tx-light-mut); margin-bottom: 24px; line-height: 1.6;">Asigurarea cazării este prima provocare a noului student. Universitățile de stat dețin o infrastructură vastă, sprijinită financiar de Ministerul Educației.</p>
+
+        <div class="highlight-box">
+            <strong style="color: var(--tx-light);">Costurile Reale:</strong> Datorită subvenției de stat, regia de cămin este mult sub prețul pieței imobiliare, variind între 150 RON și 500 RON / lună, în funcție de gradul de confort (număr de paturi, baie în cameră vs. pe hol, dotări IT).
+        </div>
+
+        <h4 style="font-size: 20px; color: var(--tx-light); margin-top: 32px; margin-bottom: 16px;">Cum se face repartizarea (Cele 3 criterii):</h4>
+        <p style="color: var(--tx-light-mut); margin-bottom: 24px;">Alocarea locurilor se face descentralizat, la nivel de facultate, aplicând un algoritm strict:</p>
+
+        <div class="info-card-grid">
+            <div class="info-card">
+                <img src="/imagini/studenti/performante-academice.png" style="height: 48px; object-fit: contain; margin-bottom: 16px;" alt="Performanta">
+                <h5 style="font-size: 18px; color: var(--oxblood-l); margin-bottom: 12px;">Performanța Academică</h5>
+                <p style="color: var(--tx-light-mut); margin: 0; font-size: 15px;">Media obținută la admitere (pentru anul I) sau media punctajelor din anul precedent (pentru anii mai mari).</p>
+            </div>
+            <div class="info-card">
+                <img src="/imagini/studenti/cazuri-sociale.png" style="height: 48px; object-fit: contain; margin-bottom: 16px;" alt="Sociale">
+                <h5 style="font-size: 18px; color: var(--oxblood-l); margin-bottom: 12px;">Cazuri Sociale</h5>
+                <p style="color: var(--tx-light-mut); margin: 0; font-size: 15px;">Prioritate absolută pentru studenții orfani, proveniți din case de plasament sau cu venituri pe membru de familie sub salariul minim pe economie.</p>
+            </div>
+            <div class="info-card">
+                <img src="/imagini/studenti/cazuri-medicale.png" style="height: 48px; object-fit: contain; margin-bottom: 16px;" alt="Medicale">
+                <h5 style="font-size: 18px; color: var(--oxblood-l); margin-bottom: 12px;">Cazuri Medicale</h5>
+                <p style="color: var(--tx-light-mut); margin: 0; font-size: 15px;">Alocare specială (și camere adaptate) pentru studenții cu handicap sau boli cronice.</p>
+            </div>
+        </div>
+
+        <!-- 2. Harta Marilor Hub-uri -->
+        <h3 class="section-title" style="margin-top: 80px;">2. Harta Marilor Hub-uri Universitare: Ecosisteme și Stil de Viață</h3>
+        <p style="font-size: 18px; color: var(--tx-light-mut); margin-bottom: 32px; line-height: 1.6;">Fiecare oraș și fiecare campus are un „spirit” propriu, o cultură locală a vieții studențești, de la străzile pline de cafenele din Cluj, la dealurile boeme din Iași, până la cel mai mare campus din sud-estul Europei aflat în București.</p>
+
+        <div style="margin-bottom: 60px;">
+            <div class="accordion">
+                <div class="accordion-header">📍 București: Metropola Contrastelor și a Campusurilor Gigant</div>
+                <div class="accordion-content">
+                    <p style="margin-bottom: 12px;">Bucureștiul nu are un singur centru studențesc, ci mai multe „orașe în miniatură”, dispersate, fiecare cu atmosfera sa unică, dictată de profilul universității.</p>
+                    
+                    <h5 style="color: var(--tx-light); margin: 16px 0 8px 0;">Complexul Regie și Leu (UNSTPB / fosta Politehnică):</h5>
+                    <p style="margin-bottom: 8px;"><strong>Vibrația:</strong> Este cel mai mare campus din sud-estul Europei (peste 13.000 de locuri). Regia este legendară pentru viața de noapte, fiind mărginită de râul Dâmbovița și plină de cluburi, pub-uri și fast-food-uri deschise 24/7.</p>
+                    <p style="margin-bottom: 16px;"><strong>Infrastructura:</strong> Un mix între cămine clasice (cu baie pe hol sau la comun) și căminele de tip "P" (recent modernizate, cu module tip garsonieră). Campusul Leu (aflat vizavi de Palatul Cotroceni) este recunoscut pentru liniște și proximitatea față de Facultatea de Electronică, având una dintre cele mai mari cantine din oraș.</p>
+
+                    <h5 style="color: var(--tx-light); margin: 16px 0 8px 0;">Complexul Grozăvești, Pallady și Măgurele (UB - Universitatea din București):</h5>
+                    <p style="margin-bottom: 8px;"><strong>Grozăvești:</strong> Este inima studenților de la UB. Situat excelent (pe linia metroului M1, lângă hub-ul comercial Orhideea/Basarab), are un spirit comunitar puternic. Camerele sunt preponderent de 2-3 persoane.</p>
+                    <p style="margin-bottom: 8px;"><strong>Theodor Pallady:</strong> Reprezintă „zona VIP”. Oferă condiții de garsonieră, dar locurile sunt extrem de limitate, fiind alocate strict studenților cu medii de excelență (frecvent doar mediilor de 10).</p>
+                    <p style="margin-bottom: 16px;"><strong>Măgurele:</strong> Campusul fizicienilor, aflat la marginea Bucureștiului, lângă marile institute de cercetare și laserul ELI-NP. E un spațiu liniștit, verde, dedicat 100% cercetării și științelor exacte.</p>
+
+                    <h5 style="color: var(--tx-light); margin: 16px 0 8px 0;">Moxa și Belvedere (ASE - Academia de Studii Economice):</h5>
+                    <p style="margin-bottom: 16px;"><strong>Vibrația:</strong> Căminele ASE sunt recunoscute pentru standardele ridicate de curățenie și rigoare. Complexul Moxa este situat ultracentral (lângă Calea Victoriei și Piața Romană). Deoarece oferă acces pietonal la cele mai scumpe zone din București și la sălile de curs, concurența este uriașă (se intră adesea cu medii de peste 9.30). Complexul Belvedere (zona Crângași) este un alt pol important, foarte bine conectat la metrou.</p>
+
+                    <h5 style="color: var(--tx-light); margin: 16px 0 8px 0;">Campusul Agronomie (USAMVB) și Tei (UTCB):</h5>
+                    <p style="margin-bottom: 8px;"><strong>Agronomie:</strong> Este considerat cel mai verde, sigur și liniștit campus din Capitală. Fiind situat în zona Herăstrău și complet îngrădit, arată ca un parc dendrologic uriaș, cu terenuri de sport proprii și sere.</p>
+                    <p><strong>Lacul Tei:</strong> Baza studenților de la Construcții (UTCB). O zonă excelentă, aproape de parcuri și de mari baze sportive, cu un vibe de „inginerie și comunitate”.</p>
+                </div>
+            </div>
+
+            <div class="accordion">
+                <div class="accordion-header">📍 Cluj-Napoca: Inima Transilvaniei și Strada Piezișă</div>
+                <div class="accordion-content">
+                    <p style="margin-bottom: 12px;">Clujul are avantajul de a fi un oraș mai compact decât Bucureștiul, ceea ce face ca viața studențească să se simtă mult mai intens la nivelul întregului oraș. Aici, statutul de student îți oferă un respect deosebit în comunitate.</p>
+                    
+                    <h5 style="color: var(--tx-light); margin: 16px 0 8px 0;">Complexul Hașdeu (Universitatea „Babeș-Bolyai”):</h5>
+                    <p style="margin-bottom: 8px;"><strong>Vibrația:</strong> Este fără îndoială cel mai iconic loc din Cluj. Construit pe o colină, aproape de centrul istoric, campusul respiră istorie și tinerețe. Aici se află celebra stradă Piezișă – o arteră în pantă, ticsită de baruri, cafenele, pub-uri și cluburi, care este inima absolută a vieții de noapte studențești din Transilvania.</p>
+                    <p style="margin-bottom: 16px;"><strong>Infrastructura:</strong> UBB a investit masiv aici. Găsești un mix de cămine tradiționale (cu bucătării și băi pe palier, renumite pentru socializarea intensă) și cămine modernizate la standard hotelier (Căminul 14 și 16, cu baie în cameră, săli de lectură moderne și spălătorii profesionale).</p>
+
+                    <h5 style="color: var(--tx-light); margin: 16px 0 8px 0;">Complexul Observator și Mărăști (Universitatea Tehnică - UTCN):</h5>
+                    <p style="margin-bottom: 8px;"><strong>Observator:</strong> Situat sus, în cartierul Zorilor, este campusul inginerilor. Oferă o panoramă superbă asupra orașului. Este dotat cu cantine imense, un bazin de înot olimpic și săli de lectură deschise non-stop în sesiune.</p>
+                    <p><strong>Mărăști:</strong> Un alt hub major, împărțit de studenții de la UTCN și cei de la USAMV, perfect conectat la infrastructura orașului și recunoscut pentru piețele și facilitățile comerciale din jur.</p>
+                </div>
+            </div>
+
+            <div class="accordion">
+                <div class="accordion-header">📍 Iași: Tradiție, Boemă și „Orașul din Oraș”</div>
+                <div class="accordion-content">
+                    <p style="margin-bottom: 12px;">Iașul este capitala istorică a culturii românești, iar campusurile reflectă exact această dualitate: pe de o parte ingineria modernă pe model occidental, pe de altă parte poezia dealului Copou.</p>
+
+                    <h5 style="color: var(--tx-light); margin: 16px 0 8px 0;">Complexul Tudor Vladimirescu (TUIASI - Universitatea Tehnică):</h5>
+                    <p style="margin-bottom: 8px;"><strong>Vibrația:</strong> Cunoscut de toți ca „Tudor”, este cel mai mare campus studențesc din zona Moldovei (peste 8.000 de locuri). Nu este doar un ansamblu de cămine, ci un veritabil „oraș în oraș”.</p>
+                    <p style="margin-bottom: 16px;"><strong>Infrastructura:</strong> Traversează un întreg bulevard. Ai absolut totul la scară: un mall (Iulius Mall) situat chiar în interiorul campusului, hypermarketuri, zeci de cafenele, fast-food-uri, o cantină gigantică și o bază sportivă modernă. Aici domină spiritul ingineresc, pragmatic și plin de energie.</p>
+
+                    <h5 style="color: var(--tx-light); margin: 16px 0 8px 0;">Complexele Titu Maiorescu și Târgușor Copou (UAIC):</h5>
+                    <p style="margin-bottom: 8px;"><strong>Vibrația:</strong> Situat pe legendarul Deal al Copoului, înconjurat de parcuri (inclusiv Parcul Copou cu Teiul lui Eminescu) și grădini botanice. Este zona boemă a Iașului.</p>
+                    <p style="margin-bottom: 16px;"><strong>Avantaje:</strong> Studenții de la Litere, Drept sau Economie locuiesc la doar 3-5 minute de mers pe jos de Palatul Universității (corpul principal UAIC). Aerul este curat, zona este extrem de sigură (zonă rezidențială premium), iar cantina Titu Maiorescu este recunoscută național pentru raportul excepțional calitate-preț.</p>
+
+                    <h5 style="color: var(--tx-light); margin: 16px 0 8px 0;">Complexul Codrescu / 1 Mai (UMF Iași):</h5>
+                    <p>Destinat exclusiv studenților la medicină, situat strategic aproape de marile clinici și spitale județene, cu un vibe axat pe studiu intens și gărzi de noapte.</p>
+                </div>
+            </div>
+
+            <div class="accordion">
+                <div class="accordion-header">📍 Timișoara: Unitatea „Complexului Studențesc”</div>
+                <div class="accordion-content">
+                    <p style="margin-bottom: 12px;">Timișoara se remarcă printr-o organizare unică în România, care favorizează enorm interacțiunea dintre studenții de la profile diferite.</p>
+
+                    <h5 style="color: var(--tx-light); margin: 16px 0 8px 0;">Complexul Studențesc (Renumitul „Complex”):</h5>
+                    <p style="margin-bottom: 8px;"><strong>Vibrația:</strong> Spre deosebire de București sau Cluj, unde fiecare universitate are campusul ei în altă zonă a orașului, în Timișoara, infrastructura de cazare a universităților majore (Universitatea de Vest - UVT și Universitatea Politehnica - UPT) este grupată geografic într-un singur areal imens.</p>
+                    <p style="margin-bottom: 8px;"><strong>Stilul de viață:</strong> Zona a fost transformată într-un areal majoritar pietonal, cu bulevarde mărginite de copaci, zeci de terase, cluburi, centre de copiere și pub-uri. Celebra alee a fast-food-urilor din „Complex” (renumită pentru pleșcavița și șaorma) este deschisă non-stop.</p>
+                    <p><strong>Interacțiunea:</strong> Aici, un student de la Arte (UVT) locuiește ușa în ușă sau bea cafeaua în aceeași intersecție cu un student la Inginerie Software (UPT). Se creează o rețea de networking naturală. Dacă locuiești aici, practic poți trăi luni de zile fără să ai nevoie să părăsești zona, pentru că ai de la spălătorii la bănci, clinici și săli de sport, toate la 5 minute de mers pe jos de patul tău.</p>
+                </div>
+            </div>
+        </div>
+
+        <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const accordions = document.querySelectorAll('.accordion');
+            accordions.forEach(acc => {
+                const header = acc.querySelector('.accordion-header');
+                header.addEventListener('click', () => {
+                    accordions.forEach(other => {
+                        if(other !== acc && other.classList.contains('active')) {
+                            other.classList.remove('active');
+                        }
+                    });
+                    acc.classList.toggle('active');
+                });
+            });
+        });
+        </script>
+
+        <!-- 3. Alternative Private -->
+        <h3 class="section-title" style="margin-top: 80px;">3. Alternativele Private (Piața Liberă)</h3>
+        <div class="section-flex reverse">
+            <div class="section-flex-text">
+                <p style="color: var(--tx-light-mut); margin-bottom: 16px; line-height: 1.6;">Pentru studenții universităților private (care nu primesc subvenții de stat) sau pentru cei care doresc un confort garantat independent de medie, există piața căminelor private.</p>
+                <ul class="tech-list" style="margin-bottom: 32px;">
+                    <li><strong>Rețele cunoscute:</strong> ARCCA (campusuri extinse în București), WestGate Studios (campus premium cu piscină, spălătorii profesionale, terenuri de tenis), Campus Est sau Căminul UTM.</li>
+                    <li><strong>Costuri:</strong> Neavând subvenție, prețurile pornesc de la 150-200 EUR/lună și pot ajunge la sume considerabile în funcție de luxul dorit.</li>
+                </ul>
+            </div>
+            <div class="section-flex-img">
+                <div style="display: flex; gap: 16px; align-items: stretch;">
+                    <img src="/imagini/studenti/camin-privat.jpg" alt="Camin Privat" style="flex: 1; width: 50%; object-fit: cover; border-radius: 12px; border: 1px solid var(--line-d);">
+                    <img src="/imagini/studenti/camera camin privat.jpg" alt="Camera Privat" style="flex: 1; width: 50%; object-fit: cover; border-radius: 12px; border: 1px solid var(--line-d);">
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. Viza de Flotant -->
+        <h3 class="section-title" style="margin-top: 80px;">4. Birocrația Vitală: Viza de Flotant</h3>
+        <div class="section-flex">
+            <div class="section-flex-text">
+                <p style="color: var(--tx-light-mut); margin-bottom: 16px; line-height: 1.6;">Pentru studenții care studiază în alt oraș decât cel de domiciliu, reședința este obligatorie legal și funcțional.</p>
+                <ul class="tech-list" style="margin-bottom: 0;">
+                    <li>Dacă locuiești mai mult de 15 zile la o adresă nouă, ai nevoie de Viza de Flotant aplicată pe buletin.</li>
+                    <li>Dacă stai la cămin, de regulă administrația strânge actele în octombrie și le procesează în masă. Dacă stai în chirie, ești obligat să mergi cu proprietarul apartamentului la Evidența Populației.</li>
+                    <li><strong style="color: var(--oxblood-l);">De ce este critică:</strong> Fără viză, nu poți vota la alegerile locale în orașul universitar și pierzi accesul la abonamentele subvenționate sau gratuite pentru transportul public local.</li>
+                </ul>
+            </div>
+            <div class="section-flex-img">
+                <img src="/imagini/studenti/viza-flotant.png" alt="Viza de Flotant" style="width: 100%; border-radius: 12px; border: 1px solid var(--line-d); object-fit: contain;">
+            </div>
+        </div>
+
+        <!-- 5. Supravietuirea Culinara -->
+        <h3 class="section-title" style="margin-top: 80px;">5. Supraviețuirea Culinară: Subvenția pentru Cantine</h3>
+        
+        <div class="section-flex">
+            <div class="section-flex-text">
+                <p style="font-size: 18px; color: var(--tx-light-mut); margin-bottom: 24px; line-height: 1.6;">Una dintre cele mai mari facilități ascunse ale statutului de student este subvenția pentru masa zilnică.</p>
+                <p style="color: var(--tx-light-mut); margin-bottom: 24px; line-height: 1.6;">Prin lege, Ministerul Educației acoperă o parte masivă din regia (apa, curent, personal) și materiile prime ale cantinelor universitare.</p>
+                <div class="highlight-box" style="margin-top: 0;">
+                    <strong style="color: var(--tx-light); font-size: 18px;">Rezultatul:</strong> Un meniu complet (ciorbă, fel principal, salată, desert) la cantinele din Regie, Hașdeu sau Copou costă adesea între 15 și 25 de lei (de 2-3 ori sub prețul oricărui restaurant). Accesul este permis strict la prezentarea legitimației de student.
+                </div>
+            </div>
+            <div class="section-flex-img">
+                <img src="/imagini/studenti/cantina.jpg" alt="Cantina Studenteasca">
+            </div>
+        </div>
+
+    </main>
+</div>
+
+<%- include('partials/footer') %>
