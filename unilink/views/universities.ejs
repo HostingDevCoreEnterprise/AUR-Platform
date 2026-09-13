@@ -12,8 +12,8 @@
     </div>
 
     <% 
-        const deStat = universities.filter(u => u.type === 'Stat');
-        const privateUni = universities.filter(u => u.type === 'Privat');
+        const deStat = universities.filter(u => u.type === 'Universitate de Stat' || u.type === 'Stat');
+        const privateUni = universities.filter(u => u.type === 'Universitate Privată' || u.type === 'Privat');
     %>
 
     <h2 style="margin-top: 40px; margin-bottom: 24px; color: var(--text-main); border-bottom: 2px solid var(--border-color); padding-bottom: 12px;">Universități de Stat</h2>
