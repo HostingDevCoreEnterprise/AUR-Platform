@@ -1,12 +1,12 @@
-# Alianța Universitară Română (AUR) - Digital Ecosystem
+# Alianța Universitară Română (AUR) - Platform
 
 Welcome to the digital ecosystem of **Alianța Universitară Română (AUR)**. This monorepo houses a suite of four interconnected platforms built to streamline the university experience, enhance student opportunities, and centralize access to critical resources across Romania.
 
-## 🌟 Vision
+## Vision
 
 The Romanian University Alliance (AUR) aims to create a unified, digital-first experience for prospective and current students. By breaking down the silos between individual universities, AUR offers a centralized gateway for applications, international mobility, work programs, and academic resources.
 
-## 🏗️ Architecture & Ecosystem
+## Architecture & Ecosystem
 
 This repository is structured as a monorepo containing four distinct platforms, each serving a critical role in the AUR ecosystem. 
 
@@ -38,14 +38,14 @@ A parallel static portal to the Erasmus site, tailored specifically for students
 - **Tech Stack**: HTML5, Vanilla CSS.
 - **Key Features**: Fast, static delivery and a unified design language mirroring the AUR branding.
 
-## 🎨 Design Philosophy
+## Design Philosophy
 
 All platforms within this ecosystem share a unified, premium design language. The UI/UX prioritizes:
 - **Rich Aesthetics**: Vibrant, harmonious color palettes integrated with a sleek dark mode.
 - **Dynamic Interactions**: Micro-animations and hover effects that make the interfaces feel responsive and alive.
 - **Mobile-First Accessibility**: Seamless experiences across all devices, ensuring students can access vital information on the go.
 
-## 📁 Repository Structure
+## Repository Structure
 
 ```
 .
