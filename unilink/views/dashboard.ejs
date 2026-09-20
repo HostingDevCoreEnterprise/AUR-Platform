@@ -1,5 +1,37 @@
 <%- include('partials/header') %>
 
+<style>
+.apps-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+}
+.hub-card {
+    grid-column: 1 / -1;
+    max-width: 50%;
+    width: 100%;
+    margin: 0 auto;
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+}
+
+@media (max-width: 768px) {
+    .apps-grid {
+        grid-template-columns: 1fr;
+    }
+    .hub-card {
+        max-width: 100%;
+    }
+}
+</style>
+
 <div class="dashboard-hero" style="background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/imagini/sistem-informatic-banner.jpeg'); background-size: cover; background-position: center;">
     <div style="max-width: 800px; margin: 0 auto;">
         <span style="display: inline-block; background: rgba(255,255,255,0.1); color: var(--unilink-orange); padding: 6px 16px; border-radius: 20px; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 24px; border: 1px solid rgba(255,140,0,0.3);">Portal Academic</span>
@@ -15,7 +47,7 @@
             Aplicații Native & Hub
         </h2>
         
-        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px;">
+        <div class="apps-grid">
             <!-- Calculator -->
             <div style="background: white; border-radius: 12px; padding: 24px; border: 1px solid var(--border-color); display: flex; flex-direction: column; align-items: flex-start; box-shadow: 0 4px 20px rgba(0,0,0,0.03);">
                 <div style="background: rgba(230, 115, 0, 0.1); color: var(--unilink-orange); padding: 12px; border-radius: 8px; margin-bottom: 16px;">
@@ -57,7 +89,7 @@
             </div>
 
             <!-- Hub -->
-            <div style="grid-column: 1 / -1; max-width: 50%; width: 100%; margin: 0 auto; background: white; border-radius: 12px; padding: 24px; border: 1px solid var(--border-color); display: flex; flex-direction: column; align-items: center; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.03);">
+            <div class="hub-card">
                 <div style="background: rgba(14, 165, 233, 0.1); color: #0ea5e9; padding: 12px; border-radius: 8px; margin-bottom: 16px;">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
                 </div>
