@@ -90,8 +90,51 @@
     color: var(--oxblood-l);
 }
 
+.logo-heading {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 24px;
+}
+.logo-heading img {
+    height: 80px;
+    object-fit: contain;
+}
+.logo-heading.mt {
+    margin-top: 80px;
+}
+.cnas-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 32px;
+}
+.cnas-grid img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 16px;
+    border: 1px solid var(--line-d);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
 @media (max-width: 768px) {
     .section-flex, .section-flex.reverse { flex-direction: column; }
+    
+    .logo-heading {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+    .logo-heading img {
+        height: 60px;
+    }
+    .cnas-grid {
+        grid-template-columns: 1fr;
+    }
+    .cnas-grid img {
+        height: 250px;
+    }
 }
 </style>
 
@@ -108,8 +151,8 @@
     <main class="content-area" style="max-width: 1000px; margin: 0 auto; padding-top: 80px; padding-bottom: 60px;">
 
         <!-- 1. CCOC -->
-        <div style="display: flex; align-items: center; gap: 24px; margin-bottom: 24px;">
-            <img src="/imagini/logo/ccoc.png" alt="CCOC Logo" style="height: 80px; object-fit: contain;">
+        <div class="logo-heading">
+            <img src="/imagini/logo/ccoc.png" alt="CCOC Logo">
             <h3 class="section-title" style="margin: 0;">1. Centrul de Consiliere și Orientare în Carieră (CCOC)</h3>
         </div>
         
@@ -125,14 +168,14 @@
 
 
         <!-- 2. CNAS & Medical -->
-        <div style="display: flex; align-items: center; gap: 24px; margin-top: 80px; margin-bottom: 24px;">
-            <img src="/imagini/logo/cnas.png" alt="CNAS Logo" style="height: 80px; object-fit: contain;">
+        <div class="logo-heading mt">
+            <img src="/imagini/logo/cnas.png" alt="CNAS Logo">
             <h3 class="section-title" style="margin: 0;">2. Asigurarea de Sănătate și Drepturile Medicale</h3>
         </div>
         
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 32px;">
-            <img src="/imagini/studenti/cnas 1.jpg" alt="Asigurari Medicale 1" style="width: 100%; height: 350px; object-fit: cover; border-radius: 16px; border: 1px solid var(--line-d); box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
-            <img src="/imagini/studenti/cnas 2.jpg" alt="Asigurari Medicale 2" style="width: 100%; height: 350px; object-fit: cover; border-radius: 16px; border: 1px solid var(--line-d); box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+        <div class="cnas-grid">
+            <img src="/imagini/studenti/cnas 1.jpg" alt="Asigurari Medicale 1">
+            <img src="/imagini/studenti/cnas 2.jpg" alt="Asigurari Medicale 2">
         </div>
 
         <p style="font-size: 16px; color: var(--tx-light-mut); margin-bottom: 24px; line-height: 1.6;">Statul român oferă protecție medicală extinsă tinerilor care sunt înmatriculați în sistemul de învățământ superior.</p>
