@@ -187,6 +187,35 @@
     font-weight: bold;
     color: var(--tx-light);
 }
+
+.local-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 32px;
+}
+.local-grid img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 1px solid var(--line-d);
+}
+
+@media (max-width: 768px) {
+    .search-box {
+        flex-direction: column;
+    }
+    .search-container {
+        padding: 24px 16px;
+    }
+    .local-grid {
+        grid-template-columns: 1fr;
+    }
+    .local-grid img {
+        height: 250px;
+    }
+}
 </style>
 
 <div class="fade-in-up">
@@ -264,9 +293,9 @@
         }
         </script>
 
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 32px;">
-            <img src="/imagini/studenti/asociatii studenti 1.jpeg" alt="Asociatii locale 1" style="width: 100%; height: 300px; object-fit: cover; border-radius: 12px; border: 1px solid var(--line-d);">
-            <img src="/imagini/studenti/asociatii studenti 2.jpeg" alt="Asociatii locale 2" style="width: 100%; height: 300px; object-fit: cover; border-radius: 12px; border: 1px solid var(--line-d);">
+        <div class="local-grid">
+            <img src="/imagini/studenti/asociatii studenti 1.jpeg" alt="Asociatii locale 1">
+            <img src="/imagini/studenti/asociatii studenti 2.jpeg" alt="Asociatii locale 2">
         </div>
 
         <p style="color: var(--tx-light-mut); margin-bottom: 16px;"><strong>Sindicatul tău studențesc:</strong> Aproape fiecare facultate din România are o ligă sau o asociație proprie. Cum te ajută concret?</p>
