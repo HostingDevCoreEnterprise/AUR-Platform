@@ -16,18 +16,41 @@
         let hasConfirmedSeat = applications.some(a => a.status === 'Loc Confirmat');
     %>
 
+    <style>
+    .stats-box-flex {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 32px;
+    }
+    .stats-divider {
+        width: 1px;
+        height: 60px;
+        background: rgba(255,255,255,0.2);
+    }
+    @media (max-width: 768px) {
+        .stats-box-flex {
+            flex-direction: column;
+            gap: 24px;
+        }
+        .stats-divider {
+            width: 60px;
+            height: 1px;
+        }
+    }
+    </style>
     <!-- Stats Box for Social Media -->
-    <div id="stats_export_area" class="card stats-export-area" style="margin-bottom: 40px; border: 2px solid var(--border-color); background: linear-gradient(135deg, #1a1a1a, #333); color: white;">
+    <div id="stats_export_area" class="card stats-export-area stats-box-flex" style="margin-bottom: 40px; border: 2px solid var(--border-color); background: linear-gradient(135deg, #1a1a1a, #333); color: white;">
         <div style="text-align: center;">
             <div style="font-size: 48px; font-weight: 800; color: white;"><%= totalAplicatii %></div>
             <div style="font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.7);">Aplicații</div>
         </div>
-        <div style="width: 1px; height: 60px; background: rgba(255,255,255,0.2);"></div>
+        <div class="stats-divider"></div>
         <div style="text-align: center;">
             <div style="font-size: 48px; font-weight: 800; color: #10b981;"><%= totalAdmis %></div>
             <div style="font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.7);">Admis</div>
         </div>
-        <div style="width: 1px; height: 60px; background: rgba(255,255,255,0.2);"></div>
+        <div class="stats-divider"></div>
         <div style="text-align: center;">
             <div style="font-size: 48px; font-weight: 800; color: #ef4444;"><%= totalRespins %></div>
             <div style="font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.7);">Respins</div>
