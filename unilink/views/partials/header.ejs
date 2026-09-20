@@ -31,10 +31,10 @@
                         <div class="avatar-btn" id="avatarBtn">
                             <%= user.first_name.charAt(0).toUpperCase() %>
                         </div>
-                        <div class="dropdown-menu" id="dropdownMenu">
+                        <div class="dropdown-menu" id="dropdownMenu" style="right: 0; left: auto; max-width: 90vw;">
                             <div style="padding: 16px 20px; border-bottom: 1px solid var(--border-color); background: #f9f9fb;">
                                 <p style="margin: 0; font-weight: 700; color: var(--text-main); font-size: 15px;"><%= user.first_name %> <%= user.last_name %></p>
-                                <p style="margin: 4px 0 0 0; color: var(--text-mut); font-size: 13px;"><%= user.email %></p>
+                                <p style="margin: 4px 0 0 0; color: var(--text-mut); font-size: 13px; word-break: break-all;"><%= user.email %></p>
                             </div>
                             <a href="/profile" class="dropdown-item">Profil & Setări</a>
                             <a href="/logout" class="dropdown-item" style="border-top: 1px solid var(--border-color);">Deconectare</a>
